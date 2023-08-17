@@ -1,0 +1,14 @@
+{
+    "extends": ["next/core-web-vitals", "airbnb", "airbnb-typescript"],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "rules": {
+        "react/jsx-indent-props": "off",
+        "linebreak-style": "off",
+        "object-curly-newline": ["error", { "consistent": true }],
+        "react/jsx-one-expression-per-line": "off",
+        "implicit-arrow-linebreak": "off",
+        "jsx-quotes": ["error", "prefer-single"]
+    }
+}
