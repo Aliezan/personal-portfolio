@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Work_Sans } from 'next/font/google';
+import ThemeProvider from '@/components/theme-provider';
 import Navbar from '@/components/Navbar';
 import '@/styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const WorkSans = Work_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Muhammad Alieza Nuriman - Portfolio',
@@ -15,17 +16,15 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-const RootLayout: FC<RootLayoutProps> = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => (
-  <html lang='en'>
-    <body className={inter.className}>
-      <nav>
-        <Navbar logo='Muhammad Alieza Nuriman' />
-      </nav>
-      {children}
+const RootLayout: FC<RootLayoutProps> = ({ children }) => (
+  <html lang='en' suppressHydrationWarning>
+    <body className={WorkSans.className}>
+      <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+        <nav>
+          <Navbar />
+        </nav>
+        {children}
+      </ThemeProvider>
     </body>
   </html>
 );
