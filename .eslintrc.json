@@ -21,6 +21,16 @@
     "import/no-extraneous-dependencies": "off",
     "global-require": "off",
     "import/prefer-default-export": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/indent": "off",
+    "operator-linebreak": "off",
+    "react/require-default-props": "off",
+    "react/prop-types": [
+      2,
+      {
+        "ignore": ["className", "sideOffset", "checked"]
+      }
+    ],
+    "no-trailing-spaces": "off"
   }
 }
