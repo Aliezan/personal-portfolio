@@ -1,15 +1,18 @@
 import { FC } from 'react';
 import type { Metadata } from 'next';
-import { Work_Sans } from 'next/font/google';
+import { Manrope } from 'next/font/google';
 import ThemeProvider from '@/components/theme-provider';
 import Navbar from '@/components/Navbar';
 import '@/styles/globals.css';
 
-const WorkSans = Work_Sans({ subsets: ['latin'] });
+const manrope = Manrope({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Muhammad Alieza Nuriman - Portfolio',
   description: 'NEXT',
+  icons: {
+    icon: '/aliezn-ico.ico',
+  },
 };
 
 interface RootLayoutProps {
@@ -18,7 +21,7 @@ interface RootLayoutProps {
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang='en' suppressHydrationWarning>
-    <body className={WorkSans.className}>
+    <body className={manrope.className}>
       <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
         <nav>
           <Navbar />
