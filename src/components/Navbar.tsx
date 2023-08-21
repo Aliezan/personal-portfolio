@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -18,28 +17,15 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import { Button } from './ui/button';
+import Logo from './Logo';
 
 const Navbar = () => {
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
 
   return (
-    <div className='grid grid-cols-12 h-[70px] bg-white dark:bg-slate-950 border-b-[0.5px] border-gray-500 sticky top-0'>
+    <div className='grid grid-cols-12 h-[70px] bg-white dark:bg-zinc-950 border-b-[0.5px] border-gray-500 sticky top-0'>
       <div className='col-start-2 pt-[23px]'>
-        {theme === 'light' ? (
-          <Image
-            src='aliezn-light.svg'
-            width={100}
-            height={100}
-            alt='aliezan-light'
-          />
-        ) : (
-          <Image
-            src='/aliezn-dark.svg'
-            width={100}
-            height={100}
-            alt='aliezan-dark'
-          />
-        )}
+        <Logo />
       </div>
       <div className='col-start-3 flex gap-2'>
         <NavigationMenu>
