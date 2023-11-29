@@ -1,11 +1,10 @@
 import { FC } from 'react';
 import type { Metadata } from 'next';
-import { Manrope } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
 import ThemeProvider from '@/components/theme-provider';
-import Navbar from '@/components/Navbar';
+import UIProvider from '@/utils/UIProvider';
 import '@/styles/globals.css';
-
-const manrope = Manrope({ subsets: ['latin'] });
+import Navibar from '@/components/Navibar';
 
 export const metadata: Metadata = {
   title: 'Muhammad Alieza Nuriman - Portfolio',
@@ -21,13 +20,13 @@ interface RootLayoutProps {
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang='en' suppressHydrationWarning>
-    <body className={manrope.className}>
-      <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-        <nav>
-          <Navbar />
-        </nav>
-        {children}
-      </ThemeProvider>
+    <body className={GeistSans.className}>
+      <UIProvider>
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+          <Navibar />
+          {children}
+        </ThemeProvider>
+      </UIProvider>
     </body>
   </html>
 );

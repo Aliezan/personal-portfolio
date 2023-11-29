@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply dark:bg-zinc-950 bg-white;
-  }
+.gradient-text {
+  background: linear-gradient(
+    to right top,
+    rgb(254, 249, 195),
+    rgb(253, 224, 71),
+    rgb(234, 179, 8)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
