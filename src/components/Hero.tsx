@@ -3,8 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const Hero: FC = () => (
-  <section className='h-[700px] flex items-center justify-center dark:bg-[url("/minimal-black.svg")] bg-[url("/minimal.svg")] bg-cover'>
-    <div className='bg-white dark:bg-black'>
+  <section
+    className='h-[700px] flex items-center justify-center dark:bg-[url("/minimal-black.svg")] bg-[url("/minimal.svg")] bg-cover'
+    id='hero'
+  >
+    <div className='bg-[#fcfaf8] dark:bg-black'>
       <div className='w-[1300px] h-[450px] flex items-center pl-10 relative'>
         {' '}
         <div>

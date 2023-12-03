@@ -1,7 +1,7 @@
-import { PT_Serif } from 'next/font/google';
+import { Space_Grotesk } from 'next/font/google';
 
-export const PTSerif = PT_Serif({
-  weight: '400',
+export const SpaceGrotesk = Space_Grotesk({
+  weight: ['400', '500'],
   style: 'normal',
   subsets: ['latin'],
 });

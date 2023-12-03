@@ -11,6 +11,7 @@ import {
   NavbarMenuItem,
   Link,
 } from '@nextui-org/react';
+import { SpaceGrotesk } from '@/utils/font';
 import Logo from './Logo';
 import ThemeButton from './ThemeButton';
 
@@ -35,17 +36,29 @@ const Navibar: FC = () => {
       </NavbarContent>
       <NavbarContent className='hidden sm:flex gap-4' justify='center'>
         <NavbarItem>
-          <Link color='foreground' href='#test'>
+          <Link
+            color='foreground'
+            href='#hero'
+            className={SpaceGrotesk.className}
+          >
             home
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href='#test' color='foreground'>
+          <Link
+            href='#about'
+            color='foreground'
+            className={SpaceGrotesk.className}
+          >
             about
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color='foreground' href='#test'>
+          <Link
+            color='foreground'
+            href='#test'
+            className={SpaceGrotesk.className}
+          >
             works
           </Link>
         </NavbarItem>

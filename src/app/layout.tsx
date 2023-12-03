@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import type { Metadata } from 'next';
 import { GeistSans } from 'geist/font/sans';
-import ThemeProvider from '@/components/theme-provider';
+import ThemeProvider from '@/utils/theme-provider';
 import UIProvider from '@/utils/UIProvider';
 import '@/styles/globals.css';
 import Navibar from '@/components/Navibar';
