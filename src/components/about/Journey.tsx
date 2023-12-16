@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { SpaceGrotesk } from '@/utils/font';
 import { Card, CardBody, CardHeader, CardFooter } from '@nextui-org/react';
 import Image from 'next/image';
-import { Newspaper, BookOpen } from 'lucide-react';
+import { Newspaper, BookOpen, ExternalLink } from 'lucide-react';
 import certs from '@/data/certs';
 import JourneyLabel from './JourneyLabel';
 import CertsAccordion from './CertsAccordion';
@@ -116,19 +116,38 @@ const Journey: FC = () => (
                   </p>
                 </JourneyLabel>
               </div>
+              <JourneyLabel>
+                <Newspaper size={20} />
+                <p className={SpaceGrotesk.className}>Certifications</p>
+              </JourneyLabel>
             </div>
           </div>
-          <Card className='w-[500px] h-[400px]'>
+          <Card className='w-[500px] h-[400px] relative' isFooterBlurred>
+            <div className='absolute bottom-[-200px] left-[50px] rounded-l-[20px] w-[919px] h-[391px] bg-[#FE7600] blur-[80px]' />
             <CardHeader className='pt-6 pl-6'>
               <p className='text-tiny uppercase dark:text-white/60 text-black/60'>
                 programme description
               </p>
             </CardHeader>
             <CardBody>
-              <div className='p-2'>
-                <p>From </p>
+              <div className='w-[300px] space-y-3 p-5'>
+                <p className='text-[16px] font-medium'>
+                  This program wasn&apos;t just about React basics; it took me
+                  all the way to global state management with seamless
+                  serverless API integration.
+                </p>
+                <p className='text-[16px] font-medium'>
+                  Moreover, i got the chance to lead a frontend team to build a
+                  capstone project
+                </p>
               </div>
             </CardBody>
+            <CardFooter className='before:bg-white/10 border-white/20 border-1 overflow-hidden py-3 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10'>
+              <div className='flex justify-between gap-[10px]'>
+                <p className='text-tiny font-semibold'>Certification Link</p>
+                <ExternalLink size={15} />
+              </div>
+            </CardFooter>
           </Card>
         </div>
       </div>

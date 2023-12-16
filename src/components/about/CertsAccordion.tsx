@@ -22,14 +22,14 @@ const CertsAccordion: FC<CertsAccordionProps> = ({ certs }) => (
     >
       {certs
         .filter((cert) => cert.tag === 'JS/Web')
-        .map((cert) => (
-          <>
+        .map((cert, index, self) => (
+          <React.Fragment key={cert.title}>
             <div className='flex p-2 gap-3'>
-              <p key={cert.title}>{cert.title}</p>
+              <p>{cert.title}</p>
               <ExternalLink size={20} />
             </div>
-            <Divider />
-          </>
+            {index !== self.length - 1 && <Divider />}
+          </React.Fragment>
         ))}
     </AccordionItem>
     <AccordionItem
@@ -40,13 +40,13 @@ const CertsAccordion: FC<CertsAccordionProps> = ({ certs }) => (
       {certs
         .filter((cert) => cert.tag === 'Others')
         .map((cert) => (
-          <>
+          <React.Fragment key={cert.title}>
             <div className='flex p-2 gap-3'>
-              <p key={cert.title}>{cert.title}</p>
+              <p>{cert.title}</p>
               <ExternalLink size={20} />
             </div>
             <Divider />
-          </>
+          </React.Fragment>
         ))}
     </AccordionItem>
   </Accordion>

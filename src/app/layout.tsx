@@ -4,7 +4,7 @@ import { GeistSans } from 'geist/font/sans';
 import ThemeProvider from '@/utils/theme-provider';
 import UIProvider from '@/utils/UIProvider';
 import '@/styles/globals.css';
-import Navibar from '@/components/Navibar';
+import Navibar from '@/components/navbar/Navibar';
 
 export const metadata: Metadata = {
   title: 'Muhammad Alieza Nuriman - Portfolio',

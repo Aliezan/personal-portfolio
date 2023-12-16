@@ -3,13 +3,14 @@ import Image from 'next/image';
 import { Card, CardBody } from '@nextui-org/react';
 
 const MainStacks: FC = () => (
-  <Card className='w-[521px] h-[255.5px] bg-[#E0FF00] p-2'>
+  <Card className='w-[521px] h-[255.5px] p-2 relative'>
+    <div className='absolute bottom-[-338px] right-[300px] w-[919px] h-[391px] bg-[#0034EB] blur-[80px]' />
+    <div className='absolute bottom-[-338px] left-[-300px] w-[919px] h-[391px] bg-[#00F3F9] blur-[80px]' />
+
     <CardBody>
       <div className='flex overflow-hidden gap-[100px]'>
         <div className='flex items-center'>
-          <h1 className='ml-[30px] text-black text-[20px] font-medium'>
-            Main Stacks
-          </h1>
+          <h1 className='ml-[30px] text-[20px] font-medium'>Main Stacks</h1>
         </div>
         <div className='space-y-3'>
           <div className='w-[280px] h-[45px] rounded-md bg-gradient-to-b from-gray-700 via-gray-900 to-black flex items-center justify-start overflow-hidden gap-16'>
