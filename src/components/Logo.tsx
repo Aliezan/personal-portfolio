@@ -1,12 +1,18 @@
+import React, { FC } from 'react';
 import Image from 'next/image';
 
-const Logo = () => (
+interface LogoProps {
+  width: number;
+  height: number;
+}
+
+const Logo: FC<LogoProps> = ({ width, height }) => (
   <>
     <div className='dark:hidden'>
       <Image
         src='aliezn-light.svg'
-        width={100}
-        height={100}
+        width={width}
+        height={height}
         alt='aliezan-light'
       />
     </div>
@@ -14,8 +20,8 @@ const Logo = () => (
     <div className='hidden dark:block'>
       <Image
         src='/aliezn-dark.svg'
-        width={100}
-        height={100}
+        width={width}
+        height={height}
         alt='aliezan-dark'
       />
     </div>

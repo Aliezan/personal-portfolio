@@ -9,11 +9,12 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  Link,
 } from '@nextui-org/react';
 import { SpaceGrotesk } from '@/utils/font';
-import Logo from './Logo';
+import { Link } from 'react-scroll/modules';
+import Logo from '../Logo';
 import ThemeButton from './ThemeButton';
+import { Button } from '../ui/button';
 
 const Navibar: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -31,36 +32,50 @@ const Navibar: FC = () => {
       </NavbarContent>
       <NavbarContent justify='start'>
         <NavbarBrand>
-          <Logo />
+          <Logo width={100} height={100} />
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent className='hidden sm:flex gap-4' justify='center'>
         <NavbarItem>
-          <Link
-            color='foreground'
-            href='#hero'
-            className={SpaceGrotesk.className}
-          >
-            home
-          </Link>
+          <Button variant='link'>
+            <Link
+              to='hero'
+              className={SpaceGrotesk.className}
+              spy
+              smooth
+              offset={-70}
+              duration={500}
+            >
+              home
+            </Link>
+          </Button>
         </NavbarItem>
         <NavbarItem>
-          <Link
-            href='#about'
-            color='foreground'
-            className={SpaceGrotesk.className}
-          >
-            about
-          </Link>
+          <Button variant='link'>
+            <Link
+              to='about'
+              className={SpaceGrotesk.className}
+              spy
+              smooth
+              offset={60}
+              duration={500}
+            >
+              about
+            </Link>
+          </Button>
         </NavbarItem>
         <NavbarItem>
-          <Link
-            color='foreground'
-            href='#test'
-            className={SpaceGrotesk.className}
-          >
-            works
-          </Link>
+          <Button variant='link'>
+            <Link
+              to='test'
+              className={SpaceGrotesk.className}
+              spy
+              smooth
+              duration={500}
+            >
+              works
+            </Link>
+          </Button>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify='end'>
@@ -70,19 +85,25 @@ const Navibar: FC = () => {
       </NavbarContent>
       <NavbarMenu>
         <NavbarMenuItem>
-          <Link color='foreground' href='#test'>
-            Home
-          </Link>
+          <Button variant='link'>
+            <Link to='home' spy smooth duration={500}>
+              home
+            </Link>
+          </Button>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link color='foreground' href='#test'>
-            Home
-          </Link>
+          <Button variant='link'>
+            <Link to='about' spy smooth duration={500}>
+              about
+            </Link>
+          </Button>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link color='foreground' href='#test'>
-            Home
-          </Link>
+          <Button variant='link'>
+            <Link to='test' spy smooth duration={500}>
+              works
+            </Link>
+          </Button>
         </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
