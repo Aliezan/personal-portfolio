@@ -3,10 +3,12 @@
 import React, { FC } from 'react';
 import { Accordion, AccordionItem, Divider } from '@nextui-org/react';
 import { ExternalLink } from 'lucide-react';
+import Link from 'next/link';
 
 type Certs = {
   title: string;
   tag: string;
+  link: string;
 };
 
 interface CertsAccordionProps {
@@ -24,10 +26,10 @@ const CertsAccordion: FC<CertsAccordionProps> = ({ certs }) => (
         .filter((cert) => cert.tag === 'JS/Web')
         .map((cert, index, self) => (
           <React.Fragment key={cert.title}>
-            <div className='flex p-2 gap-3'>
-              <p>{cert.title}</p>
+            <Link href={cert.link} className='flex p-2 gap-3'>
+              <p className='hover:underline'>{cert.title}</p>
               <ExternalLink size={20} />
-            </div>
+            </Link>
             {index !== self.length - 1 && <Divider />}
           </React.Fragment>
         ))}
@@ -41,10 +43,10 @@ const CertsAccordion: FC<CertsAccordionProps> = ({ certs }) => (
         .filter((cert) => cert.tag === 'Others')
         .map((cert) => (
           <React.Fragment key={cert.title}>
-            <div className='flex p-2 gap-3'>
-              <p>{cert.title}</p>
+            <Link href={cert.link} className='flex p-2 gap-3'>
+              <p className='hover:underline'>{cert.title}</p>
               <ExternalLink size={20} />
-            </div>
+            </Link>
             <Divider />
           </React.Fragment>
         ))}

@@ -4,6 +4,7 @@ import { Card, CardBody, CardHeader, CardFooter } from '@nextui-org/react';
 import Image from 'next/image';
 import { Newspaper, BookOpen, ExternalLink } from 'lucide-react';
 import certs from '@/data/certs';
+import Link from 'next/link';
 import JourneyLabel from './JourneyLabel';
 import CertsAccordion from './CertsAccordion';
 
@@ -143,10 +144,15 @@ const Journey: FC = () => (
               </div>
             </CardBody>
             <CardFooter className='before:bg-white/10 border-white/20 border-1 overflow-hidden py-3 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10'>
-              <div className='flex justify-between gap-[10px]'>
-                <p className='text-tiny font-semibold'>Certification Link</p>
+              <Link
+                href='https://drive.google.com/drive/folders/1OLW4ltnS-uGYxKE0d2TTn2HvZXdPyVti?usp=sharing'
+                className='flex justify-between gap-[10px]'
+              >
+                <p className='text-tiny font-semibold hover:underline'>
+                  Certification Link
+                </p>
                 <ExternalLink size={15} />
-              </div>
+              </Link>
             </CardFooter>
           </Card>
         </div>

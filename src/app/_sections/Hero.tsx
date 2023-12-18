@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Tooltip } from '@nextui-org/react';
 
 const Hero: FC = () => (
   <section
@@ -36,59 +37,76 @@ const Hero: FC = () => (
           <div className='flex absolute left-[1085px] gap-5 mt-[20px]'>
             {' '}
             <div className='dark:hidden'>
-              <Link href='https://github.com/Aliezan'>
-                <Image src='github-mark.svg' height={30} width={30} alt='gh' />
-              </Link>
+              <Tooltip content='Github'>
+                <Link href='https://github.com/Aliezan'>
+                  <Image
+                    src='github-mark.svg'
+                    height={30}
+                    width={30}
+                    alt='gh'
+                  />
+                </Link>
+              </Tooltip>
             </div>
             <div className='hidden dark:block'>
-              <Link href='https://github.com/Aliezan'>
-                <Image
-                  src='github-mark-white.svg'
-                  height={30}
-                  width={30}
-                  alt='gh'
-                />
-              </Link>
+              <Tooltip content='Github'>
+                <Link href='https://github.com/Aliezan'>
+                  <Image
+                    src='github-mark-white.svg'
+                    height={30}
+                    width={30}
+                    alt='gh'
+                  />
+                </Link>
+              </Tooltip>
             </div>
             <div className='dark:hidden'>
-              <Link href='https://www.linkedin.com/in/muhammad-alieza-nuriman/'>
-                <Image
-                  src='linkedin-light.svg'
-                  height={30}
-                  width={30}
-                  alt='linkedin'
-                />
-              </Link>
+              <Tooltip content='LinkedIn'>
+                <Link href='https://www.linkedin.com/in/muhammad-alieza-nuriman/'>
+                  <Image
+                    src='linkedin-light.svg'
+                    height={30}
+                    width={30}
+                    alt='linkedin'
+                  />
+                </Link>
+              </Tooltip>
             </div>
             <div className='hidden dark:block'>
-              <Link href='https://www.linkedin.com/in/muhammad-alieza-nuriman/'>
-                <Image
-                  src='linkedin-dark.svg'
-                  height={30}
-                  width={30}
-                  alt='linkedin'
-                />
-              </Link>
+              <Tooltip content='LinkedIn'>
+                <Link href='https://www.linkedin.com/in/muhammad-alieza-nuriman/'>
+                  <Image
+                    src='linkedin-dark.svg'
+                    height={30}
+                    width={30}
+                    alt='linkedin'
+                  />
+                </Link>
+              </Tooltip>
             </div>
             <div className='dark:hidden'>
-              <Link href='mailto:muhammadalieza4@gmail.com'>
-                <Image
-                  src='gmail-light.svg'
-                  height={30}
-                  width={30}
-                  alt='gmail'
-                />
-              </Link>
+              <Tooltip content='Email-me'>
+                <Link href='mailto:muhammadalieza4@gmail.com'>
+                  <Image
+                    src='gmail-light.svg'
+                    height={30}
+                    width={30}
+                    alt='gmail'
+                  />
+                </Link>
+              </Tooltip>
             </div>
             <div className='hidden dark:block'>
-              <Link href='mailto:muhammadalieza4@gmail.com'>
-                <Image
-                  src='gmail-dark.svg'
-                  height={30}
-                  width={30}
-                  alt='gmail'
-                />
-              </Link>
+              <Tooltip content='Email-me'>
+                <Link href='mailto:muhammadalieza4@gmail.com'>
+                  <Image
+                    src='gmail-dark.svg'
+                    height={30}
+                    width={30}
+                    alt='gmail'
+                  />
+                </Link>
+              </Tooltip>
             </div>
           </div>
         </div>
