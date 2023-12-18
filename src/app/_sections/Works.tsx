@@ -4,7 +4,7 @@ import { SpaceGrotesk } from '@/utils/font';
 
 const Works: FC = () => (
   <section
-    className='h-[2000px] flex items-center justify-center bg-[#fcfaf8]'
+    className='h-[2000px] flex justify-center dark:bg-[#fcfaf8] bg-[#171a26]'
     id='works'
   >
     <div>
