@@ -14,10 +14,6 @@ concurrency:
   group: 'pages'
   cancel-in-progress: false
 
-env:
-  NEXT_PUBLIC_BASE_PATH: ${{ vars.NEXT_PUBLIC_BASE_PATH }}
-  NEXT_PUBLIC_BASE_URL: ${{ vars.NEXT_PUBLIC_BASE_URL }}
-
 jobs:
   build:
     runs-on: ubuntu-latest

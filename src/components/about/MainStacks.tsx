@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
 import { Card, CardBody } from '@nextui-org/react';
-import { prefix } from '@/utils/prefix';
 
 const MainStacks: FC = () => (
   <Card className='w-[521px] h-[255.5px] p-2 relative'>
@@ -16,7 +15,7 @@ const MainStacks: FC = () => (
         <div className='space-y-3'>
           <div className='w-[280px] h-[45px] rounded-md bg-gradient-to-b from-gray-700 via-gray-900 to-black flex items-center justify-start overflow-hidden gap-16'>
             <Image
-              src={`${prefix}/next-js.svg`}
+              src='./next-js.svg'
               width={120}
               height={120}
               alt='nextjs'
@@ -26,7 +25,7 @@ const MainStacks: FC = () => (
           </div>
           <div className='w-[280px] h-[45px] rounded-md bg-gradient-to-b from-gray-700 via-gray-900 to-black flex items-center justify-start overflow-hidden gap-16'>
             <Image
-              src={`${prefix}/react.svg`}
+              src='./react.svg'
               width={120}
               height={120}
               alt='react'
@@ -36,7 +35,7 @@ const MainStacks: FC = () => (
           </div>
           <div className='w-[280px] h-[45px] rounded-md bg-gradient-to-b from-gray-700 via-gray-900 to-black flex items-center justify-start overflow-hidden gap-16'>
             <Image
-              src={`${prefix}/prisma-3.svg`}
+              src='./prisma-3.svg'
               width={120}
               height={120}
               alt='prisma-orm'
@@ -46,7 +45,7 @@ const MainStacks: FC = () => (
           </div>
           <div className='w-[280px] h-[45px] rounded-md bg-gradient-to-b from-gray-700 via-gray-900 to-black flex items-center justify-start overflow-hidden gap-16'>
             <Image
-              src={`${prefix}/trpc.svg`}
+              src='./trpc.svg'
               width={120}
               height={120}
               alt='trpc'

@@ -3,7 +3,6 @@ import Logo from '@/components/Logo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Tooltip } from '@nextui-org/react';
-import { prefix } from '@/utils/prefix';
 
 const Footer: FC = () => (
   <div className='flex h-[120px] w-full items-center justify-center relative'>
@@ -16,7 +15,7 @@ const Footer: FC = () => (
             <Tooltip content='Github'>
               <Link href='https://github.com/Aliezan'>
                 <Image
-                  src={`${prefix}/github-mark.svg`}
+                  src='./github-mark.svg'
                   height={22}
                   width={22}
                   alt='gh'
@@ -28,7 +27,7 @@ const Footer: FC = () => (
             <Tooltip content='Github'>
               <Link href='https://github.com/Aliezan'>
                 <Image
-                  src={`${prefix}/github-mark-white.svg`}
+                  src='./github-mark-white.svg'
                   height={22}
                   width={22}
                   alt='gh'
@@ -40,7 +39,7 @@ const Footer: FC = () => (
             <Tooltip content='LinkedIn'>
               <Link href='https://www.linkedin.com/in/muhammad-alieza-nuriman/'>
                 <Image
-                  src={`${prefix}/linkedin-light.svg`}
+                  src='./linkedin-light.svg'
                   height={22}
                   width={22}
                   alt='linkedin'
@@ -52,7 +51,7 @@ const Footer: FC = () => (
             <Tooltip content='LinkedIn'>
               <Link href='https://www.linkedin.com/in/muhammad-alieza-nuriman/'>
                 <Image
-                  src={`${prefix}/linkedin-dark.svg`}
+                  src='./linkedin-dark.svg'
                   height={22}
                   width={22}
                   alt='linkedin'
@@ -64,7 +63,7 @@ const Footer: FC = () => (
             <Tooltip content='Email-me'>
               <Link href='mailto:muhammadalieza4@gmail.com'>
                 <Image
-                  src={`${prefix}/gmail-light.svg`}
+                  src='./gmail-light.svg'
                   height={22}
                   width={22}
                   alt='gmail'
@@ -76,7 +75,7 @@ const Footer: FC = () => (
             <Tooltip content='Email-me'>
               <Link href='mailto:muhammadalieza4@gmail.com'>
                 <Image
-                  src={`${prefix}/gmail-dark.svg`}
+                  src='./gmail-dark.svg'
                   height={22}
                   width={22}
                   alt='gmail'

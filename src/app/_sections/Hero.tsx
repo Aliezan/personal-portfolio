@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Tooltip } from '@nextui-org/react';
-import { prefix } from '@/utils/prefix';
 
 const Hero: FC = () => (
   <section
@@ -10,14 +9,14 @@ const Hero: FC = () => (
     id='hero'
   >
     <Image
-      src={`${prefix}/minimal.svg`}
+      src='./minimal.svg'
       fill
       alt='Background Image'
       quality={100}
       className='absolute inset-0 z-[-1] dark:hidden object-cover w-full h-full'
     />
     <Image
-      src={`${prefix}/minimal-black.svg`}
+      src='./minimal-black.svg'
       alt='Background Image'
       fill
       quality={100}
@@ -32,7 +31,7 @@ const Hero: FC = () => (
             <span>
               <Image
                 className='inline-block'
-                src={`${prefix}/waving-hand.png`}
+                src='./waving-hand.png'
                 width={22}
                 height={22}
                 alt='waving'
@@ -55,7 +54,7 @@ const Hero: FC = () => (
               <Tooltip content='Github'>
                 <Link href='https://github.com/Aliezan'>
                   <Image
-                    src={`${prefix}/github-mark.svg`}
+                    src='./github-mark.svg'
                     height={30}
                     width={30}
                     alt='gh'
@@ -67,7 +66,7 @@ const Hero: FC = () => (
               <Tooltip content='Github'>
                 <Link href='https://github.com/Aliezan'>
                   <Image
-                    src={`${prefix}/github-mark-white.svg`}
+                    src='./github-mark-white.svg'
                     height={30}
                     width={30}
                     alt='gh'
@@ -79,7 +78,7 @@ const Hero: FC = () => (
               <Tooltip content='LinkedIn'>
                 <Link href='https://www.linkedin.com/in/muhammad-alieza-nuriman/'>
                   <Image
-                    src={`${prefix}/linkedin-light.svg`}
+                    src='./linkedin-light.svg'
                     height={30}
                     width={30}
                     alt='linkedin'
@@ -91,7 +90,7 @@ const Hero: FC = () => (
               <Tooltip content='LinkedIn'>
                 <Link href='https://www.linkedin.com/in/muhammad-alieza-nuriman/'>
                   <Image
-                    src={`${prefix}/linkedin-dark.svg`}
+                    src='./linkedin-dark.svg'
                     height={30}
                     width={30}
                     alt='linkedin'
@@ -103,7 +102,7 @@ const Hero: FC = () => (
               <Tooltip content='Email-me'>
                 <Link href='mailto:muhammadalieza4@gmail.com'>
                   <Image
-                    src={`${prefix}/gmail-light.svg`}
+                    src='./gmail-light.svg'
                     height={30}
                     width={30}
                     alt='gmail'
@@ -115,7 +114,7 @@ const Hero: FC = () => (
               <Tooltip content='Email-me'>
                 <Link href='mailto:muhammadalieza4@gmail.com'>
                   <Image
-                    src={`${prefix}/gmail-dark.svg`}
+                    src='./gmail-dark.svg'
                     height={30}
                     width={30}
                     alt='gmail'

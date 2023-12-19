@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
-import { prefix } from '@/utils/prefix';
 
 interface LogoProps {
   width: number;
@@ -11,7 +10,7 @@ const Logo: FC<LogoProps> = ({ width, height }) => (
   <>
     <div className='dark:hidden'>
       <Image
-        src={`${prefix}/aliezn-light.svg`}
+        src='./aliezn-light.svg'
         width={width}
         height={height}
         alt='aliezan-light'
@@ -20,7 +19,7 @@ const Logo: FC<LogoProps> = ({ width, height }) => (
 
     <div className='hidden dark:block'>
       <Image
-        src={`${prefix}/aliezn-dark.svg`}
+        src='./aliezn-dark.svg'
         width={width}
         height={height}
         alt='aliezan-dark'

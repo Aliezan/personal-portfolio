@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { Newspaper, BookOpen, ExternalLink } from 'lucide-react';
 import certs from '@/data/certs';
 import Link from 'next/link';
-import { prefix } from '@/utils/prefix';
 import JourneyLabel from './JourneyLabel';
 import CertsAccordion from './CertsAccordion';
 
@@ -30,7 +29,7 @@ const Journey: FC = () => (
             <div>
               <div className='flex gap-3'>
                 <Image
-                  src={`${prefix}/dicoding.jpeg`}
+                  src='./dicoding.jpeg'
                   width={50}
                   height={20}
                   alt='dicoding'
@@ -82,7 +81,7 @@ const Journey: FC = () => (
             <div>
               <div className='flex gap-3'>
                 <Image
-                  src={`${prefix}/alterra-academy.png`}
+                  src='./alterra-academy.png'
                   width={75}
                   height={10}
                   alt='alterra'
@@ -107,7 +106,7 @@ const Journey: FC = () => (
                 </JourneyLabel>
                 <JourneyLabel>
                   <Image
-                    src={`${prefix}/km.png`}
+                    src='./km.png'
                     alt='kmk'
                     width={30}
                     height={10}
