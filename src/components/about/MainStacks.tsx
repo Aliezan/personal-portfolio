@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
 import { Card, CardBody } from '@nextui-org/react';
+import { prefix } from '@/utils/prefix';
 
 const MainStacks: FC = () => (
   <Card className='w-[521px] h-[255.5px] p-2 relative'>
@@ -15,37 +16,37 @@ const MainStacks: FC = () => (
         <div className='space-y-3'>
           <div className='w-[280px] h-[45px] rounded-md bg-gradient-to-b from-gray-700 via-gray-900 to-black flex items-center justify-start overflow-hidden gap-16'>
             <Image
-              src='/next-js.svg'
+              src={`${prefix}/next-js.svg`}
               width={120}
               height={120}
-              alt='trpc'
+              alt='nextjs'
               className='max-w-full max-h-full object-cover ml-3'
             />
             <p className='mr-2 text-white'>Next.js</p>
           </div>
           <div className='w-[280px] h-[45px] rounded-md bg-gradient-to-b from-gray-700 via-gray-900 to-black flex items-center justify-start overflow-hidden gap-16'>
             <Image
-              src='/react.svg'
+              src={`${prefix}/react.svg`}
               width={120}
               height={120}
-              alt='trpc'
+              alt='react'
               className='max-w-full max-h-full object-cover ml-3'
             />
             <p className='mr-2 text-white'>React.js</p>
           </div>
           <div className='w-[280px] h-[45px] rounded-md bg-gradient-to-b from-gray-700 via-gray-900 to-black flex items-center justify-start overflow-hidden gap-16'>
             <Image
-              src='/prisma-3.svg'
+              src={`${prefix}/prisma-3.svg`}
               width={120}
               height={120}
-              alt='trpc'
+              alt='prisma-orm'
               className='max-w-full max-h-full object-cover ml-3'
             />
-            <p className='mr-2 text-white'>Prisma</p>
+            <p className='mr-2 text-white'>Prisma ORM</p>
           </div>
           <div className='w-[280px] h-[45px] rounded-md bg-gradient-to-b from-gray-700 via-gray-900 to-black flex items-center justify-start overflow-hidden gap-16'>
             <Image
-              src='/trpc.svg'
+              src={`${prefix}/trpc.svg`}
               width={120}
               height={120}
               alt='trpc'

@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Card, CardBody, Tooltip, CardHeader } from '@nextui-org/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { prefix } from '@/utils/prefix';
 
 const LibraryCard: FC = () => (
   <Card className='w-[521px] h-[255.5px] relative p-2'>
@@ -15,7 +16,7 @@ const LibraryCard: FC = () => (
           <Tooltip content='TailwindCSS'>
             <Link href='https://tailwindcss.com/'>
               <Image
-                src='/tailwindcss.svg'
+                src={`${prefix}/tailwindcss.svg`}
                 width={50}
                 height={50}
                 className='mt-[8px]'
@@ -25,18 +26,28 @@ const LibraryCard: FC = () => (
           </Tooltip>
           <Tooltip content='TypeScript'>
             <Link href='https://www.typescriptlang.org/'>
-              <Image src='/typescript.svg' width={50} height={50} alt='ts' />
+              <Image
+                src={`${prefix}/typescript.svg`}
+                width={50}
+                height={50}
+                alt='ts'
+              />
             </Link>
           </Tooltip>
           <Tooltip content='Redux Toolkit'>
             <Link href='https://redux-toolkit.js.org/'>
-              <Image src='/redux.svg' width={50} height={50} alt='redux' />
+              <Image
+                src={`${prefix}/redux.svg`}
+                width={50}
+                height={50}
+                alt='redux'
+              />
             </Link>
           </Tooltip>
           <Tooltip content='PostgreSQL'>
             <Link href='https://www.postgresql.org/'>
               <Image
-                src='/postgresql.svg'
+                src={`${prefix}/postgresql.svg`}
                 width={50}
                 height={50}
                 alt='postgresql'
@@ -46,7 +57,7 @@ const LibraryCard: FC = () => (
           <Tooltip content='TanStack Query'>
             <Link href='https://tanstack.com/query/latest'>
               <Image
-                src='/react-query-icon.svg'
+                src={`${prefix}/react-query-icon.svg`}
                 width={50}
                 height={50}
                 alt='react-query'
@@ -55,26 +66,31 @@ const LibraryCard: FC = () => (
           </Tooltip>
           <Tooltip content='React Hook Form'>
             <Link href='https://react-hook-form.com/'>
-              <Image src='/rhf.svg' width={50} height={50} alt='react-query' />
+              <Image
+                src={`${prefix}/rhf.svg`}
+                width={50}
+                height={50}
+                alt='react-hooks-form'
+              />
             </Link>
           </Tooltip>
           <Tooltip content='Zustand'>
             <Link href='https://zustand-demo.pmnd.rs/'>
               <Image
-                src='/zustand.png'
+                src={`${prefix}/zustand.png`}
                 width={50}
                 height={50}
-                alt='react-query'
+                alt='zustand'
               />
             </Link>
           </Tooltip>
           <Tooltip content='Zod'>
             <Link href='https://zod.dev/'>
               <Image
-                src='/zod.svg'
+                src={`${prefix}/zod.svg`}
                 width={50}
                 height={50}
-                alt='react-query'
+                alt='zod'
                 className='mt-1'
               />
             </Link>
@@ -82,10 +98,10 @@ const LibraryCard: FC = () => (
           <Tooltip content='Ubuntu'>
             <Link href='https://ubuntu.com/'>
               <Image
-                src='/ubuntu-logo.png'
+                src={`${prefix}/ubuntu-logo.png`}
                 width={50}
                 height={50}
-                alt='react-query'
+                alt='ubuntu'
                 className='mt-1'
               />
             </Link>
@@ -93,10 +109,10 @@ const LibraryCard: FC = () => (
           <Tooltip content='Docker'>
             <Link href='https://www.docker.com/'>
               <Image
-                src='/docker.svg'
+                src={`${prefix}/docker.svg`}
                 width={50}
                 height={50}
-                alt='react-query'
+                alt='docker'
                 className='mt-1'
               />
             </Link>
