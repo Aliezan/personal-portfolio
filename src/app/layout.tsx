@@ -7,11 +7,12 @@ import '@/styles/globals.css';
 import Navibar from '@/components/navbar/Navibar';
 
 export const metadata: Metadata = {
-  title: 'Muhammad Alieza Nuriman - Portfolio',
-  description: 'NEXT',
-  icons: {
-    icon: '/aliezn-ico.ico',
+  title: {
+    default: 'Muhammad Alieza Nuriman - Portfolio',
+    template: '%s | Alieza Nuriman - Portfolio',
   },
+  description:
+    'Personal Portfolio of Muhammad Alieza Nuriman, Web Developer and Undergraduate Student at Politeknik Negeri Jakarta. Currently learning JavaScript modern web frameworks',
 };
 
 interface RootLayoutProps {
