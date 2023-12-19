@@ -1,28 +1,18 @@
+'use client';
+
 import React, { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Tooltip } from '@nextui-org/react';
+import BackgroundBeams from '@/components/hero/BackgroundBeams';
 
 const Hero: FC = () => (
   <section
-    className='relative h-[700px] flex items-center justify-center'
+    className='relative h-[700px] flex items-center justify-center bg-neutral-50 dark:bg-neutral-950'
     id='hero'
   >
-    <Image
-      src='./minimal.svg'
-      fill
-      alt='Background Image'
-      quality={100}
-      className='absolute inset-0 z-[-1] dark:hidden object-cover w-full h-full'
-    />
-    <Image
-      src='./minimal-black.svg'
-      alt='Background Image'
-      fill
-      quality={100}
-      className='absolute inset-0 z-[-1] dark:block hidden object-cover w-full h-full'
-    />
-    <div className='bg-[#fcfaf8] dark:bg-black'>
+    <BackgroundBeams />
+    <div>
       <div className='w-[1300px] h-[450px] flex items-center pl-10 relative'>
         {' '}
         <div>
@@ -48,7 +38,7 @@ const Hero: FC = () => (
               enthusiast
             </h1>
           </div>
-          <div className='flex absolute left-[1085px] gap-5 mt-[20px]'>
+          <div className='flex gap-5 mt-[20px]'>
             {' '}
             <div className='dark:hidden'>
               <Tooltip content='Github'>

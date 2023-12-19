@@ -67,10 +67,11 @@ const Navibar: FC = () => {
         <NavbarItem>
           <Button variant='link'>
             <Link
-              to='test'
+              to='works'
               className={SpaceGrotesk.className}
               spy
               smooth
+              offset={-30}
               duration={500}
             >
               works
