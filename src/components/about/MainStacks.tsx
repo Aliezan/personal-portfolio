@@ -41,7 +41,7 @@ const MainStacks: FC = () => (
               alt='prisma-orm'
               className='max-w-full max-h-full object-cover ml-3'
             />
-            <p className='mr-2 text-white'>Prisma ORM</p>
+            <p className='mr-2 text-white text-small'>Prisma ORM</p>
           </div>
           <div className='w-[280px] h-[45px] rounded-md bg-gradient-to-b from-gray-700 via-gray-900 to-black flex items-center justify-start overflow-hidden gap-16'>
             <Image
