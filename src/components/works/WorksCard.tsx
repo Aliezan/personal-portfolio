@@ -56,7 +56,7 @@ const WorksCard: FC = () => (
         <CardFooter className='absolute left-0 bottom-0 border-t-1 z-10 before:bg-white/100 border-white/20'>
           <div className='p-2 space-y-3'>
             <p className='text-black dark:text-white text-tiny font-semibold'>
-              Built with
+              Made with
             </p>
             <div className='flex gap-2'>
               <Image src='./react.svg' alt='react' width={23} height={23} />
@@ -117,7 +117,7 @@ const WorksCard: FC = () => (
       <CardFooter className='absolute left-0 bottom-0 border-t-1 z-10 before:bg-white/100 border-white/20'>
         <div className='p-2 space-y-3'>
           <p className='text-black dark:text-white text-tiny font-semibold'>
-            Built with
+            Made with
           </p>
           <div className='flex gap-2'>
             <Image src='./react.svg' alt='react' width={23} height={23} />
@@ -175,7 +175,7 @@ const WorksCard: FC = () => (
         <CardFooter className='absolute left-0 bottom-0 border-t-1 z-10 before:bg-white/100 border-white/20'>
           <div className='p-2 space-y-3'>
             <p className='text-black dark:text-white text-tiny font-semibold'>
-              Built with
+              Made with
             </p>
             <div className='flex gap-2'>
               <Image src='./react.svg' alt='react' width={23} height={23} />

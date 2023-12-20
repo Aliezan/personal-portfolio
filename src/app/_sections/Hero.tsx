@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Tooltip } from '@nextui-org/react';
 import BackgroundBeams from '@/components/hero/BackgroundBeams';
+import { Separator } from '@/components/ui/separator';
 
 const Hero: FC = () => (
   <section
@@ -29,7 +30,7 @@ const Hero: FC = () => (
             </span>
             {'  '} I&apos;m Muhammad Alieza Nuriman
           </p>
-          <div>
+          <div className='relative'>
             <h1 className='text-[60px] font-semibold w-[850px]'>
               Web Developer and{' '}
               <span className='font-bold text-[64px] gradient-text'>
@@ -37,6 +38,10 @@ const Hero: FC = () => (
               </span>{' '}
               enthusiast
             </h1>
+            <Separator
+              className='w-[600px] bg-white inline absolute top-[-22px] left-[540px]'
+              orientation='horizontal'
+            />
           </div>
           <div className='flex gap-5 mt-[20px]'>
             {' '}

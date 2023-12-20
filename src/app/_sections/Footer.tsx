@@ -85,11 +85,7 @@ const Footer: FC = () => (
           </div>
         </div>
       </div>
-      <div className='space-y-3 mt-4'>
-        <p className='text-small font-bold w-[400px]'>
-          Don&apos;t hesitate to inquire! if there&apos;s anything I can do to
-          support the growth of your project, I&apos;m open to helping!
-        </p>
+      <div className='space-y-3 mt-10'>
         <p className='dark:text-white/60 text-black/60 text-small'>
           &copy; 2023 all rights reserved.
         </p>

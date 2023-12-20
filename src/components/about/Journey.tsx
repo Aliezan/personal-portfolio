@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { SpaceGrotesk } from '@/utils/font';
 import { Card, CardBody, CardHeader, CardFooter } from '@nextui-org/react';
 import Image from 'next/image';
-import { Newspaper, BookOpen, ExternalLink } from 'lucide-react';
+import { Newspaper, BookOpen, ExternalLink, TrendingUp } from 'lucide-react';
 import certs from '@/data/certs';
 import Link from 'next/link';
 import JourneyLabel from './JourneyLabel';
@@ -130,7 +130,7 @@ const Journey: FC = () => (
                 programme description
               </p>
             </CardHeader>
-            <CardBody>
+            <CardBody className='relative'>
               <div className='w-[300px] space-y-3 p-5'>
                 <p className='text-[16px] font-medium'>
                   This program wasn&apos;t just about React basics; it took me
@@ -141,6 +141,10 @@ const Journey: FC = () => (
                   Moreover, i got the chance to lead a frontend team to build a
                   capstone project
                 </p>
+                <TrendingUp
+                  className='absolute right-[50px] top-[60px]'
+                  size={120}
+                />
               </div>
             </CardBody>
             <CardFooter className='before:bg-white/10 border-white/20 border-1 overflow-hidden py-3 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10'>

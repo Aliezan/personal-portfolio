@@ -4,9 +4,10 @@ import About from './_sections/About';
 import Hero from './_sections/Hero';
 import Footer from './_sections/Footer';
 import Works from './_sections/Works';
+import ContactMe from './_sections/ContactMe';
 
 export const metadata: Metadata = {
-  title: "Alieza's Portfolio",
+  title: 'Home',
 };
 
 const Home: FC = () => (
@@ -14,6 +15,7 @@ const Home: FC = () => (
     <Hero />
     <About />
     <Works />
+    <ContactMe />
     <Footer />
   </main>
 );
