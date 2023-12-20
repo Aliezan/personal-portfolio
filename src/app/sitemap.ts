@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => [
   {
-    url: 'https://aliezan.github.io/aliezan-portfolio/',
+    url: 'https://aliezan.is-a.dev/',
     lastModified: new Date(),
   },
 ];

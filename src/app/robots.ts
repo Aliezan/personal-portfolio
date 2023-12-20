@@ -7,7 +7,7 @@ const robots = (): MetadataRoute.Robots => ({
       allow: '/',
     },
   ],
-  sitemap: 'https://aliezan.github.io/aliezan-portfolio/sitemap.xml',
+  sitemap: 'https://aliezan.is-a.dev/sitemap.xml',
 });
 
 export default robots;
