@@ -5,7 +5,7 @@ import WorksCard from '@/components/works/WorksCard';
 
 const Works: FC = () => (
   <section
-    className='h-[2500px] sm:h-[2000px] flex justify-center dark:bg-[#fcfaf8] bg-[#171a26]'
+    className='h-[2800px] sm:h-[1650px] flex justify-center dark:bg-[#fcfaf8] bg-[#171a26]'
     id='works'
   >
     <div>
@@ -20,7 +20,7 @@ const Works: FC = () => (
             Selection of my works
           </h1>
         </div>
-        <div className='flex justify-center items-center mt-3 mb-[55px]'>
+        <div className='flex justify-center items-center mt-3'>
           <p className='text-[13px] w-[300px] sm:w-[550px] text-center dark:text-black text-white'>
             I have been working on some projects, mostly are personal projects I
             love to work on projects that are challenging and fun to do.

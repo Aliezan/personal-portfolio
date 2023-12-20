@@ -39,7 +39,7 @@ const Hero: FC = () => (
               enthusiast
             </h1>
             <Separator
-              className='w-[600px] bg-white inline absolute top-[-22px] left-[540px]'
+              className='w-[0] sm:w-[600px] bg-white inline absolute sm:top-[-22px] sm:left-[540px]'
               orientation='horizontal'
             />
           </div>

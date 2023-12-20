@@ -12,8 +12,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const WorksCard: FC = () => (
-  <div className='grid grid-cols-1 space-y-[30px] sm:grid sm:grid-cols-2 sm:gap-5 mt-10'>
-    <Card className='w-[500px] sm:w-[650px] h-[600px] relative' isFooterBlurred>
+  <div className='grid grid-cols-1 sm:grid sm:grid-cols-2 sm:gap-5 gap-10 mt-10'>
+    <Card
+      className='w-[480px] h-[700px] sm:w-[650px] sm:h-[600px] relative'
+      isFooterBlurred
+    >
       <div className='absolute right-[-500px] w-[750px] h-[300px] rotate-[95deg] bg-[#390099] blur-[80px]' />
       <div className='absolute left-64 bottom-[-500px] rounded-[100%] w-[900px] h-[750px] rotate-[-10deg] bg-[#9e0059] blur-[80px]' />
       <div className='absolute right-[-200px] bottom-[-350px] rounded-[100%] w-[750px] h-96 rotate-[-30deg] bg-[#ff0054] blur-[80px]' />
@@ -52,29 +55,32 @@ const WorksCard: FC = () => (
             Frontend
           </Chip>
         </div>
-        <CardBody />
-        <CardFooter className='absolute left-0 bottom-0 border-t-1 z-10 before:bg-white/100 border-white/20'>
-          <div className='p-2 space-y-3'>
-            <p className='text-black dark:text-white text-tiny font-semibold'>
-              Made with
-            </p>
-            <div className='flex gap-2'>
-              <Image src='./react.svg' alt='react' width={23} height={23} />
-              <Image
-                src='./tailwindcss.svg'
-                alt='tailwind'
-                width={23}
-                height={23}
-              />
-              <Image src='./zustand.png' alt='react' width={23} height={23} />
-              <Image src='./formik.svg' alt='formik' width={23} height={23} />
-              <p className='text-small font-bold mt-1'>+4 more</p>
-            </div>
-          </div>
-        </CardFooter>
       </CardHeader>
+      <CardFooter className='absolute left-0 bottom-0 border-t-1 z-10 before:bg-white/100 border-white/20'>
+        <div className='p-2 space-y-3'>
+          <p className='text-black dark:text-white text-tiny font-semibold'>
+            Made with
+          </p>
+          <div className='flex gap-2'>
+            <Image src='./react.svg' alt='react' width={23} height={23} />
+            <Image
+              src='./tailwindcss.svg'
+              alt='tailwind'
+              width={23}
+              height={23}
+            />
+            <Image src='./zustand.png' alt='react' width={23} height={23} />
+            <Image src='./formik.svg' alt='formik' width={23} height={23} />
+            <p className='text-small font-bold mt-1'>+4 more</p>
+          </div>
+        </div>
+      </CardFooter>
     </Card>
-    <Card className='w-[500px] sm:w-[650px] h-[600px]' isFooterBlurred>
+
+    <Card
+      className='w-[480px] h-[700px] sm:w-[650px] sm:h-[600px] relative'
+      isFooterBlurred
+    >
       <div className='absolute right-[-500px] w-[750px] h-[300px] rotate-[95deg] bg-[#f94144] blur-[80px]' />
       <div className='absolute left-64 bottom-[-500px] rounded-[100%] w-[900px] h-[750px] rotate-[-10deg] bg-[#f3722c] blur-[80px]' />
       <div className='absolute right-[-200px] bottom-[-350px] rounded-[100%] w-[750px] h-96 rotate-[-30deg] bg-[#f8961e] blur-[80px]' />
@@ -134,7 +140,11 @@ const WorksCard: FC = () => (
         </div>
       </CardFooter>
     </Card>
-    <Card className='w-[500px] h-[900px] sm:w-[1330px] sm:h-[600px] relative sm:col-span-2'>
+
+    <Card
+      className='w-[480px] h-[900px] sm:w-[1330px] sm:h-[600px] relative sm:col-span-2'
+      isFooterBlurred
+    >
       <div className='absolute left-[200px] bottom-[-500px] rounded-[100%] w-[900px] h-[750px] rotate-[-10deg] bg-[#008000] blur-[80px]' />
       <CardHeader className='flex-col !items-start p-5 space-y-2'>
         <div className='flex gap-3'>

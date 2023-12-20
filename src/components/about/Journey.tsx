@@ -12,7 +12,7 @@ const Journey: FC = () => (
   <div className='mt-[100px]'>
     <div className='flex items-center justify-center'>
       <h1
-        className={`${SpaceGrotesk.className} text-[20px] sm:text-[40px] font-medium`}
+        className={`${SpaceGrotesk.className} text-[30px] sm:text-[40px] font-medium`}
       >
         Journey into greatness
       </h1>
@@ -26,7 +26,7 @@ const Journey: FC = () => (
     </div>
     <div className='flex items-center justify-center mt-[100px]'>
       <div className='space-y-[150px]'>
-        <div className='flex gap-[200px]'>
+        <div className='grid grid-cols-1 justify-items-center sm:flex gap-[200px]'>
           <div className='flex items-center'>
             <div>
               <div className='flex gap-3'>
@@ -37,12 +37,12 @@ const Journey: FC = () => (
                   alt='dicoding'
                 />
                 <h1
-                  className={`${SpaceGrotesk.className} font-medium text-[30px]`}
+                  className={`${SpaceGrotesk.className} font-medium text-[20px] mt-2 sm:text-[30px] sm:mt-0`}
                 >
                   Dicoding Indonesia
                 </h1>
               </div>
-              <p className='w-[400px] mt-3'>
+              <p className='w-[400px] mt-3 text-small'>
                 Dicoding is developer end-to-end platform comprises of online
                 learning program & platform in Indonesia. &nbsp; I&apos;ve been
                 getting over 10+ certifications from beginner to advanced levels
@@ -54,7 +54,7 @@ const Journey: FC = () => (
               </JourneyLabel>
             </div>
           </div>
-          <Card className='w-[500px] h-[400px]'>
+          <Card className='w-[480px] sm:w-[500px] h-[400px]'>
             <CardHeader className='pt-6 pl-6'>
               <p className='text-tiny uppercase dark:text-white/60 text-black/60'>
                 List of certificates
@@ -78,7 +78,7 @@ const Journey: FC = () => (
             </CardFooter>
           </Card>
         </div>
-        <div className='flex gap-[200px]'>
+        <div className='grid grid-cols-1 justify-items-center sm:flex gap-[200px]'>
           <div className='flex items-center'>
             <div>
               <div className='flex gap-3'>
@@ -89,12 +89,12 @@ const Journey: FC = () => (
                   alt='alterra'
                 />
                 <h1
-                  className={`${SpaceGrotesk.className} font-medium text-[30px]`}
+                  className={`${SpaceGrotesk.className} font-medium text-[20px] mt-2 sm:text-[30px] sm:mt-0`}
                 >
                   Alterra Academy
                 </h1>
               </div>
-              <p className='w-[420px] mt-3'>
+              <p className='w-[420px] mt-3 text-small'>
                 Alterra Academy is one of the Kampus Merdeka partners that
                 allowed me to learn extensively about React Ecosystem in a
                 4-month programme complete with Individual and Capstone Project
@@ -125,7 +125,10 @@ const Journey: FC = () => (
               </JourneyLabel>
             </div>
           </div>
-          <Card className='w-[500px] h-[400px] relative' isFooterBlurred>
+          <Card
+            className='w-[480px] sm:w-[500px] h-[400px] relative'
+            isFooterBlurred
+          >
             <div className='absolute bottom-[-200px] left-[50px] rounded-l-[20px] w-[919px] h-[391px] bg-[#FE7600] blur-[80px]' />
             <CardHeader className='pt-6 pl-6'>
               <p className='text-tiny uppercase dark:text-white/60 text-black/60'>
@@ -145,7 +148,7 @@ const Journey: FC = () => (
                 </p>
                 <TrendingUp
                   className='absolute right-[50px] top-[60px]'
-                  size={120}
+                  size={100}
                 />
               </div>
             </CardBody>

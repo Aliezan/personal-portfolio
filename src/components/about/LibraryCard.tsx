@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const LibraryCard: FC = () => (
-  <Card className='w-[521px] h-[255.5px] relative p-2'>
+  <Card className='w-[480px] sm:w-[521px] h-[255.5px] relative p-2'>
     <div className='absolute bottom-[-242px] left-[176px] rounded-l-[20px] w-[919px] h-[391px] bg-[#007BFF] blur-[80px]' />
     <CardHeader>
       <p className='text-[20px]'>Supporting libraries and tools</p>
