@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Tooltip } from '@nextui-org/react';
 import BackgroundBeams from '@/components/hero/BackgroundBeams';
-import { Separator } from '@/components/ui/separator';
 
 const Hero: FC = () => (
   <section
@@ -15,7 +14,6 @@ const Hero: FC = () => (
     <BackgroundBeams />
     <div>
       <div className='w-[400px] sm:w-[1300px] h-[450px] flex items-center pl-10 relative'>
-        {' '}
         <div>
           <p className='text-[15px] sm:text-[30px] font-extralight'>
             Hello{' '}
@@ -38,10 +36,6 @@ const Hero: FC = () => (
               </span>{' '}
               enthusiast
             </h1>
-            <Separator
-              className='w-[0] sm:w-[600px] bg-white inline absolute sm:top-[-22px] sm:left-[540px]'
-              orientation='horizontal'
-            />
           </div>
           <div className='flex gap-5 mt-[20px]'>
             {' '}
