@@ -6,7 +6,7 @@ import { Tooltip } from '@nextui-org/react';
 
 const Footer: FC = () => (
   <footer className='flex h-[120px] w-full items-center justify-center relative'>
-    <div className='w-full flex justify-between p-[60px] gap-[90px] ml-[40px]'>
+    <div className='w-full flex justify-between sm:p-[60px] sm:gap-[90px] sm:ml-[40px]'>
       <div className='space-y-3'>
         <Logo width={70} height={70} />
         <p className='text-tiny'>Let&apos;s collaborate</p>

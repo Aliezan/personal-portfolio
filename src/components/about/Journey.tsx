@@ -11,12 +11,14 @@ import CertsAccordion from './CertsAccordion';
 const Journey: FC = () => (
   <div className='mt-[100px]'>
     <div className='flex items-center justify-center'>
-      <h1 className={`${SpaceGrotesk.className} font-medium text-[40px]`}>
+      <h1
+        className={`${SpaceGrotesk.className} text-[20px] sm:text-[40px] font-medium`}
+      >
         Journey into greatness
       </h1>
     </div>
     <div className='flex items-center justify-center mt-3'>
-      <p className='text-center w-[550px]'>
+      <p className='text-[13px] w-[300px] sm:w-[550px] text-center'>
         Every journey has a start, each step shaped me into a good devs.
         Countless hours and those sleepless nights, I&apos;ve been through it
         all.

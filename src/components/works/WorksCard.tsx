@@ -12,8 +12,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const WorksCard: FC = () => (
-  <>
-    <Card className='w-[650px] h-[600px] relative' isFooterBlurred>
+  <div className='grid grid-cols-1 space-y-[30px] sm:grid sm:grid-cols-2 sm:gap-5 mt-10'>
+    <Card className='w-[500px] sm:w-[650px] h-[600px] relative' isFooterBlurred>
       <div className='absolute right-[-500px] w-[750px] h-[300px] rotate-[95deg] bg-[#390099] blur-[80px]' />
       <div className='absolute left-64 bottom-[-500px] rounded-[100%] w-[900px] h-[750px] rotate-[-10deg] bg-[#9e0059] blur-[80px]' />
       <div className='absolute right-[-200px] bottom-[-350px] rounded-[100%] w-[750px] h-96 rotate-[-30deg] bg-[#ff0054] blur-[80px]' />
@@ -74,7 +74,7 @@ const WorksCard: FC = () => (
         </CardFooter>
       </CardHeader>
     </Card>
-    <Card className='w-[650px] h-[600px] relative'>
+    <Card className='w-[500px] sm:w-[650px] h-[600px]' isFooterBlurred>
       <div className='absolute right-[-500px] w-[750px] h-[300px] rotate-[95deg] bg-[#f94144] blur-[80px]' />
       <div className='absolute left-64 bottom-[-500px] rounded-[100%] w-[900px] h-[750px] rotate-[-10deg] bg-[#f3722c] blur-[80px]' />
       <div className='absolute right-[-200px] bottom-[-350px] rounded-[100%] w-[750px] h-96 rotate-[-30deg] bg-[#f8961e] blur-[80px]' />
@@ -134,7 +134,7 @@ const WorksCard: FC = () => (
         </div>
       </CardFooter>
     </Card>
-    <Card className='w-[1330px] h-[600px] relative col-span-2'>
+    <Card className='w-[500px] h-[900px] sm:w-[1330px] sm:h-[600px] relative sm:col-span-2'>
       <div className='absolute left-[200px] bottom-[-500px] rounded-[100%] w-[900px] h-[750px] rotate-[-10deg] bg-[#008000] blur-[80px]' />
       <CardHeader className='flex-col !items-start p-5 space-y-2'>
         <div className='flex gap-3'>
@@ -193,7 +193,7 @@ const WorksCard: FC = () => (
         </CardFooter>
       </CardHeader>
     </Card>
-  </>
+  </div>
 );
 
 export default WorksCard;

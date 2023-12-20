@@ -9,15 +9,15 @@ import { Separator } from '@/components/ui/separator';
 
 const Hero: FC = () => (
   <section
-    className='relative h-[700px] flex items-center justify-center bg-neutral-50 dark:bg-neutral-950'
+    className='h-[700px] relative flex items-center justify-center bg-neutral-50 dark:bg-neutral-950'
     id='hero'
   >
     <BackgroundBeams />
     <div>
-      <div className='w-[1300px] h-[450px] flex items-center pl-10 relative'>
+      <div className='w-[400px] sm:w-[1300px] h-[450px] flex items-center pl-10 relative'>
         {' '}
         <div>
-          <p className='font-extralight text-[30px]'>
+          <p className='text-[15px] sm:text-[30px] font-extralight'>
             Hello{' '}
             <span>
               <Image
@@ -31,9 +31,9 @@ const Hero: FC = () => (
             {'  '} I&apos;m Muhammad Alieza Nuriman
           </p>
           <div className='relative'>
-            <h1 className='text-[60px] font-semibold w-[850px]'>
+            <h1 className='text-[30px] sm:text-[60px] sm:w-[850px] font-semibold '>
               Web Developer and{' '}
-              <span className='font-bold text-[64px] gradient-text'>
+              <span className='font-bold sm:text-[64px] gradient-text'>
                 JavaScript
               </span>{' '}
               enthusiast

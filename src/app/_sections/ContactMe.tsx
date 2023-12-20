@@ -4,34 +4,11 @@ import { Button, Link } from '@nextui-org/react';
 import { SpaceGrotesk } from '@/utils/font';
 
 const ContactMe: FC = () => (
-  <section className='h-[400px] dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center'>
+  <section className='h-[600px] sm:h-[400px] dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center'>
     <div className='absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_40%,black)]' />
-    <div className='flex justify-between gap-[300px]'>
-      <div>
-        <h1 className={`${SpaceGrotesk.className} font-medium text-[45px]`}>
-          Get in touch!
-        </h1>
-        <p className='text-small w-[500px]'>
-          If you want to just connect with me in Linkedin or want to know me
-          more, here&apos;s my personal CV for you to look at.
-        </p>
-        <Button
-          color='success'
-          radius='sm'
-          className='mt-3'
-          as={Link}
-          href='/'
-          showAnchorIcon
-        >
-          View CV
-        </Button>
-        <p className='text-tiny italic mt-10 w-[350px]'>
-          *The CV that provided on the link above is with censored personal
-          info, if you want to see the full version, please contact me.
-        </p>
-      </div>
+    <div className='grid grid-cols-1 space-y-10 items-center justify-center justify-items-center relative sm:flex sm:justify-between sm:gap-[100px]'>
       <div
-        className='flex h-[200px] w-[200px]'
+        className='h-[200px] w-[200px]'
         style={{
           position: 'relative',
         }}
@@ -45,6 +22,29 @@ const ContactMe: FC = () => (
             borderRadius: '100px',
           }}
         />
+      </div>
+      <div className='sm:mb-4'>
+        <h1
+          className={`${SpaceGrotesk.className} font-medium text-[30px] text-center sm:text-[45px] sm:text-normal`}
+        >
+          Get in touch!
+        </h1>
+        <p className='text-center text-small sm:w-[500px] w-[400px]'>
+          If you want to just connect with me in Linkedin or want to know me
+          more, here&apos;s my personal CV for you to look at.
+        </p>
+        <div className='flex justify-center items-center'>
+          <Button
+            color='success'
+            radius='sm'
+            className='mt-3'
+            as={Link}
+            href='/'
+            showAnchorIcon
+          >
+            View CV
+          </Button>
+        </div>
       </div>
     </div>
   </section>
