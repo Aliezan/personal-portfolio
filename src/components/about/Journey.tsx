@@ -154,7 +154,7 @@ const Journey: FC = () => (
             </CardBody>
             <CardFooter className='before:bg-white/10 border-white/20 border-1 overflow-hidden py-3 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10'>
               <Link
-                href='https://drive.google.com/drive/folders/1OLW4ltnS-uGYxKE0d2TTn2HvZXdPyVti?usp=sharing'
+                href='https://drive.google.com/uc?export=download&id=1Gb2X9izrRHjlqW4CJ5SYihJZNrnZigXi'
                 className='flex justify-between gap-[10px]'
               >
                 <p className='text-tiny font-semibold hover:underline'>

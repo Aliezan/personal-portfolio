@@ -4,14 +4,24 @@ import React, { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Tooltip } from '@nextui-org/react';
-import BackgroundBeams from '@/components/hero/BackgroundBeams';
 
 const Hero: FC = () => (
   <section
-    className='h-[700px] relative flex items-center justify-center bg-neutral-50 dark:bg-neutral-950'
+    className='h-[700px] relative flex items-center justify-center'
     id='hero'
   >
-    <BackgroundBeams />
+    <Image
+      src='./dark_gradient.svg'
+      className='absolute object-cover hidden: dark:block'
+      fill
+      alt='bg'
+    />
+    <Image
+      src='./light_gradient.svg'
+      className='absolute object-cover dark:hidden'
+      alt='bg'
+      fill
+    />
     <div>
       <div className='w-[400px] sm:w-[1300px] h-[450px] flex items-center pl-10 relative'>
         <div>

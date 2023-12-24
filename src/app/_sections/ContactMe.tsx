@@ -25,7 +25,7 @@ const ContactMe: FC = () => (
       </div>
       <div className='sm:mb-4'>
         <h1
-          className={`${SpaceGrotesk.className} font-medium text-[30px] text-center sm:text-[45px] sm:text-normal`}
+          className={`${SpaceGrotesk.className} font-medium text-[30px] text-center sm:text-[45px]`}
         >
           Get in touch!
         </h1>
@@ -39,10 +39,10 @@ const ContactMe: FC = () => (
             radius='sm'
             className='mt-3'
             as={Link}
-            href='/'
+            href='https://drive.google.com/uc?export=download&id=13m4rCY6k-tmvuiyZAF1psxai7g9NPYQY'
             showAnchorIcon
           >
-            View CV
+            Download CV
           </Button>
         </div>
       </div>
