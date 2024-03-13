@@ -1,6 +1,6 @@
-import * as React from 'react';
-import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
-import { cn } from '@/lib/utils';
+import * as React from "react";
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
+import { cn } from "@/lib/utils";
 
 export const NavigationMenuList = React.forwardRef<
   HTMLUListElement,
@@ -11,7 +11,7 @@ export const NavigationMenuList = React.forwardRef<
   <NavigationMenuPrimitive.List
     ref={ref}
     className={cn(
-      'group flex flex-1 list-none items-center justify-center space-x-1',
+      "group flex flex-1 list-none items-center justify-center space-x-1",
       className,
     )}
     {...props}

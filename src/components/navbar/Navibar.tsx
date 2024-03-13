@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { FC, useState } from 'react';
+import React, { FC, useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -9,37 +9,37 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-} from '@nextui-org/react';
-import { SpaceGrotesk } from '@/utils/font';
-import { Link } from 'react-scroll/modules';
-import Logo from '../Logo';
-import ThemeButton from './ThemeButton';
-import { Button } from '../ui/button';
+} from "@nextui-org/react";
+import { SpaceGrotesk } from "@/utils/font";
+import { Link } from "react-scroll/modules";
+import Logo from "../Logo";
+import ThemeButton from "./ThemeButton";
+import { Button } from "../ui/button";
 
 const Navibar: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (
     <Navbar
-      position='sticky'
+      position="sticky"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
     >
-      <NavbarContent className='sm:hidden'>
+      <NavbarContent className="sm:hidden">
         <NavbarMenuToggle
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         />
       </NavbarContent>
-      <NavbarContent justify='start'>
+      <NavbarContent justify="start">
         <NavbarBrand>
           <Logo width={100} height={100} />
         </NavbarBrand>
       </NavbarContent>
-      <NavbarContent className='hidden sm:flex gap-4' justify='center'>
+      <NavbarContent className="hidden gap-4 sm:flex" justify="center">
         <NavbarItem>
-          <Button variant='link'>
+          <Button variant="link">
             <Link
-              to='hero'
+              to="hero"
               className={SpaceGrotesk.className}
               spy
               smooth
@@ -51,9 +51,9 @@ const Navibar: FC = () => {
           </Button>
         </NavbarItem>
         <NavbarItem>
-          <Button variant='link'>
+          <Button variant="link">
             <Link
-              to='about'
+              to="about"
               className={SpaceGrotesk.className}
               spy
               smooth
@@ -65,9 +65,9 @@ const Navibar: FC = () => {
           </Button>
         </NavbarItem>
         <NavbarItem>
-          <Button variant='link'>
+          <Button variant="link">
             <Link
-              to='works'
+              to="works"
               className={SpaceGrotesk.className}
               spy
               smooth
@@ -79,29 +79,29 @@ const Navibar: FC = () => {
           </Button>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent justify='end'>
+      <NavbarContent justify="end">
         <NavbarItem>
           <ThemeButton />
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
         <NavbarMenuItem>
-          <Button variant='link'>
-            <Link to='home' spy smooth duration={500}>
+          <Button variant="link">
+            <Link to="home" spy smooth duration={500}>
               home
             </Link>
           </Button>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Button variant='link'>
-            <Link to='about' spy smooth duration={500}>
+          <Button variant="link">
+            <Link to="about" spy smooth duration={500}>
               about
             </Link>
           </Button>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Button variant='link'>
-            <Link to='test' spy smooth duration={500}>
+          <Button variant="link">
+            <Link to="test" spy smooth duration={500}>
               works
             </Link>
           </Button>

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React, { FC } from 'react';
-import { Accordion, AccordionItem, Divider } from '@nextui-org/react';
-import { ExternalLink } from 'lucide-react';
-import Link from 'next/link';
+import React, { FC } from "react";
+import { Accordion, AccordionItem, Divider } from "@nextui-org/react";
+import { ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 type Certs = {
   title: string;
@@ -18,16 +18,16 @@ interface CertsAccordionProps {
 const CertsAccordion: FC<CertsAccordionProps> = ({ certs }) => (
   <Accordion>
     <AccordionItem
-      key='1'
-      title='JavaScript/Web Development'
-      subtitle='JavaScript and Web Development related certs'
+      key="1"
+      title="JavaScript/Web Development"
+      subtitle="JavaScript and Web Development related certs"
     >
       {certs
-        .filter((cert) => cert.tag === 'JS/Web')
+        .filter((cert) => cert.tag === "JS/Web")
         .map((cert, index, self) => (
           <React.Fragment key={cert.title}>
-            <Link href={cert.link} className='flex p-2 gap-3'>
-              <p className='hover:underline'>{cert.title}</p>
+            <Link href={cert.link} className="flex gap-3 p-2">
+              <p className="hover:underline">{cert.title}</p>
               <ExternalLink size={20} />
             </Link>
             {index !== self.length - 1 && <Divider />}
@@ -35,16 +35,16 @@ const CertsAccordion: FC<CertsAccordionProps> = ({ certs }) => (
         ))}
     </AccordionItem>
     <AccordionItem
-      key='2'
-      title='Others'
-      subtitle='Other programming and developing related certs'
+      key="2"
+      title="Others"
+      subtitle="Other programming and developing related certs"
     >
       {certs
-        .filter((cert) => cert.tag === 'Others')
+        .filter((cert) => cert.tag === "Others")
         .map((cert) => (
           <React.Fragment key={cert.title}>
-            <Link href={cert.link} className='flex p-2 gap-3'>
-              <p className='hover:underline'>{cert.title}</p>
+            <Link href={cert.link} className="flex gap-3 p-2">
+              <p className="hover:underline">{cert.title}</p>
               <ExternalLink size={20} />
             </Link>
             <Divider />

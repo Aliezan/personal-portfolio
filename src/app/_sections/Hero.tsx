@@ -1,122 +1,120 @@
-'use client';
+"use client";
 
-import React, { FC } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Tooltip } from '@nextui-org/react';
+import React, { FC } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Tooltip } from "@nextui-org/react";
 
 const Hero: FC = () => (
   <section
-    className='h-[700px] relative flex items-center justify-center'
-    id='hero'
+    className="relative flex h-screen w-full items-center justify-center p-4 sm:p-0"
+    id="hero"
   >
     <Image
-      src='./dark_gradient.svg'
-      className='absolute object-cover hidden: dark:block'
+      src="./dark_gradient.svg"
+      className="hidden: absolute object-cover dark:block"
       fill
-      alt='bg'
+      alt="bg"
     />
     <Image
-      src='./light_gradient.svg'
-      className='absolute object-cover dark:hidden'
-      alt='bg'
+      src="./light_gradient.svg"
+      className="absolute object-cover dark:hidden"
+      alt="bg"
       fill
     />
     <div>
-      <div className='w-[400px] sm:w-[1300px] h-[450px] flex items-center pl-10 relative'>
+      <div className="relative flex items-center">
         <div>
-          <p className='text-[15px] sm:text-[30px] font-extralight'>
-            Hello{' '}
+          <p className="font-extralight">
+            Hello{" "}
             <span>
               <Image
-                className='inline-block'
-                src='./waving-hand.png'
+                className="inline-block"
+                src="./waving-hand.png"
                 width={22}
                 height={22}
-                alt='waving'
+                alt="waving"
               />
             </span>
-            {'  '} I&apos;m Muhammad Alieza Nuriman
+            {"  "} I&apos;m Muhammad Alieza Nuriman
           </p>
-          <div className='relative'>
-            <h1 className='text-[30px] sm:text-[60px] sm:w-[850px] font-semibold '>
-              Web Developer and{' '}
-              <span className='font-bold sm:text-[64px] gradient-text'>
-                JavaScript
-              </span>{' '}
+          <div className="relative">
+            <h1 className="text-[30px] font-semibold lg:text-[40px]">
+              Web Developer and{" "}
+              <span className="gradient-text font-bold">TypeScript</span>{" "}
               enthusiast
             </h1>
           </div>
-          <div className='flex gap-5 mt-[20px]'>
-            {' '}
-            <div className='dark:hidden'>
-              <Tooltip content='Github'>
-                <Link href='https://github.com/Aliezan'>
+          <div className="mt-[20px] flex gap-5">
+            {" "}
+            <div className="dark:hidden">
+              <Tooltip content="Github">
+                <Link href="https://github.com/Aliezan">
                   <Image
-                    src='./github-mark.svg'
+                    src="./github-mark.svg"
                     height={30}
                     width={30}
-                    alt='gh'
+                    alt="gh"
                   />
                 </Link>
               </Tooltip>
             </div>
-            <div className='hidden dark:block'>
-              <Tooltip content='Github'>
-                <Link href='https://github.com/Aliezan'>
+            <div className="hidden dark:block">
+              <Tooltip content="Github">
+                <Link href="https://github.com/Aliezan">
                   <Image
-                    src='./github-mark-white.svg'
+                    src="./github-mark-white.svg"
                     height={30}
                     width={30}
-                    alt='gh'
+                    alt="gh"
                   />
                 </Link>
               </Tooltip>
             </div>
-            <div className='dark:hidden'>
-              <Tooltip content='LinkedIn'>
-                <Link href='https://www.linkedin.com/in/muhammad-alieza-nuriman/'>
+            <div className="dark:hidden">
+              <Tooltip content="LinkedIn">
+                <Link href="https://www.linkedin.com/in/muhammad-alieza-nuriman/">
                   <Image
-                    src='./linkedin-light.svg'
+                    src="./linkedin-light.svg"
                     height={30}
                     width={30}
-                    alt='linkedin'
+                    alt="linkedin"
                   />
                 </Link>
               </Tooltip>
             </div>
-            <div className='hidden dark:block'>
-              <Tooltip content='LinkedIn'>
-                <Link href='https://www.linkedin.com/in/muhammad-alieza-nuriman/'>
+            <div className="hidden dark:block">
+              <Tooltip content="LinkedIn">
+                <Link href="https://www.linkedin.com/in/muhammad-alieza-nuriman/">
                   <Image
-                    src='./linkedin-dark.svg'
+                    src="./linkedin-dark.svg"
                     height={30}
                     width={30}
-                    alt='linkedin'
+                    alt="linkedin"
                   />
                 </Link>
               </Tooltip>
             </div>
-            <div className='dark:hidden'>
-              <Tooltip content='Email-me'>
-                <Link href='mailto:muhammadalieza4@gmail.com'>
+            <div className="dark:hidden">
+              <Tooltip content="Email-me">
+                <Link href="mailto:muhammadalieza4@gmail.com">
                   <Image
-                    src='./gmail-light.svg'
+                    src="./gmail-light.svg"
                     height={30}
                     width={30}
-                    alt='gmail'
+                    alt="gmail"
                   />
                 </Link>
               </Tooltip>
             </div>
-            <div className='hidden dark:block'>
-              <Tooltip content='Email-me'>
-                <Link href='mailto:muhammadalieza4@gmail.com'>
+            <div className="hidden dark:block">
+              <Tooltip content="Email-me">
+                <Link href="mailto:muhammadalieza4@gmail.com">
                   <Image
-                    src='./gmail-dark.svg'
+                    src="./gmail-dark.svg"
                     height={30}
                     width={30}
-                    alt='gmail'
+                    alt="gmail"
                   />
                 </Link>
               </Tooltip>

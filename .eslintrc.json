@@ -9,7 +9,6 @@
     "object-curly-newline": ["error", { "consistent": true }],
     "react/jsx-one-expression-per-line": "off",
     "implicit-arrow-linebreak": "off",
-    "jsx-quotes": ["error", "prefer-single"],
     "react/function-component-definition": [
       2,
       {
@@ -31,6 +30,8 @@
         "ignore": ["className", "sideOffset", "checked"]
       }
     ],
-    "no-trailing-spaces": "off"
+    "no-trailing-spaces": "off",
+    "quotes": "off",
+    "@typescript-eslint/quotes": "off"
   }
 }

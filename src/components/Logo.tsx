@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import Image from 'next/image';
+import React, { FC } from "react";
+import Image from "next/image";
 
 interface LogoProps {
   width: number;
@@ -8,21 +8,21 @@ interface LogoProps {
 
 const Logo: FC<LogoProps> = ({ width, height }) => (
   <>
-    <div className='dark:hidden'>
+    <div className="dark:hidden">
       <Image
-        src='./aliezn-light.svg'
+        src="./aliezn-light.svg"
         width={width}
         height={height}
-        alt='aliezan-light'
+        alt="aliezan-light"
       />
     </div>
 
-    <div className='hidden dark:block'>
+    <div className="hidden dark:block">
       <Image
-        src='./aliezn-dark.svg'
+        src="./aliezn-dark.svg"
         width={width}
         height={height}
-        alt='aliezan-dark'
+        alt="aliezan-dark"
       />
     </div>
   </>

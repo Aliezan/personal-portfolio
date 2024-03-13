@@ -1,28 +1,28 @@
-import React, { FC } from 'react';
-import { Chip } from '@nextui-org/react';
-import { SpaceGrotesk } from '@/utils/font';
-import WorksCard from '@/components/works/WorksCard';
+import React, { FC } from "react";
+import { Chip } from "@nextui-org/react";
+import { SpaceGrotesk } from "@/utils/font";
+import WorksCard from "@/components/works/WorksCard";
 
 const Works: FC = () => (
   <section
-    className='h-[2800px] sm:h-[1650px] flex justify-center dark:bg-[#fcfaf8] bg-[#171a26] dark:bg-grid-small-black/[0.2] bg-grid-small-white/[0.2] relative'
-    id='works'
+    className="relative flex min-h-screen justify-center bg-[#171a26] bg-grid-small-white/[0.2] dark:bg-[#fcfaf8] dark:bg-grid-small-black/[0.2]"
+    id="works"
   >
-    <div className='absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]' />
-    <div>
-      <div className='flex items-center justify-center mt-[50px]'>
-        <Chip size='lg'>Works</Chip>
+    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black" />
+    <div className="p-7">
+      <div className="mt-[50px] flex items-center justify-center">
+        <Chip size="lg">Works</Chip>
       </div>
-      <div className='mt-4'>
-        <div className='flex justify-center items-center'>
+      <div className="mt-4">
+        <div className="flex items-center justify-center">
           <h1
-            className={`${SpaceGrotesk.className} text-[20px] sm:text-[40px] font-medium dark:text-black text-white`}
+            className={`${SpaceGrotesk.className} text-[20px] font-medium text-white dark:text-black sm:text-[40px]`}
           >
             Selection of my works
           </h1>
         </div>
-        <div className='flex justify-center items-center mt-3'>
-          <p className='text-[13px] w-[300px] sm:w-[550px] text-center dark:text-black text-white'>
+        <div className="mt-3 flex items-center justify-center">
+          <p className="w-[300px] text-center text-[13px] text-white dark:text-black sm:w-[550px]">
             I have been working on some projects, mostly are personal projects I
             love to work on projects that are challenging and fun to do.
           </p>

@@ -1,40 +1,40 @@
-import React, { FC } from 'react';
-import { Chip } from '@nextui-org/react';
-import { SpaceGrotesk } from '@/utils/font';
-import MainStacks from '@/components/about/MainStacks';
-import LibraryCard from '@/components/about/LibraryCard';
-import StoryCard from '@/components/about/StoryCard';
-import Journey from '@/components/about/Journey';
+import React, { FC } from "react";
+import { Chip } from "@nextui-org/react";
+import { SpaceGrotesk } from "@/utils/font";
+import MainStacks from "@/components/about/MainStacks";
+import LibraryCard from "@/components/about/LibraryCard";
+import StoryCard from "@/components/about/StoryCard";
+import Journey from "@/components/about/Journey";
 
 const About: FC = () => (
   <section
-    className='h-[3700px] mt-5 sm:h-[2300px] flex justify-center dark:bg-black bg-white dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative'
-    id='about'
+    className="relative flex min-h-screen justify-center bg-white bg-dot-black/[0.2] dark:bg-black dark:bg-dot-white/[0.2]"
+    id="about"
   >
-    <div className='absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_70%,black)] sm:[mask-image:radial-gradient(ellipse_at_center,transparent_63%,black)]' />
-    <div className='w-[500px] sm:w-full'>
-      <div className='flex items-center justify-center mt-10'>
-        <Chip size='lg'>About</Chip>
+    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_70%,black)] dark:bg-black sm:[mask-image:radial-gradient(ellipse_at_center,transparent_63%,black)]" />
+    <div className="overflow-hidden p-7">
+      <div className="mt-10 flex items-center justify-center">
+        <Chip size="lg">About</Chip>
       </div>
-      <div className='mt-4'>
-        <div className='flex justify-center items-center'>
+      <div className="mt-4">
+        <div className="flex items-center justify-center">
           <h1
-            className={`${SpaceGrotesk.className} text-[20px] sm:text-[40px] font-medium`}
+            className={`${SpaceGrotesk.className} w-[300px] text-center text-[17px] font-medium md:w-fit lg:text-[40px]`}
           >
             Every developer has their own chosen path
           </h1>
         </div>
-        <div className='flex justify-center items-center mt-3 mb-[55px]'>
-          <p className='text-[13px] w-[300px] sm:w-[550px] text-center'>
-            So as me, the Frontend world always been my interest since I started
-            learning React as my main library in the JavaScript world of
+        <div className="mb-[55px] mt-3 flex items-center justify-center">
+          <p className="w-fit px-7 text-center text-[13px]">
+            So as me, the Web Developer world always been my interest since I
+            started learning React as my main library in the JavaScript world of
             libraries.
           </p>
         </div>
       </div>
-      <div className='grid grid-cols-1 justify-items-center sm:flex sm:justify-center sm:items-center gap-[30px]'>
+      <div className="flex w-full flex-col justify-items-center gap-[30px] sm:max-w-[1200px] sm:flex-row">
         <StoryCard />
-        <div className='space-y-[30px]'>
+        <div className="space-y-[30px]">
           <MainStacks />
           <LibraryCard />
         </div>

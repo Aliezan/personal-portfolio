@@ -1,103 +1,105 @@
-import React, { FC } from 'react';
-import { Card, CardBody, Tooltip, CardHeader } from '@nextui-org/react';
-import Image from 'next/image';
-import Link from 'next/link';
+import React, { FC } from "react";
+import { Card, CardBody, Tooltip, CardHeader } from "@nextui-org/react";
+import Image from "next/image";
+import Link from "next/link";
 
 const LibraryCard: FC = () => (
-  <Card className='w-[480px] sm:w-[521px] h-[255.5px] relative p-2'>
-    <div className='absolute bottom-[-242px] left-[176px] rounded-l-[20px] w-[919px] h-[391px] bg-[#007BFF] blur-[80px]' />
+  <Card className="relative h-[255.5px] p-2">
+    <div className="absolute bottom-[-242px] left-[176px] h-[391px] w-[919px] rounded-l-[20px] bg-[#007BFF] blur-[80px]" />
     <CardHeader>
-      <p className='text-[20px]'>Supporting libraries and tools</p>
+      <p className="text-[15px] md:text-[20px]">
+        Supporting libraries and tools
+      </p>
     </CardHeader>
     <CardBody>
-      <div className='flex items-center justify-center mt-[5px]'>
-        <div className='grid grid-cols-5 gap-[30px]'>
-          <Tooltip content='TailwindCSS'>
-            <Link href='https://tailwindcss.com/'>
+      <div className="flex h-full items-center justify-center">
+        <div className="grid grid-cols-5 gap-[30px]">
+          <Tooltip content="TailwindCSS">
+            <Link href="https://tailwindcss.com/">
               <Image
-                src='./tailwindcss.svg'
+                src="./tailwindcss.svg"
                 width={50}
                 height={50}
-                className='mt-[8px]'
-                alt='tailwind'
+                className="mt-[8px]"
+                alt="tailwind"
               />
             </Link>
           </Tooltip>
-          <Tooltip content='TypeScript'>
-            <Link href='https://www.typescriptlang.org/'>
-              <Image src='./typescript.svg' width={50} height={50} alt='ts' />
+          <Tooltip content="TypeScript">
+            <Link href="https://www.typescriptlang.org/">
+              <Image src="./typescript.svg" width={50} height={50} alt="ts" />
             </Link>
           </Tooltip>
-          <Tooltip content='Redux Toolkit'>
-            <Link href='https://redux-toolkit.js.org/'>
-              <Image src='./redux.svg' width={50} height={50} alt='redux' />
+          <Tooltip content="Redux Toolkit">
+            <Link href="https://redux-toolkit.js.org/">
+              <Image src="./redux.svg" width={50} height={50} alt="redux" />
             </Link>
           </Tooltip>
-          <Tooltip content='PostgreSQL'>
-            <Link href='https://www.postgresql.org/'>
+          <Tooltip content="PostgreSQL">
+            <Link href="https://www.postgresql.org/">
               <Image
-                src='./postgresql.svg'
+                src="./postgresql.svg"
                 width={50}
                 height={50}
-                alt='postgresql'
+                alt="postgresql"
               />
             </Link>
           </Tooltip>
-          <Tooltip content='TanStack Query'>
-            <Link href='https://tanstack.com/query/latest'>
+          <Tooltip content="TanStack Query">
+            <Link href="https://tanstack.com/query/latest">
               <Image
-                src='./react-query-icon.svg'
+                src="./react-query-icon.svg"
                 width={50}
                 height={50}
-                alt='react-query'
+                alt="react-query"
               />
             </Link>
           </Tooltip>
-          <Tooltip content='React Hook Form'>
-            <Link href='https://react-hook-form.com/'>
+          <Tooltip content="React Hook Form">
+            <Link href="https://react-hook-form.com/">
               <Image
-                src='./rhf.svg'
+                src="./rhf.svg"
                 width={50}
                 height={50}
-                alt='react-hooks-form'
+                alt="react-hooks-form"
               />
             </Link>
           </Tooltip>
-          <Tooltip content='Zustand'>
-            <Link href='https://zustand-demo.pmnd.rs/'>
-              <Image src='./zustand.png' width={50} height={50} alt='zustand' />
+          <Tooltip content="Zustand">
+            <Link href="https://zustand-demo.pmnd.rs/">
+              <Image src="./zustand.png" width={50} height={50} alt="zustand" />
             </Link>
           </Tooltip>
-          <Tooltip content='Zod'>
-            <Link href='https://zod.dev/'>
+          <Tooltip content="Zod">
+            <Link href="https://zod.dev/">
               <Image
-                src='./zod.svg'
+                src="./zod.svg"
                 width={50}
                 height={50}
-                alt='zod'
-                className='mt-1'
+                alt="zod"
+                className="mt-1"
               />
             </Link>
           </Tooltip>
-          <Tooltip content='Ubuntu'>
-            <Link href='https://ubuntu.com/'>
+          <Tooltip content="Ubuntu">
+            <Link href="https://ubuntu.com/">
               <Image
-                src='./ubuntu-logo.png'
+                src="./ubuntu-logo.png"
                 width={50}
                 height={50}
-                alt='ubuntu'
-                className='mt-1'
+                alt="ubuntu"
+                className="mt-1"
               />
             </Link>
           </Tooltip>
-          <Tooltip content='Docker'>
-            <Link href='https://www.docker.com/'>
+          <Tooltip content="Docker">
+            <Link href="https://www.docker.com/">
               <Image
-                src='./docker.svg'
+                src="./docker.svg"
                 width={50}
                 height={50}
-                alt='docker'
-                className='mt-1'
+                alt="docker"
+                className="mt-1"
               />
             </Link>
           </Tooltip>
