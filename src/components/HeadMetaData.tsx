@@ -11,14 +11,11 @@ interface HeadMetaDataProps {
 const HeadMetaData: FC<HeadMetaDataProps> = ({
   title,
   metaDescription,
-  ogImageUrl = "/open-graph-image.png",
+  ogImageUrl = "/opengraph-image.png",
   pathname = "",
 }) => {
   const defaultTitle = "Muhammad Alieza Nuriman - Portfolio";
-  const baseUrl =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : "https://aliezan.is-a.dev";
+  const baseUrl = "https://aliezan.is-a.dev";
 
   const pageUrl = new URL(pathname, baseUrl).toString();
 
