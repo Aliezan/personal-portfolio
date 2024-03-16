@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | Alieza Nuriman - Portfolio",
   },
   description:
-    "Personal ,Portfolio of Muhammad Alieza Nuriman, Web Developer and Undergraduate Student at Politeknik Negeri Jakarta. Currently learning JavaScript modern web frameworks",
+    "Personal Portfolio of Muhammad Alieza Nuriman, Web Developer and Undergraduate Student at Politeknik Negeri Jakarta. Currently learning JavaScript modern web frameworks",
   metadataBase: new URL("https://aliezan.is-a.dev/"),
 };
 
