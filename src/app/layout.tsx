@@ -4,10 +4,15 @@ import ThemeProvider from "@/utils/theme-provider";
 import UIProvider from "@/utils/UIProvider";
 import "@/styles/globals.css";
 import Navibar from "@/components/navbar/Navibar";
+import { Metadata } from "next";
 
 interface RootLayoutProps {
   children: React.ReactNode;
 }
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://aliezan.is-a.dev"),
+};
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en" suppressHydrationWarning>
