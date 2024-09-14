@@ -39,7 +39,7 @@ const ContactMe: FC = () => (
             radius="sm"
             className="mt-3"
             as={Link}
-            href="https://drive.google.com/uc?export=download&id=13m4rCY6k-tmvuiyZAF1psxai7g9NPYQY"
+            href="https://drive.google.com/uc?export=download&id=1L79AwtTzkGHMuveXBtRgvbcNLwpt_o1f"
             showAnchorIcon
           >
             Download CV

@@ -116,15 +116,6 @@ const WorksCard: FC = () => (
           progress
         </p>
         <div className="flex gap-2">
-          <Chip
-            size="sm"
-            className="bg-black text-white dark:bg-white dark:text-black"
-          >
-            <ExternalLink size={12} className="mr-1 inline" />
-            <Link href="/" className="hover:underline">
-              Demo Link
-            </Link>
-          </Chip>
           <Chip size="sm" variant="faded">
             Mobile Optimized View
           </Chip>
@@ -190,26 +181,19 @@ const WorksCard: FC = () => (
           </p>
         </div>
         <p className="text-small text-black/60 dark:text-white/60">
-          ID Card Generator based on your Spotify Listening History
+          Roasts the user spotify listening history based powered by Gemini AI
+          API and Vercel AI SDK (Not yet deployed due to API extension pending
+          approval from spotify)
         </p>
         <div className="flex gap-2">
-          <Chip
-            size="sm"
-            className="bg-black text-white dark:bg-white dark:text-black"
-          >
-            <ExternalLink size={12} className="mr-1 inline" />
-            <Link href="/" className="hover:underline">
-              Demo Link
-            </Link>
-          </Chip>
           <Chip size="sm" variant="faded">
             Dashboard App
           </Chip>
           <Chip size="sm" variant="faded">
-            Single Page App
+            Frontend
           </Chip>
           <Chip size="sm" variant="faded">
-            Frontend
+            AI Generation
           </Chip>
           <Chip
             size="sm"
@@ -260,6 +244,99 @@ const WorksCard: FC = () => (
           </div>
         </CardFooter>
       </CardHeader>
+    </Card>
+    <Card className="relative h-full w-full" isFooterBlurred>
+      <div className="absolute bottom-[-100px] left-[-100px] h-[300px] w-[500px] rounded-full bg-gradient-to-tr from-red-500 to-red-400 opacity-50 blur-[40px]" />
+      <CardHeader className="flex-col !items-start space-y-2 p-5">
+        <div className="flex gap-3">
+          <Image src="./ase.webp" alt="identify-logo" width={120} height={35} />
+          <p className={`${SpaceGrotesk.className} text-[28px] font-medium`}>
+            PT. Agra Sapta Energi
+          </p>
+        </div>
+        <p className="text-small text-black/60 dark:text-white/60">
+          Company Profile webpage for PT. Agra Sapta Energi, a coal mining
+          company.
+        </p>
+        <div className="flex gap-2">
+          <Chip size="sm" variant="faded">
+            Frontend
+          </Chip>
+        </div>
+      </CardHeader>
+      <CardBody className="relative grid justify-center">
+        <Image
+          src="./aseproj.svg"
+          alt="HabitTracker"
+          width={500}
+          height={500}
+        />
+      </CardBody>
+      <CardFooter className="absolute bottom-0 left-0 z-10 border-t-1 border-white/20 before:bg-white/100">
+        <div className="space-y-3 p-2">
+          <p className="text-tiny font-semibold text-black dark:text-white">
+            Made with
+          </p>
+          <div className="flex gap-2">
+            <Image src="./react.svg" alt="react" width={23} height={23} />
+            <Image src="./javascript.svg" alt="js" width={23} height={23} />
+            <Image src="./laravel.svg" alt="js" width={23} height={23} />
+            <Image src="./framer.svg" alt="next" width={23} height={23} />
+          </div>
+        </div>
+      </CardFooter>
+    </Card>
+
+    <Card className="relative h-[500px] w-full" isFooterBlurred>
+      <div className="absolute bottom-[-100px] left-[-100px] h-[300px] w-[500px] rounded-full bg-gradient-to-tr from-orange-500 to-orange-400 opacity-50 blur-[40px]" />
+      <CardHeader className="flex-col !items-start space-y-2 p-5">
+        <div className="flex gap-3">
+          <Image
+            src="./djangos.svg"
+            alt="identify-logo"
+            width={50}
+            height={35}
+          />
+          <p className={`${SpaceGrotesk.className} text-[28px] font-medium`}>
+            Django’s Restaurant
+          </p>
+        </div>
+        <p className="text-small text-black/60 dark:text-white/60">
+          Landing page for Django’s BBQ Restaurant based on Kelapa Gading, North
+          Jakarta
+        </p>
+        <div className="flex gap-2">
+          <Chip size="sm" variant="faded">
+            Frontend
+          </Chip>
+        </div>
+      </CardHeader>
+      <CardBody className="relative grid justify-center">
+        <Image
+          src="./djangos-prev.svg"
+          alt="HabitTracker"
+          width={500}
+          height={500}
+        />
+      </CardBody>
+      <CardFooter className="absolute bottom-0 left-0 z-10 border-t-1 border-white/20 before:bg-white/100">
+        <div className="space-y-3 p-2">
+          <p className="text-tiny font-semibold text-black dark:text-white">
+            Made with
+          </p>
+          <div className="flex gap-2">
+            <Image src="./next-js.svg" alt="next" width={23} height={23} />
+            <Image src="./typescript.svg" alt="next" width={23} height={23} />
+            <Image src="./framer.svg" alt="next" width={23} height={23} />
+            <Image
+              src="./tailwindcss.svg"
+              alt="tailwind"
+              width={23}
+              height={23}
+            />
+          </div>
+        </div>
+      </CardFooter>
     </Card>
   </div>
 );
