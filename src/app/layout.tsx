@@ -5,17 +5,23 @@ import UIProvider from "@/utils/UIProvider";
 import "@/styles/globals.css";
 import Navibar from "@/components/navbar/Navibar";
 import { Metadata } from "next";
+import Script from "next/script";
 
 interface RootLayoutProps {
   children: React.ReactNode;
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aliezan.is-a.dev"),
+  metadataBase: new URL("https://aliezan.me"),
 };
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en" suppressHydrationWarning>
+    <Script
+      defer
+      src="https://analytics.aliezan.me/script.js"
+      data-website-id="b15f8f63-2d78-4b77-931d-4943520bc63e"
+    />
     <body className={GeistSans.className}>
       <UIProvider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
