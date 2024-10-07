@@ -1,13 +1,13 @@
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from "next";
 
 const robots = (): MetadataRoute.Robots => ({
   rules: [
     {
-      userAgent: '*',
-      allow: '/',
+      userAgent: "*",
+      allow: "/",
     },
   ],
-  sitemap: 'https://aliezan.is-a.dev/sitemap.xml',
+  sitemap: "https://aliezan.is-a.dev/sitemap.xml",
 });
 
 export default robots;

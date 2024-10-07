@@ -11,13 +11,13 @@ const Hero: FC = () => (
     id="hero"
   >
     <Image
-      src="./dark_gradient.svg"
+      src="/dark_gradient.svg"
       className="hidden: absolute object-cover dark:block"
       fill
       alt="bg"
     />
     <Image
-      src="./light_gradient.svg"
+      src="/light_gradient.svg"
       className="absolute object-cover dark:hidden"
       alt="bg"
       fill
@@ -30,7 +30,7 @@ const Hero: FC = () => (
             <span>
               <Image
                 className="inline-block"
-                src="./waving-hand.png"
+                src="/waving-hand.png"
                 width={22}
                 height={22}
                 alt="waving"
@@ -51,7 +51,7 @@ const Hero: FC = () => (
               <Tooltip content="Github">
                 <Link href="https://github.com/Aliezan">
                   <Image
-                    src="./github-mark.svg"
+                    src="/github-mark.svg"
                     height={30}
                     width={30}
                     alt="gh"
@@ -63,7 +63,7 @@ const Hero: FC = () => (
               <Tooltip content="Github">
                 <Link href="https://github.com/Aliezan">
                   <Image
-                    src="./github-mark-white.svg"
+                    src="/github-mark-white.svg"
                     height={30}
                     width={30}
                     alt="gh"
@@ -75,7 +75,7 @@ const Hero: FC = () => (
               <Tooltip content="LinkedIn">
                 <Link href="https://www.linkedin.com/in/muhammad-alieza-nuriman/">
                   <Image
-                    src="./linkedin-light.svg"
+                    src="/linkedin-light.svg"
                     height={30}
                     width={30}
                     alt="linkedin"
@@ -87,7 +87,7 @@ const Hero: FC = () => (
               <Tooltip content="LinkedIn">
                 <Link href="https://www.linkedin.com/in/muhammad-alieza-nuriman/">
                   <Image
-                    src="./linkedin-dark.svg"
+                    src="/linkedin-dark.svg"
                     height={30}
                     width={30}
                     alt="linkedin"
@@ -99,7 +99,7 @@ const Hero: FC = () => (
               <Tooltip content="Email-me">
                 <Link href="mailto:muhammadalieza4@gmail.com">
                   <Image
-                    src="./gmail-light.svg"
+                    src="/gmail-light.svg"
                     height={30}
                     width={30}
                     alt="gmail"
@@ -111,7 +111,7 @@ const Hero: FC = () => (
               <Tooltip content="Email-me">
                 <Link href="mailto:muhammadalieza4@gmail.com">
                   <Image
-                    src="./gmail-dark.svg"
+                    src="/gmail-dark.svg"
                     height={30}
                     width={30}
                     alt="gmail"

@@ -17,7 +17,7 @@ const MainStacks: FC = () => (
         <div className="space-y-3">
           <div className="flex h-[35px] items-center justify-start gap-16 overflow-hidden rounded-md bg-gradient-to-b from-gray-700 via-gray-900 to-black sm:w-[280px] md:h-[45px]">
             <Image
-              src="./next-js.svg"
+              src="/next-js.svg"
               width={120}
               height={120}
               alt="nextjs"
@@ -27,7 +27,7 @@ const MainStacks: FC = () => (
           </div>
           <div className="flex h-[35px] items-center justify-start gap-16 overflow-hidden rounded-md bg-gradient-to-b from-gray-700 via-gray-900 to-black sm:w-[280px] md:h-[45px]">
             <Image
-              src="./react.svg"
+              src="/react.svg"
               width={120}
               height={120}
               alt="react"
@@ -37,7 +37,7 @@ const MainStacks: FC = () => (
           </div>
           <div className="flex h-[35px] items-center justify-start gap-16 overflow-hidden rounded-md bg-gradient-to-b from-gray-700 via-gray-900 to-black sm:w-[280px] md:h-[45px]">
             <Image
-              src="./prisma-3.svg"
+              src="/prisma-3.svg"
               width={120}
               height={120}
               alt="prisma-orm"
@@ -47,7 +47,7 @@ const MainStacks: FC = () => (
           </div>
           <div className="flex h-[35px] items-center justify-start gap-16 overflow-hidden rounded-md bg-gradient-to-b from-gray-700 via-gray-900 to-black sm:w-[280px] md:h-[45px]">
             <Image
-              src="./trpc.svg"
+              src="/trpc.svg"
               width={120}
               height={120}
               alt="trpc"

@@ -2,9 +2,9 @@ import React, { FC } from "react";
 import { Metadata } from "next";
 import About from "./_sections/About";
 import Hero from "./_sections/Hero";
-import Footer from "./_sections/Footer";
 import Works from "./_sections/Works";
 import ContactMe from "./_sections/ContactMe";
+import Footer from "./_sections/Footer";
 
 export const metadata: Metadata = {
   openGraph: {

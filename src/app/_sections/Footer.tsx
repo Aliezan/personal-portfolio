@@ -14,12 +14,7 @@ const Footer: FC = () => (
           <div className="dark:hidden">
             <Tooltip content="Github">
               <Link href="https://github.com/Aliezan">
-                <Image
-                  src="./github-mark.svg"
-                  height={22}
-                  width={22}
-                  alt="gh"
-                />
+                <Image src="/github-mark.svg" height={22} width={22} alt="gh" />
               </Link>
             </Tooltip>
           </div>
@@ -27,7 +22,7 @@ const Footer: FC = () => (
             <Tooltip content="Github">
               <Link href="https://github.com/Aliezan">
                 <Image
-                  src="./github-mark-white.svg"
+                  src="/github-mark-white.svg"
                   height={22}
                   width={22}
                   alt="gh"
@@ -39,7 +34,7 @@ const Footer: FC = () => (
             <Tooltip content="LinkedIn">
               <Link href="https://www.linkedin.com/in/muhammad-alieza-nuriman/">
                 <Image
-                  src="./linkedin-light.svg"
+                  src="/linkedin-light.svg"
                   height={22}
                   width={22}
                   alt="linkedin"
@@ -51,7 +46,7 @@ const Footer: FC = () => (
             <Tooltip content="LinkedIn">
               <Link href="https://www.linkedin.com/in/muhammad-alieza-nuriman/">
                 <Image
-                  src="./linkedin-dark.svg"
+                  src="/linkedin-dark.svg"
                   height={22}
                   width={22}
                   alt="linkedin"
@@ -63,7 +58,7 @@ const Footer: FC = () => (
             <Tooltip content="Email-me">
               <Link href="mailto:muhammadalieza4@gmail.com">
                 <Image
-                  src="./gmail-light.svg"
+                  src="/gmail-light.svg"
                   height={22}
                   width={22}
                   alt="gmail"
@@ -75,7 +70,7 @@ const Footer: FC = () => (
             <Tooltip content="Email-me">
               <Link href="mailto:muhammadalieza4@gmail.com">
                 <Image
-                  src="./gmail-dark.svg"
+                  src="/gmail-dark.svg"
                   height={22}
                   width={22}
                   alt="gmail"
@@ -87,7 +82,7 @@ const Footer: FC = () => (
       </div>
       <div className="mt-10 space-y-3">
         <p className="text-small text-black/60 dark:text-white/60">
-          &copy; 2023 all rights reserved.
+          &copy; 2024 all rights reserved.
         </p>
       </div>
     </div>

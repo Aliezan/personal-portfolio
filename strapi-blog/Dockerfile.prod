@@ -1,0 +1,39 @@
+FROM node:20-alpine
+
+# Install necessary dependencies
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev git > /dev/null 2>&1
+
+# Set up environment variables
+ENV NODE_ENV=production
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Create a non-root user
+RUN addgroup -g 1001 -S nodejs && adduser -S strapi -u 1001 -G nodejs
+
+WORKDIR /app
+
+# Copy package.json and pnpm-lock.yaml
+COPY --chown=strapi:nodejs package.json pnpm-lock.yaml ./
+
+# Install dependencies
+RUN pnpm install --frozen-lockfile --prefer-frozen-lockfile
+
+# Copy the rest of the application
+COPY --chown=strapi:nodejs . .
+
+# Build the application
+RUN pnpm build
+
+# Switch to non-root user
+USER strapi
+
+EXPOSE 1337
+
+ENV PORT 1337
+ENV HOSTNAME "0.0.0.0"
+
+CMD ["pnpm", "start"]

@@ -24,6 +24,8 @@
     "@typescript-eslint/indent": "off",
     "operator-linebreak": "off",
     "react/require-default-props": "off",
+    "react/no-array-index-key": "off",
+    "jsx-a11y/anchor-has-content": "off",
     "react/prop-types": [
       2,
       {
@@ -32,6 +34,7 @@
     ],
     "no-trailing-spaces": "off",
     "quotes": "off",
-    "@typescript-eslint/quotes": "off"
+    "@typescript-eslint/quotes": "off",
+    "react/no-unstable-nested-components": "off"
   }
 }

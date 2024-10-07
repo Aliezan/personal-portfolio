@@ -31,7 +31,7 @@ const Journey: FC = () => (
             <div>
               <div className="flex gap-3">
                 <Image
-                  src="./dicoding.jpeg"
+                  src="/dicoding.jpeg"
                   width={50}
                   height={20}
                   alt="dicoding"
@@ -83,7 +83,7 @@ const Journey: FC = () => (
             <div>
               <div className="flex gap-3">
                 <Image
-                  src="./alterra-academy.png"
+                  src="/alterra-academy.png"
                   width={75}
                   height={10}
                   alt="alterra"
@@ -108,7 +108,7 @@ const Journey: FC = () => (
                 </JourneyLabel>
                 <JourneyLabel>
                   <Image
-                    src="./km.png"
+                    src="/km.png"
                     alt="kmk"
                     width={30}
                     height={10}
