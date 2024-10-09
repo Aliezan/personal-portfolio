@@ -1,7 +1,7 @@
+"use client";
+
 import React, { FC } from "react";
-import BlogTag from "@/components/blogs/BlogTag";
 import ImgPlaceholder from "@/components/blogs/ImgPlaceholder";
-import dateFormatter from "@/utils/dateFormatter";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -9,13 +9,8 @@ import {
   type BlocksContent,
 } from "@strapi/blocks-react-renderer";
 
-type TagsData = {
-  name: string;
-};
-
 type BlogCardProps = {
-  tags: TagsData[];
-  createdAt: string;
+  date: string;
   imgUrl: string;
   alt: string;
   title: string;
@@ -24,8 +19,7 @@ type BlogCardProps = {
 };
 
 const BlogCard: FC<BlogCardProps> = ({
-  tags,
-  createdAt,
+  date,
   imgUrl,
   alt,
   title,
@@ -36,14 +30,7 @@ const BlogCard: FC<BlogCardProps> = ({
     <div className="flex flex-col gap-2 md:flex-row md:justify-between md:gap-16">
       <div className="mt-4 max-w-[500px] space-y-2 md:space-y-4">
         <div className="flex flex-col space-y-4 md:flex-row md:gap-4 md:space-y-0">
-          <div className="flex gap-4">
-            {tags?.map((tag, index) => (
-              <BlogTag key={index} tag={tag?.name.toUpperCase()} />
-            ))}
-          </div>
-          <p className="text-tiny text-[#232E52] dark:text-white">
-            {dateFormatter(createdAt).toUpperCase()}
-          </p>
+          <p className="text-tiny text-[#232E52] dark:text-white">{date}</p>
         </div>
         <div className="flex items-center">
           <Link href={`/blogs/${slug}`}>
@@ -52,6 +39,7 @@ const BlogCard: FC<BlogCardProps> = ({
             </h1>
           </Link>
         </div>
+        {}
         <BlocksRenderer
           content={content}
           blocks={{

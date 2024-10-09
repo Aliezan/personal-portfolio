@@ -42,8 +42,3 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_2 }}:latest
-
-      - name: Deploy to Coolify for NextJS
-        run: |
-          curl --request GET '${{ secrets.COOLIFY_WEBHOOK }}' \
-               --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'

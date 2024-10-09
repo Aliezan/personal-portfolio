@@ -1193,6 +1193,7 @@ export type BlogsQueryQuery = {
   __typename?: "Query";
   blogs: Array<{
     __typename?: "Blog";
+    documentId: string;
     title: string;
     content: any;
     date: any;
@@ -1217,6 +1218,7 @@ export const BlogsQueryDocument = {
             selectionSet: {
               kind: "SelectionSet",
               selections: [
+                { kind: "Field", name: { kind: "Name", value: "documentId" } },
                 { kind: "Field", name: { kind: "Name", value: "title" } },
                 { kind: "Field", name: { kind: "Name", value: "content" } },
                 { kind: "Field", name: { kind: "Name", value: "date" } },

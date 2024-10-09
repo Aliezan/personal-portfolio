@@ -6,7 +6,7 @@
   "scripts": {
     "build": "strapi build",
     "deploy": "strapi deploy",
-    "develop": "ENV_PATH=.env strapi develop",
+    "dev": "ENV_PATH=../.env strapi develop",
     "start": "ENV_PATH=.env strapi start",
     "strapi": "strapi"
   },
