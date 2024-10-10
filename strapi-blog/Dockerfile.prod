@@ -20,7 +20,7 @@ WORKDIR /app
 COPY --chown=strapi:nodejs package.json pnpm-lock.yaml ./
 
 # Install dependencies
-RUN pnpm install --frozen-lockfile --prefer-frozen-lockfile
+RUN pnpm install --frozen-lockfile --prefer-frozen-lockfile --ignore-scripts
 
 # Copy the rest of the application
 COPY --chown=strapi:nodejs . .
