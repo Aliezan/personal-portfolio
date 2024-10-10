@@ -19,8 +19,9 @@ WORKDIR /app
 # Copy package.json and pnpm-lock.yaml
 COPY --chown=strapi:nodejs package.json pnpm-lock.yaml ./
 
-# Install dependencies
-RUN pnpm install --frozen-lockfile --prefer-frozen-lockfile --ignore-scripts
+# Install dependencies and handle sharp installation for linuxmusl
+RUN pnpm install --frozen-lockfile --prefer-frozen-lockfile --ignore-scripts && \
+    pnpm install sharp --platform=linuxmusl --arch=x64
 
 # Copy the rest of the application
 COPY --chown=strapi:nodejs . .
