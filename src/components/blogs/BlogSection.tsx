@@ -1,11 +1,13 @@
 import React, { FC } from "react";
 import BlogCard from "@/components/blogs/BlogCard";
 // import BlogPagination from "@/components/blogs/BlogPagination";
-import { env } from "@/env/client";
 import { getClient } from "@/lib/apollo-server";
 import { getBlogPosts } from "@/query/schema";
 
 export const revalidate = 120;
+
+const STRAPI_URL =
+  process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
 
 const BlogSection: FC<{ page: string }> = async () => {
   const { data } = await getClient().query({
@@ -20,7 +22,7 @@ const BlogSection: FC<{ page: string }> = async () => {
             <BlogCard
               key={blog?.documentId}
               date={blog?.date ?? "NO DATE"}
-              imgUrl={env.NEXT_PUBLIC_STRAPI_URL.concat(blog?.image?.[0]?.url!)}
+              imgUrl={STRAPI_URL.concat(blog?.image?.[0]?.url!)}
               alt={blog?.image?.[0]?.url ?? "NO ALT PROVIDED"}
               title={blog?.title ?? "UNTTILED"}
               slug={blog?.slug ?? "NO SLUG"}
