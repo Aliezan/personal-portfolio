@@ -42,3 +42,13 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_2 }}:latest
+
+      - name: Deploy to Coolify (nextjs-fe)
+        run: |
+          curl --request GET '${{ secrets.COOLIFY_WEBHOOK_NEXTJS }}' \
+               --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
+
+      - name: Deploy to Coolify (strapi-cms)
+        run: |
+          curl --request GET '${{ secrets.COOLIFY_WEBHOOK_STRAPI }}' \
+               --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'

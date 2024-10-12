@@ -1,41 +1,30 @@
-FROM node:20-alpine
-
-# Install necessary dependencies
+# Creating multi-stage build for production
+FROM node:18-alpine as build
 RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev git > /dev/null 2>&1
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
 
-# Set up environment variables
-ENV NODE_ENV=production
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+WORKDIR /opt/
+COPY package.json package-lock.json ./
+RUN npm install -g node-gyp
+RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install --only=production
+ENV PATH=/opt/node_modules/.bin:$PATH
+WORKDIR /opt/app
+COPY . .
+RUN npm run build
 
-# Install pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Creating final production image
+FROM node:18-alpine
+RUN apk add --no-cache vips-dev
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+WORKDIR /opt/
+COPY --from=build /opt/node_modules ./node_modules
+WORKDIR /opt/app
+COPY --from=build /opt/app ./
+ENV PATH=/opt/node_modules/.bin:$PATH
 
-# Create a non-root user
-RUN addgroup -g 1001 -S nodejs && adduser -S strapi -u 1001 -G nodejs
-
-WORKDIR /app
-
-# Copy package.json and pnpm-lock.yaml
-COPY --chown=strapi:nodejs package.json pnpm-lock.yaml ./
-
-# Install dependencies and handle sharp installation for linuxmusl
-RUN pnpm install --frozen-lockfile --prefer-frozen-lockfile --ignore-scripts
-
-RUN pnpm install sharp
-
-# Copy the rest of the application
-COPY --chown=strapi:nodejs . .
-
-# Build the application
-RUN pnpm build
-
-# Switch to non-root user
-USER strapi
-
+RUN chown -R node:node /opt/app
+USER node
 EXPOSE 1337
-
-ENV PORT 1337
-ENV HOSTNAME "0.0.0.0"
-
-CMD ["pnpm", "start"]
+CMD ["npm", "run", "start"]
