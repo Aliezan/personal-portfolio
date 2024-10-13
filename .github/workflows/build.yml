@@ -33,6 +33,8 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_1 }}:latest
+          build-args: |
+            NEXT_PUBLIC_STRAPI_URL=${{secrets.NEXT_PUBLIC_STRAPI_URL}}
 
       - name: Build and push strapi image
         uses: docker/build-push-action@v4

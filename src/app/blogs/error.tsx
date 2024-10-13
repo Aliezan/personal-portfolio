@@ -9,13 +9,11 @@ const Error: FC<{ error: Error & { digest?: string }; reset: () => void }> = ({
   error,
   reset,
 }) => (
-  <main className="mt-5 grid h-screen grid-rows-1 items-center">
+  <main className="mt-5 grid h-screen items-center">
     <div className="grid grid-rows-2 gap-3">
       <div className="flex justify-center gap-4">
         <TriangleAlert size={50} />
-        <h1
-          className={`${SpaceGrotesk.className} text-center text-5xl font-bold`}
-        >
+        <h1 className={`${SpaceGrotesk.className} text-center text-5xl`}>
           Uh oh. Something went wrong!
         </h1>
       </div>
@@ -27,7 +25,7 @@ const Error: FC<{ error: Error & { digest?: string }; reset: () => void }> = ({
           type="button"
           onClick={() => reset()}
         >
-          Try again
+          Reload Tab
         </Button>
       </div>
     </div>

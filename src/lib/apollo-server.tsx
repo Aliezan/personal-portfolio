@@ -1,8 +1,11 @@
+import { env } from "@/env/server";
 import { HttpLink, InMemoryCache, ApolloClient } from "@apollo/client";
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
 
 const STRAPI_URL =
-  process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:1337"
+    : env.NEXT_PUBLIC_STRAPI_URL;
 
 export const { getClient } = registerApolloClient(
   () =>

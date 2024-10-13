@@ -20,6 +20,8 @@ RUN corepack prepare pnpm@latest --activate
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+ARG NEXT_PUBLIC_STRAPI_URL
+ENV NEXT_PUBLIC_STRAPI_URL=$NEXT_PUBLIC_STRAPI_URL
 RUN pnpm build
 # Copy .next/static directory to .next/standalone/.next/static
 RUN cp -r .next/static .next/standalone/.next/static

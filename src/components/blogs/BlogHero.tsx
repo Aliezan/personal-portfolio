@@ -7,7 +7,7 @@ const BlogHero: FC = () => (
     <div className="px-7 py-16">
       <p className={SpaceGrotesk.className}>Dev Blog</p>
       <h1 className="font-bold sm:max-w-[500px] sm:text-2xl">
-        Insights about my personal and work life, and in the betweens
+        Insights about my personal and dev life, and in the betweens
       </h1>
     </div>
   </div>
