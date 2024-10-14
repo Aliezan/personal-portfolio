@@ -15,7 +15,10 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     title: Schema.Attribute.String & Schema.Attribute.Required;
     date: Schema.Attribute.Date & Schema.Attribute.Required;
     content: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    image: Schema.Attribute.Media<"images" | "files", true>;
+    image: Schema.Attribute.Media<
+      "images" | "videos" | "audios" | "files",
+      true
+    >;
     slug: Schema.Attribute.UID<"title"> & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;

@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React, { FC } from "react";
 import BlogCard from "@/components/blogs/BlogCard";
-// import BlogPagination from "@/components/blogs/BlogPagination";
+import BlogPagination from "@/components/blogs/BlogPagination";
 import { getClient } from "@/lib/apollo-server";
 import { getBlogPosts } from "@/query/schema";
 import { env } from "@/env/server";
@@ -15,9 +15,16 @@ const STRAPI_URL =
     ? "http://localhost:1337"
     : env.NEXT_PUBLIC_STRAPI_URL;
 
-const BlogSection: FC<{ page: string }> = async () => {
+const BlogSection: FC<{ page: string }> = async ({ page }) => {
   const { data, error } = await getClient().query({
     query: getBlogPosts,
+    variables: {
+      pagination: {
+        page: +page,
+        pageSize: 5,
+      },
+    },
+    fetchPolicy: "network-only",
   });
 
   return (
@@ -55,25 +62,26 @@ const BlogSection: FC<{ page: string }> = async () => {
               const paragraph = blog?.content.filter(
                 (item: { type: string }) => item.type === "paragraph",
               );
+
               return (
                 <BlogCard
                   key={blog?.documentId}
                   date={blog?.date ?? "NO DATE"}
-                  imgUrl={STRAPI_URL.concat(blog?.image?.[0]?.url!)}
+                  imgUrl={STRAPI_URL.concat(blog?.image?.[0]?.url ?? "")}
                   alt={blog?.image?.[0]?.url ?? "NO ALT PROVIDED"}
                   title={blog?.title ?? "UNTITLED"}
                   slug={blog?.slug ?? "NO SLUG"}
-                  content={paragraph}
+                  content={paragraph[0].children[0].text}
                 />
               );
             })
           )}
         </div>
       </div>
-      {/* <BlogPagination
-        pageCount={data?.blogs?.meta?.pagination?.pageCount ?? 1}
+      <BlogPagination
+        totalPages={data?.blogs_connection?.pageInfo.pageCount!}
         page={+page}
-      /> */}
+      />
     </section>
   );
 };

@@ -8,14 +8,14 @@ import {
   PaginationNext,
 } from "../ui/pagination";
 
-const BlogPagination: FC<{ pageCount: number; page: number }> = ({
-  pageCount,
+const BlogPagination: FC<{ totalPages: number; page: number }> = ({
+  totalPages,
   page,
 }) => {
   const startPage = Math.floor((page - 1) / 5) * 5 + 1;
   let endPage = startPage + 4;
 
-  endPage = endPage > pageCount ? pageCount : endPage;
+  endPage = endPage > totalPages ? totalPages : endPage;
 
   return (
     <Pagination>
@@ -38,7 +38,7 @@ const BlogPagination: FC<{ pageCount: number; page: number }> = ({
             </PaginationLink>
           </PaginationItem>
         ))}
-        {endPage < pageCount && (
+        {endPage < totalPages && (
           <PaginationItem>
             <PaginationNext href={`?page=${endPage + 1}`} />
           </PaginationItem>

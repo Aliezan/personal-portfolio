@@ -30,6 +30,8 @@
       "required": false,
       "allowedTypes": [
         "images",
+        "videos",
+        "audios",
         "files"
       ]
     },

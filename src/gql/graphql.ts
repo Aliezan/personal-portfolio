@@ -1187,7 +1187,9 @@ export type UsersPermissionsUserRelationResponseCollection = {
   nodes: Array<UsersPermissionsUser>;
 };
 
-export type BlogsQueryQueryVariables = Exact<{ [key: string]: never }>;
+export type BlogsQueryQueryVariables = Exact<{
+  pagination?: InputMaybe<PaginationArg>;
+}>;
 
 export type BlogsQueryQuery = {
   __typename?: "Query";
@@ -1200,6 +1202,16 @@ export type BlogsQueryQuery = {
     slug: string;
     image: Array<{ __typename?: "UploadFile"; url: string } | null>;
   } | null>;
+  blogs_connection?: {
+    __typename?: "BlogEntityResponseCollection";
+    pageInfo: {
+      __typename?: "Pagination";
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  } | null;
 };
 
 export const BlogsQueryDocument = {
@@ -1209,12 +1221,35 @@ export const BlogsQueryDocument = {
       kind: "OperationDefinition",
       operation: "query",
       name: { kind: "Name", value: "BlogsQuery" },
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "pagination" },
+          },
+          type: {
+            kind: "NamedType",
+            name: { kind: "Name", value: "PaginationArg" },
+          },
+        },
+      ],
       selectionSet: {
         kind: "SelectionSet",
         selections: [
           {
             kind: "Field",
             name: { kind: "Name", value: "blogs" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "pagination" },
+                value: {
+                  kind: "Variable",
+                  name: { kind: "Name", value: "pagination" },
+                },
+              },
+            ],
             selectionSet: {
               kind: "SelectionSet",
               selections: [
@@ -1233,6 +1268,34 @@ export const BlogsQueryDocument = {
                   },
                 },
                 { kind: "Field", name: { kind: "Name", value: "slug" } },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "blogs_connection" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "pageInfo" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      { kind: "Field", name: { kind: "Name", value: "page" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "pageSize" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "pageCount" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "total" } },
+                    ],
+                  },
+                },
               ],
             },
           },

@@ -4,6 +4,7 @@ FROM node:20-alpine AS base
 FROM base AS deps
 RUN apk add --no-cache libc6-compat git
 RUN echo Building nextjs image with corepack
+
 # Setup pnpm environment
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
@@ -22,8 +23,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ARG NEXT_PUBLIC_STRAPI_URL
 ENV NEXT_PUBLIC_STRAPI_URL=$NEXT_PUBLIC_STRAPI_URL
+ENV NEXT_TELEMETRY_DISABLED=1
 RUN pnpm build
-# Copy .next/static directory to .next/standalone/.next/static
 RUN cp -r .next/static .next/standalone/.next/static
 
 # --- Production runner ---

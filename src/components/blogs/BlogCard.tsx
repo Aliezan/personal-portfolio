@@ -4,10 +4,6 @@ import React, { FC } from "react";
 import ImgPlaceholder from "@/components/blogs/ImgPlaceholder";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  BlocksRenderer,
-  type BlocksContent,
-} from "@strapi/blocks-react-renderer";
 
 type BlogCardProps = {
   date: string;
@@ -15,7 +11,7 @@ type BlogCardProps = {
   alt: string;
   title: string;
   slug: string;
-  content: BlocksContent;
+  content: string;
 };
 
 const BlogCard: FC<BlogCardProps> = ({
@@ -39,22 +35,9 @@ const BlogCard: FC<BlogCardProps> = ({
             </h1>
           </Link>
         </div>
-        <BlocksRenderer
-          content={content}
-          blocks={{
-            paragraph: ({ children }) => (
-              <p className="line-clamp-3 w-full whitespace-pre-line text-xs sm:w-[500px]">
-                {children}
-              </p>
-            ),
-          }}
-          modifiers={{
-            bold: ({ children }) => <strong>{children}</strong>,
-            italic: ({ children }) => (
-              <span className="italic">{children}</span>
-            ),
-          }}
-        />
+        <p className="line-clamp-3 w-full whitespace-pre-line text-xs sm:w-[500px]">
+          {content}
+        </p>
       </div>
       {imgUrl && alt ? (
         <Image
