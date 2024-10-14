@@ -8,8 +8,6 @@ import { env } from "@/env/server";
 import { SpaceGrotesk } from "@/utils/font";
 import { CircleAlert, TriangleAlert } from "lucide-react";
 
-export const revalidate = process.env.NODE_ENV === "development" ? 0 : 5;
-
 const STRAPI_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:1337"
@@ -24,13 +22,12 @@ const BlogSection: FC<{ page: string }> = async ({ page }) => {
         pageSize: 5,
       },
     },
-    fetchPolicy: "network-only",
   });
 
   return (
     <section className="mt-5 px-7">
       <div className="grid justify-center">
-        <div className="grid h-[1900px] gap-6 md:h-[1060px]">
+        <div className="grid h-[996px] grid-rows-5 gap-6">
           {error ? (
             <div className="mt-40">
               <div className="flex gap-4">
@@ -79,7 +76,7 @@ const BlogSection: FC<{ page: string }> = async ({ page }) => {
         </div>
       </div>
       <BlogPagination
-        totalPages={data?.blogs_connection?.pageInfo.pageCount!}
+        totalPages={data?.blogs_connection?.pageInfo.total!}
         page={+page}
       />
     </section>

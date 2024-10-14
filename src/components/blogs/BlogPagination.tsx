@@ -12,13 +12,23 @@ const BlogPagination: FC<{ totalPages: number; page: number }> = ({
   totalPages,
   page,
 }) => {
+  const roundTotalPages = (num: number) => {
+    const result = num / 5;
+    if (num % 5 === 0) {
+      return result;
+    }
+    return result + 1;
+  };
+
+  const modifiedTotalPages = roundTotalPages(totalPages);
+
   const startPage = Math.floor((page - 1) / 5) * 5 + 1;
   let endPage = startPage + 4;
 
-  endPage = endPage > totalPages ? totalPages : endPage;
+  endPage = endPage > modifiedTotalPages ? modifiedTotalPages : endPage;
 
   return (
-    <Pagination>
+    <Pagination className="mt-7">
       <PaginationContent>
         {startPage > 1 && (
           <PaginationItem>
@@ -38,7 +48,7 @@ const BlogPagination: FC<{ totalPages: number; page: number }> = ({
             </PaginationLink>
           </PaginationItem>
         ))}
-        {endPage < totalPages && (
+        {endPage < modifiedTotalPages && (
           <PaginationItem>
             <PaginationNext href={`?page=${endPage + 1}`} />
           </PaginationItem>
