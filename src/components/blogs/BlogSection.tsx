@@ -22,6 +22,7 @@ const BlogSection: FC<{ page: string }> = async ({ page }) => {
         pageSize: 5,
       },
     },
+    fetchPolicy: "network-only",
   });
 
   return (
