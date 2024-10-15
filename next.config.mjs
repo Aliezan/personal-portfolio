@@ -13,6 +13,11 @@ const config = {
         hostname: 'localhost',
         port: '1337',
         pathname: '/uploads/**'
+      },
+      {
+        protocol: 'https',
+        hostname: "strapi.aliezan.me",
+        pathname: "/uploads/**"
       }
     ],
   },
