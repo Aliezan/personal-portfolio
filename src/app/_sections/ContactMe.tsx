@@ -29,17 +29,23 @@ const ContactMe: FC = () => (
         >
           Get in touch!
         </h1>
-        <p className="text-center text-small sm:w-[500px]">
-          If you want to just connect with me in Linkedin or want to know me
-          more, here&apos;s my personal CV for you to look at.
-        </p>
+        <div className="grid gap-3 sm:w-[500px]">
+          <p className="text-center text-small">
+            If you want to just connect with me in Linkedin or want to know me
+            more, here&apos;s my personal CV for you to look at.
+          </p>
+          <p className="text-center text-xs italic text-gray-400">
+            pssst... for privacy reasons, all personal info is redacted. For
+            further info you could contact me!
+          </p>
+        </div>
         <div className="flex items-center justify-center">
           <Button
             color="success"
             radius="sm"
             className="mt-3"
             as={Link}
-            href="https://drive.google.com/uc?export=download&id=1L79AwtTzkGHMuveXBtRgvbcNLwpt_o1f"
+            href="https://drive.google.com/uc?export=download&id=11XYOb5cGoK4jarRzTUGHHCgGc3LIv5U1"
             showAnchorIcon
           >
             Download CV
