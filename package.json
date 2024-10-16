@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "husky install",
-    "codegen-watch": "NODE_ENV=development graphql-codegen -w",
-    "codegen": "NODE_ENV=development graphql-codegen"
+    "codegen-watch": "graphql-codegen -w",
+    "codegen": "graphql-codegen"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

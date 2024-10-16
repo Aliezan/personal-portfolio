@@ -7,6 +7,7 @@ import { CircleAlert, TriangleAlert } from "lucide-react";
 import { BlogsQueryQuery } from "@/gql/graphql";
 import type { ApolloError } from "@apollo/client";
 import { env } from "@/env/server";
+import dateFormatter from "@/utils/dateFormatter";
 
 const STRAPI_URL =
   process.env.NODE_ENV === "development"
@@ -19,10 +20,10 @@ type BlogSectionProps = {
   error: ApolloError | undefined;
 };
 
-const BlogSection: FC<BlogSectionProps> = ({ page, data, error }) => (
+const BlogList: FC<BlogSectionProps> = ({ page, data, error }) => (
   <section className="mt-5 px-7">
     <div className="grid justify-center">
-      <div className="grid h-[996px] grid-rows-5 gap-6">
+      <div className="grid grid-rows-5 gap-6">
         {error ? (
           <div className="mt-40">
             <div className="flex gap-4">
@@ -46,23 +47,18 @@ const BlogSection: FC<BlogSectionProps> = ({ page, data, error }) => (
             </p>
           </div>
         ) : (
-          data.blogs.map((blog) => {
-            const paragraph = blog?.content.filter(
-              (item: { type: string }) => item.type === "paragraph",
-            );
-
-            return (
-              <BlogCard
-                key={blog?.documentId}
-                date={blog?.date ?? "NO DATE"}
-                imgUrl={STRAPI_URL.concat(blog?.image?.[0]?.url ?? "")}
-                alt={blog?.image?.[0]?.url ?? "NO ALT PROVIDED"}
-                title={blog?.title ?? "UNTITLED"}
-                slug={blog?.slug ?? "NO SLUG"}
-                content={paragraph[0].children[0].text}
-              />
-            );
-          })
+          data.blogs.map((blog) => (
+            <BlogCard
+              key={blog?.documentId}
+              documentID={blog?.documentId}
+              date={dateFormatter(blog?.createdAt) ?? "NO DATE"}
+              imgUrl={STRAPI_URL.concat(blog?.previewImage.url ?? "")}
+              alt={blog?.previewImage.url ?? "NO ALT PROVIDED"}
+              title={blog?.title ?? "UNTITLED"}
+              blogDescription={blog?.blogDescription ?? "NO DESCRIPTION"}
+              blogTag={blog?.blogTag}
+            />
+          ))
         )}
       </div>
     </div>
@@ -73,4 +69,4 @@ const BlogSection: FC<BlogSectionProps> = ({ page, data, error }) => (
   </section>
 );
 
-export default BlogSection;
+export default BlogList;

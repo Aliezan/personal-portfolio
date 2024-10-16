@@ -35,7 +35,12 @@ const Navibar: FC = () => {
       </NavbarContent>
       <NavbarContent justify="start">
         <NavbarBrand>
-          <Logo width={100} height={100} />
+          <Logo
+            fontWidth={100}
+            fontHeight={100}
+            logoWidth={30}
+            logoHeight={30}
+          />
         </NavbarBrand>
       </NavbarContent>
       {path === "/" ? (

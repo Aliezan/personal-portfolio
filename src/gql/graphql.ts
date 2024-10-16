@@ -27,8 +27,6 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean };
   Int: { input: number; output: number };
   Float: { input: number; output: number };
-  /** A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
-  Date: { input: any; output: any };
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: { input: any; output: any };
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
@@ -37,29 +35,22 @@ export type Scalars = {
 
 export type Blog = {
   __typename?: "Blog";
-  content: Scalars["JSON"]["output"];
+  blogContentSection: Array<Maybe<ComponentContentsContentSection>>;
+  blogDescription: Scalars["String"]["output"];
+  blogTag?: Maybe<Scalars["JSON"]["output"]>;
   createdAt?: Maybe<Scalars["DateTime"]["output"]>;
-  date: Scalars["Date"]["output"];
   documentId: Scalars["ID"]["output"];
-  image: Array<Maybe<UploadFile>>;
-  image_connection?: Maybe<UploadFileRelationResponseCollection>;
   locale?: Maybe<Scalars["String"]["output"]>;
   localizations: Array<Maybe<Blog>>;
   localizations_connection?: Maybe<BlogRelationResponseCollection>;
+  previewImage: UploadFile;
   publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  slug: Scalars["String"]["output"];
   title: Scalars["String"]["output"];
   updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
 };
 
-export type BlogImageArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
-};
-
-export type BlogImage_ConnectionArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
+export type BlogBlogContentSectionArgs = {
+  filters?: InputMaybe<ComponentContentsContentSectionFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
 };
@@ -84,27 +75,29 @@ export type BlogEntityResponseCollection = {
 
 export type BlogFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<BlogFiltersInput>>>;
-  content?: InputMaybe<JsonFilterInput>;
+  blogContentSection?: InputMaybe<ComponentContentsContentSectionFiltersInput>;
+  blogDescription?: InputMaybe<StringFilterInput>;
+  blogTag?: InputMaybe<JsonFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
-  date?: InputMaybe<DateFilterInput>;
   documentId?: InputMaybe<IdFilterInput>;
   locale?: InputMaybe<StringFilterInput>;
   localizations?: InputMaybe<BlogFiltersInput>;
   not?: InputMaybe<BlogFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<BlogFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
-  slug?: InputMaybe<StringFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type BlogInput = {
-  content?: InputMaybe<Scalars["JSON"]["input"]>;
-  date?: InputMaybe<Scalars["Date"]["input"]>;
-  image?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  blogContentSection?: InputMaybe<
+    Array<InputMaybe<ComponentContentsContentSectionInput>>
+  >;
+  blogDescription?: InputMaybe<Scalars["String"]["input"]>;
+  blogTag?: InputMaybe<Scalars["JSON"]["input"]>;
   locale?: InputMaybe<Scalars["String"]["input"]>;
+  previewImage?: InputMaybe<Scalars["ID"]["input"]>;
   publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
-  slug?: InputMaybe<Scalars["String"]["input"]>;
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
 
@@ -138,29 +131,28 @@ export type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
-export type DateFilterInput = {
-  and?: InputMaybe<Array<InputMaybe<Scalars["Date"]["input"]>>>;
-  between?: InputMaybe<Array<InputMaybe<Scalars["Date"]["input"]>>>;
-  contains?: InputMaybe<Scalars["Date"]["input"]>;
-  containsi?: InputMaybe<Scalars["Date"]["input"]>;
-  endsWith?: InputMaybe<Scalars["Date"]["input"]>;
-  eq?: InputMaybe<Scalars["Date"]["input"]>;
-  eqi?: InputMaybe<Scalars["Date"]["input"]>;
-  gt?: InputMaybe<Scalars["Date"]["input"]>;
-  gte?: InputMaybe<Scalars["Date"]["input"]>;
-  in?: InputMaybe<Array<InputMaybe<Scalars["Date"]["input"]>>>;
-  lt?: InputMaybe<Scalars["Date"]["input"]>;
-  lte?: InputMaybe<Scalars["Date"]["input"]>;
-  ne?: InputMaybe<Scalars["Date"]["input"]>;
-  nei?: InputMaybe<Scalars["Date"]["input"]>;
-  not?: InputMaybe<DateFilterInput>;
-  notContains?: InputMaybe<Scalars["Date"]["input"]>;
-  notContainsi?: InputMaybe<Scalars["Date"]["input"]>;
-  notIn?: InputMaybe<Array<InputMaybe<Scalars["Date"]["input"]>>>;
-  notNull?: InputMaybe<Scalars["Boolean"]["input"]>;
-  null?: InputMaybe<Scalars["Boolean"]["input"]>;
-  or?: InputMaybe<Array<InputMaybe<Scalars["Date"]["input"]>>>;
-  startsWith?: InputMaybe<Scalars["Date"]["input"]>;
+export type ComponentContentsContentSection = {
+  __typename?: "ComponentContentsContentSection";
+  blogTextContent: Scalars["JSON"]["output"];
+  id: Scalars["ID"]["output"];
+  image?: Maybe<UploadFile>;
+};
+
+export type ComponentContentsContentSectionFiltersInput = {
+  and?: InputMaybe<
+    Array<InputMaybe<ComponentContentsContentSectionFiltersInput>>
+  >;
+  blogTextContent?: InputMaybe<JsonFilterInput>;
+  not?: InputMaybe<ComponentContentsContentSectionFiltersInput>;
+  or?: InputMaybe<
+    Array<InputMaybe<ComponentContentsContentSectionFiltersInput>>
+  >;
+};
+
+export type ComponentContentsContentSectionInput = {
+  blogTextContent?: InputMaybe<Scalars["JSON"]["input"]>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  image?: InputMaybe<Scalars["ID"]["input"]>;
 };
 
 export type DateTimeFilterInput = {
@@ -226,6 +218,7 @@ export type FloatFilterInput = {
 
 export type GenericMorph =
   | Blog
+  | ComponentContentsContentSection
   | I18NLocale
   | ReviewWorkflowsWorkflow
   | ReviewWorkflowsWorkflowStage
@@ -1197,10 +1190,10 @@ export type BlogsQueryQuery = {
     __typename?: "Blog";
     documentId: string;
     title: string;
-    content: any;
-    date: any;
-    slug: string;
-    image: Array<{ __typename?: "UploadFile"; url: string } | null>;
+    createdAt?: any | null;
+    blogTag?: any | null;
+    blogDescription: string;
+    previewImage: { __typename?: "UploadFile"; url: string };
   } | null>;
   blogs_connection?: {
     __typename?: "BlogEntityResponseCollection";
@@ -1211,6 +1204,25 @@ export type BlogsQueryQuery = {
       pageCount: number;
       total: number;
     };
+  } | null;
+};
+
+export type BlogPostQueryVariables = Exact<{
+  documentId: Scalars["ID"]["input"];
+}>;
+
+export type BlogPostQuery = {
+  __typename?: "Query";
+  blog?: {
+    __typename?: "Blog";
+    title: string;
+    createdAt?: any | null;
+    blogTag?: any | null;
+    blogContentSection: Array<{
+      __typename?: "ComponentContentsContentSection";
+      blogTextContent: any;
+      image?: { __typename?: "UploadFile"; url: string } | null;
+    } | null>;
   } | null;
 };
 
@@ -1255,11 +1267,11 @@ export const BlogsQueryDocument = {
               selections: [
                 { kind: "Field", name: { kind: "Name", value: "documentId" } },
                 { kind: "Field", name: { kind: "Name", value: "title" } },
-                { kind: "Field", name: { kind: "Name", value: "content" } },
-                { kind: "Field", name: { kind: "Name", value: "date" } },
+                { kind: "Field", name: { kind: "Name", value: "createdAt" } },
+                { kind: "Field", name: { kind: "Name", value: "blogTag" } },
                 {
                   kind: "Field",
-                  name: { kind: "Name", value: "image" },
+                  name: { kind: "Name", value: "previewImage" },
                   selectionSet: {
                     kind: "SelectionSet",
                     selections: [
@@ -1267,7 +1279,10 @@ export const BlogsQueryDocument = {
                     ],
                   },
                 },
-                { kind: "Field", name: { kind: "Name", value: "slug" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "blogDescription" },
+                },
               ],
             },
           },
@@ -1304,3 +1319,79 @@ export const BlogsQueryDocument = {
     },
   ],
 } as unknown as DocumentNode<BlogsQueryQuery, BlogsQueryQueryVariables>;
+export const BlogPostDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "BlogPost" },
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "documentId" },
+          },
+          type: {
+            kind: "NonNullType",
+            type: { kind: "NamedType", name: { kind: "Name", value: "ID" } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "blog" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "documentId" },
+                value: {
+                  kind: "Variable",
+                  name: { kind: "Name", value: "documentId" },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "title" } },
+                { kind: "Field", name: { kind: "Name", value: "createdAt" } },
+                { kind: "Field", name: { kind: "Name", value: "blogTag" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "blogContentSection" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "image" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "url" },
+                            },
+                          ],
+                        },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "blogTextContent" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<BlogPostQuery, BlogPostQueryVariables>;

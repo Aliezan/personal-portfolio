@@ -16,29 +16,29 @@
       "type": "string",
       "required": true
     },
-    "date": {
-      "type": "date",
-      "required": true
-    },
-    "content": {
-      "type": "blocks",
-      "required": true
-    },
-    "image": {
+    "previewImage": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "allowedTypes": [
         "images",
-        "videos",
-        "audios",
         "files"
       ]
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "title",
+    "blogContentSection": {
+      "displayName": "content-section",
+      "type": "component",
+      "repeatable": true,
+      "component": "contents.content-section",
       "required": true
+    },
+    "blogDescription": {
+      "type": "text",
+      "required": true
+    },
+    "blogTag": {
+      "type": "customField",
+      "customField": "plugin::tagsinput.tags"
     }
   }
 }

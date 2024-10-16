@@ -5,10 +5,12 @@
 .gradient-text {
   background: linear-gradient(
     to right top,
-    rgb(254, 249, 195),
-    rgb(253, 224, 71),
-    rgb(234, 179, 8)
+    rgb(173, 216, 245),  /* Lighter shade */
+    rgb(11, 126, 206),   /* The exact blue you specified */
+    rgb(7, 84, 137)      /* Darker shade */
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }

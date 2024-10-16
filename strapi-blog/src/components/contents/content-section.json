@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_contents_content_sections",
+  "info": {
+    "displayName": "content-section",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "blogTextContent": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

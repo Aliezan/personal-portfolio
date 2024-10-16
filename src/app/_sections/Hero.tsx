@@ -40,9 +40,8 @@ const Hero: FC = () => (
           </p>
           <div className="relative">
             <h1 className="text-[30px] font-semibold lg:text-[40px]">
-              Web Developer and{" "}
-              <span className="gradient-text font-bold">TypeScript</span>{" "}
-              enthusiast
+              a Full-stack sorcerer with a{" "}
+              <span className="gradient-text font-bold">TypeScript</span> wand
             </h1>
           </div>
           <div className="mt-[20px] flex gap-5">

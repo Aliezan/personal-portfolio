@@ -1,10 +1,10 @@
 import React, { FC } from "react";
-import BlogSection from "@/components/blogs/BlogSection";
+import BlogList from "@/components/blogs/BlogList";
 import BlogHero from "@/components/blogs/BlogHero";
 import { getClient } from "@/lib/apollo-server";
 import { getBlogPosts } from "@/query/schema";
 
-export const revalidate = process.env.NODE_ENV === "development" ? 5 : 5;
+export const revalidate = process.env.NODE_ENV === "development" ? 0 : 60;
 
 const Blogs: FC<{
   searchParams?: { [key: string]: string | undefined };
@@ -19,13 +19,12 @@ const Blogs: FC<{
         pageSize: 5,
       },
     },
-    fetchPolicy: "network-only",
   });
 
   return (
     <main>
       <BlogHero />
-      <BlogSection page={page} data={data} error={error} />
+      <BlogList page={page} data={data} error={error} />
     </main>
   );
 };

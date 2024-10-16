@@ -4,14 +4,16 @@ import React, { FC } from "react";
 import ImgPlaceholder from "@/components/blogs/ImgPlaceholder";
 import Image from "next/image";
 import Link from "next/link";
+import { Chip } from "@nextui-org/react";
 
 type BlogCardProps = {
   date: string;
   imgUrl: string;
   alt: string;
   title: string;
-  slug: string;
-  content: string;
+  documentID: string | undefined;
+  blogDescription: string | undefined;
+  blogTag: { name: string }[];
 };
 
 const BlogCard: FC<BlogCardProps> = ({
@@ -19,24 +21,31 @@ const BlogCard: FC<BlogCardProps> = ({
   imgUrl,
   alt,
   title,
-  slug,
-  content,
+  documentID,
+  blogDescription,
+  blogTag,
 }) => (
-  <div className="grid h-full">
+  <div className="h-full">
     <div className="flex flex-col gap-2 md:flex-row md:justify-between md:gap-16">
       <div className="mt-4 max-w-[500px] space-y-2 md:space-y-4">
         <div className="flex flex-col space-y-4 md:flex-row md:gap-4 md:space-y-0">
-          <p className="text-tiny text-[#232E52] dark:text-white">{date}</p>
+          <p className="text-md text-[#232E52] dark:text-white">{date}</p>
+          {blogTag &&
+            blogTag.map((tag) => (
+              <Chip color="secondary" key={tag.name} size="sm">
+                {tag.name}
+              </Chip>
+            ))}
         </div>
         <div className="flex items-center">
-          <Link href={`/blogs/${slug}`}>
+          <Link href={`/blogs/${documentID}`}>
             <h1 className="line-clamp-2 text-2xl font-bold text-[#232E52] hover:underline-offset-8 dark:text-white">
               {title}
             </h1>
           </Link>
         </div>
         <p className="line-clamp-3 w-full whitespace-pre-line text-xs sm:w-[500px]">
-          {content}
+          {blogDescription}
         </p>
       </div>
       {imgUrl && alt ? (

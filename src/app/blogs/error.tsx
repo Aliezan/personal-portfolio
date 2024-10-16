@@ -17,7 +17,10 @@ const Error: FC<{ error: Error & { digest?: string }; reset: () => void }> = ({
           Uh oh. Something went wrong!
         </h1>
       </div>
-      <p className="text-center">{error.message}</p>
+      <p className={`${SpaceGrotesk.className} text-center`}>
+        Please try again.
+      </p>
+      <p className="text-center">Error message: {error.message}</p>
       <div className="flex items-center justify-center">
         <Button
           color="secondary"

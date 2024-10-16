@@ -13,14 +13,16 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   };
   attributes: {
     title: Schema.Attribute.String & Schema.Attribute.Required;
-    date: Schema.Attribute.Date & Schema.Attribute.Required;
-    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    image: Schema.Attribute.Media<
-      "images" | "videos" | "audios" | "files",
+    previewImage: Schema.Attribute.Media<"images" | "files"> &
+      Schema.Attribute.Required;
+    blogContentSection: Schema.Attribute.Component<
+      "contents.content-section",
       true
     > &
       Schema.Attribute.Required;
-    slug: Schema.Attribute.UID<"title"> & Schema.Attribute.Required;
+    blogDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    blogTag: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<"plugin::tagsinput.tags">;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

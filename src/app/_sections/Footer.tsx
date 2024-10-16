@@ -5,10 +5,10 @@ import Image from "next/image";
 import { Tooltip } from "@nextui-org/react";
 
 const Footer: FC = () => (
-  <footer className="relative flex h-[250px] w-full items-center justify-center sm:h-[120px] sm:p-[50px]">
-    <div className="grid w-full grid-cols-1 justify-between justify-items-center sm:ml-[40px] sm:flex sm:gap-[90px]">
+  <footer className="relative flex h-[250px] w-full items-center justify-center sm:h-[120px] sm:p-[80px]">
+    <div className="grid w-full grid-cols-1 justify-between justify-items-center sm:flex sm:gap-[90px]">
       <div className="space-y-3">
-        <Logo width={70} height={70} />
+        <Logo logoWidth={20} logoHeight={20} fontHeight={70} fontWidth={70} />
         <p className="text-tiny">Let&apos;s collaborate</p>
         <div className="flex gap-3">
           <div className="dark:hidden">
