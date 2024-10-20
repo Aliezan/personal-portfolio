@@ -3,8 +3,17 @@ import BlogList from "@/components/blogs/BlogList";
 import BlogHero from "@/components/blogs/BlogHero";
 import { getClient } from "@/lib/apollo-server";
 import { getBlogPosts } from "@/query/schema";
+import { Metadata } from "next";
 
 export const revalidate = process.env.NODE_ENV === "development" ? 0 : 60;
+
+export const metadata: Metadata = {
+  title: "Blogs",
+  description: "Insights about my personal and dev life, and in the betweens",
+  twitter: {
+    card: "summary_large_image",
+  },
+};
 
 const Blogs: FC<{
   searchParams?: { [key: string]: string | undefined };
