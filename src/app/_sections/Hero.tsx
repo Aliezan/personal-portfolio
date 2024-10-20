@@ -48,7 +48,10 @@ const Hero: FC = () => (
             {" "}
             <div className="dark:hidden">
               <Tooltip content="Github">
-                <Link href="https://github.com/Aliezan">
+                <Link
+                  href="https://github.com/Aliezan"
+                  data-umami-event="github profile visited"
+                >
                   <Image
                     src="/github-mark.svg"
                     height={30}
@@ -60,7 +63,10 @@ const Hero: FC = () => (
             </div>
             <div className="hidden dark:block">
               <Tooltip content="Github">
-                <Link href="https://github.com/Aliezan">
+                <Link
+                  href="https://github.com/Aliezan"
+                  data-umami-event="github profile visited"
+                >
                   <Image
                     src="/github-mark-white.svg"
                     height={30}
@@ -72,7 +78,10 @@ const Hero: FC = () => (
             </div>
             <div className="dark:hidden">
               <Tooltip content="LinkedIn">
-                <Link href="https://www.linkedin.com/in/muhammad-alieza-nuriman/">
+                <Link
+                  href="https://www.linkedin.com/in/muhammad-alieza-nuriman/"
+                  data-umami-event="linkedin profile visited"
+                >
                   <Image
                     src="/linkedin-light.svg"
                     height={30}
@@ -84,7 +93,10 @@ const Hero: FC = () => (
             </div>
             <div className="hidden dark:block">
               <Tooltip content="LinkedIn">
-                <Link href="https://www.linkedin.com/in/muhammad-alieza-nuriman/">
+                <Link
+                  href="https://www.linkedin.com/in/muhammad-alieza-nuriman/"
+                  data-umami-event="linkedin profile visited"
+                >
                   <Image
                     src="/linkedin-dark.svg"
                     height={30}
@@ -96,7 +108,10 @@ const Hero: FC = () => (
             </div>
             <div className="dark:hidden">
               <Tooltip content="Email-me">
-                <Link href="mailto:muhammadalieza4@gmail.com">
+                <Link
+                  href="mailto:muhammadalieza4@gmail.com"
+                  data-umami-event="attempted contact by email"
+                >
                   <Image
                     src="/gmail-light.svg"
                     height={30}
@@ -108,7 +123,10 @@ const Hero: FC = () => (
             </div>
             <div className="hidden dark:block">
               <Tooltip content="Email-me">
-                <Link href="mailto:muhammadalieza4@gmail.com">
+                <Link
+                  href="mailto:muhammadalieza4@gmail.com"
+                  data-umami-event="attempted contact by email"
+                >
                   <Image
                     src="/gmail-dark.svg"
                     height={30}

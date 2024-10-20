@@ -64,6 +64,7 @@ const WorksCard: FC = () => (
             <ExternalLink size={12} className="mr-1 inline" />
             <Link
               href="https://github.com/Aliezan/capstone-frontend"
+              data-umami-event="capstone-fe repo visited"
               className="hover:underline"
             >
               Github
@@ -132,6 +133,7 @@ const WorksCard: FC = () => (
             <ExternalLink size={12} className="mr-1 inline" />
             <Link
               href="https://github.com/Aliezan/habits-tracker-app"
+              data-umami-event="habits-tracker-app repo visited"
               className="hover:underline"
             >
               Github
@@ -202,6 +204,7 @@ const WorksCard: FC = () => (
             <ExternalLink size={12} className="mr-1 inline" />
             <Link
               href="https://github.com/Aliezan/identify"
+              data-umami-event="identify repo visited"
               className="hover:underline"
             >
               Github

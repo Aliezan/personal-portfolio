@@ -41,6 +41,7 @@ const ContactMe: FC = () => (
         </div>
         <div className="flex items-center justify-center">
           <Button
+            data-umami-event="CV Downloaded"
             color="success"
             radius="sm"
             className="mt-3"

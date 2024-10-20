@@ -91,7 +91,11 @@ const Navibar: FC = () => {
             </NavbarItem>
             <NavbarItem>
               <div className="flex">
-                <Button asChild variant="link">
+                <Button
+                  asChild
+                  variant="link"
+                  data-umami-event="blogs button clicked"
+                >
                   <Link href="/blogs">blogs</Link>
                 </Button>
                 <Image
