@@ -28,6 +28,10 @@ export const getBlogPost = gql(`
   query BlogPost($documentId: ID!) {
   blog(documentId: $documentId) {
     title
+    previewImage {
+      url
+    }
+    blogDescription
     createdAt
     blogTag
     blogContentSection {
