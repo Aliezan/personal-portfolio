@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     default: "aliezn",
   },
   description:
-    "Alieza's portfolio, showcase of projects and blog posts talking about web development and dev life in general.",
+    "Explore Alieza's web development portfolio featuring innovative projects and insightful blog posts about coding and the developer life. Discover a passionate web developer's journey and expertise.",
   twitter: {
     card: "summary_large_image",
   },

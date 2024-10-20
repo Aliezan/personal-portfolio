@@ -7,8 +7,6 @@ import ContactMe from "./_sections/ContactMe";
 
 export const metadata: Metadata = {
   title: "Home",
-  description:
-    "Alieza's short bio, showcase of projects and contact information.",
 };
 
 const Home: FC = () => (
