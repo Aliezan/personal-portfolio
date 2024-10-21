@@ -21,33 +21,31 @@ type BlogSectionProps = {
 };
 
 const BlogList: FC<BlogSectionProps> = ({ page, data, error }) => (
-  <section className="mt-5 px-7">
-    <div className="grid justify-center">
-      <div className="grid grid-rows-5 gap-6">
-        {error ? (
-          <div className="mt-40">
-            <div className="flex gap-4">
-              <TriangleAlert size={50} />
-              <h1 className={`${SpaceGrotesk.className} text-center text-5xl`}>
-                Uh oh. Something went wrong!
-              </h1>
-            </div>
-            <p className="text-center">{error.message}</p>
-          </div>
-        ) : !data || !data.blogs || data.blogs.length === 0 ? (
-          <div className="mt-40">
-            <div className="flex gap-4">
-              <CircleAlert size={50} />
-              <h1 className={`${SpaceGrotesk.className} text-center text-5xl`}>
-                No blog posts available
-              </h1>
-            </div>
-            <p className="mt-3 text-center">
-              Check back later for new content!
-            </p>
-          </div>
-        ) : (
-          data.blogs.map((blog) => (
+  <section className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-4xl">
+      {error ? (
+        <div className="flex min-h-[50vh] flex-col items-center justify-center text-center">
+          <TriangleAlert size={50} className="mb-4" />
+          <h1
+            className={`${SpaceGrotesk.className} mb-4 text-3xl sm:text-4xl md:text-5xl`}
+          >
+            Uh oh. Something went wrong!
+          </h1>
+          <p className="text-lg">{error.message}</p>
+        </div>
+      ) : !data || !data.blogs || data.blogs.length === 0 ? (
+        <div className="flex min-h-[50vh] flex-col items-center justify-center text-center">
+          <CircleAlert size={50} className="mb-4" />
+          <h1
+            className={`${SpaceGrotesk.className} mb-4 text-3xl sm:text-4xl md:text-5xl`}
+          >
+            No blog posts available
+          </h1>
+          <p className="text-lg">Check back later for new content!</p>
+        </div>
+      ) : (
+        <div className="space-y-8">
+          {data.blogs.map((blog) => (
             <BlogCard
               key={blog?.documentId}
               documentID={blog?.documentId}
@@ -58,14 +56,16 @@ const BlogList: FC<BlogSectionProps> = ({ page, data, error }) => (
               blogDescription={blog?.blogDescription ?? "NO DESCRIPTION"}
               blogTag={blog?.blogTag}
             />
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
-    <BlogPagination
-      totalPages={data?.blogs_connection?.pageInfo.total!}
-      page={+page}
-    />
+    <div className="mt-8">
+      <BlogPagination
+        totalPages={data?.blogs_connection?.pageInfo.total!}
+        page={+page}
+      />
+    </div>
   </section>
 );
 

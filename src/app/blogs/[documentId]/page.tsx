@@ -6,6 +6,8 @@ import { SpaceGrotesk } from "@/utils/font";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { env } from "@/env/server";
+import BlogSection from "@/components/blogs/BlogSection";
+import { Link } from "@nextui-org/react";
 
 export const revalidate = process.env.NODE_ENV === "development" ? 0 : 60;
 
@@ -62,13 +64,31 @@ const Blog: FC<{ params: { documentId: string } }> = async ({ params }) => {
   const blogPost = await getBlogPostCached(documentId);
 
   return (
-    <main className="grid px-[40px] sm:px-[80px]">
-      <div className="grid gap-2">
-        <h1 className={`${SpaceGrotesk.className} text-5xl`}>
-          {blogPost.blog?.title}
-        </h1>
-        <p className="text-sm">{dateFormatter(blogPost?.blog?.createdAt)}</p>
-      </div>
+    <main className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+      <article className="mx-auto max-w-3xl">
+        <header className="mb-8">
+          <Link href="/blogs" className="mb-2 text-blue-500">
+            <span>← Back to Blogs</span>
+          </Link>
+          <h1
+            className={`${SpaceGrotesk.className} mb-4 text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl`}
+          >
+            {blogPost.blog?.title}
+          </h1>
+          <p className="text-sm text-gray-600">
+            {dateFormatter(blogPost?.blog?.createdAt)}
+          </p>
+        </header>
+        <div className="prose prose-lg max-w-none">
+          {blogPost.blog?.blogContentSection.map((section, index) => (
+            <BlogSection
+              key={index}
+              imageUrl={section?.image?.url}
+              BlogTextContent={section?.blogTextContent}
+            />
+          ))}
+        </div>
+      </article>
     </main>
   );
 };
