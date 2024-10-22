@@ -1,5 +1,3 @@
-"use client";
-
 import React, { FC } from "react";
 import ImgPlaceholder from "@/components/blogs/ImgPlaceholder";
 import Image from "next/image";
@@ -14,6 +12,7 @@ type BlogCardProps = {
   documentID: string | undefined;
   blogDescription: string | undefined;
   blogTag: { name: string }[];
+  blurDataUrl: string;
 };
 
 const BlogCard: FC<BlogCardProps> = ({
@@ -24,6 +23,7 @@ const BlogCard: FC<BlogCardProps> = ({
   documentID,
   blogDescription,
   blogTag,
+  blurDataUrl,
 }) => (
   <div className="h-full">
     <div className="flex flex-col gap-2 md:flex-row md:justify-between md:gap-16">
@@ -54,6 +54,8 @@ const BlogCard: FC<BlogCardProps> = ({
           alt={alt}
           width={320}
           height={180}
+          blurDataURL={blurDataUrl}
+          placeholder="blur"
           className="order-first h-[180px] w-full object-cover md:order-last"
         />
       ) : (
