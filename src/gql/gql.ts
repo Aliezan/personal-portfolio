@@ -13,7 +13,7 @@ import { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-  "\nquery BlogsQuery($pagination: PaginationArg) {\n  blogs(pagination: $pagination) {\n    documentId\n    title\n    createdAt\n    blogTag\n    previewImage {\n      url\n    }\n    blogDescription\n  }\n  blogs_connection {\n    pageInfo {\n      page\n      pageSize\n      pageCount\n      total\n    }\n  }\n}\n\n ":
+  "\nquery BlogsQuery($pagination: PaginationArg) {\n  blogs(pagination: $pagination) {\n    documentId\n    title\n    createdAt\n    updatedAt\n    blogTag\n    previewImage {\n      url\n    }\n    blogDescription\n  }\n  blogs_connection {\n    pageInfo {\n      page\n      pageSize\n      pageCount\n      total\n    }\n  }\n}\n\n ":
     types.BlogsQueryDocument,
   "\n  query BlogPost($documentId: ID!) {\n  blog(documentId: $documentId) {\n    title\n    previewImage {\n      url\n    }\n    blogDescription\n    createdAt\n    blogTag\n    blogContentSection {\n      image {\n        url\n      }\n      blogTextContent\n    }\n  }\n}\n  ":
     types.BlogPostDocument,
@@ -37,8 +37,8 @@ export function gql(source: string): unknown;
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(
-  source: "\nquery BlogsQuery($pagination: PaginationArg) {\n  blogs(pagination: $pagination) {\n    documentId\n    title\n    createdAt\n    blogTag\n    previewImage {\n      url\n    }\n    blogDescription\n  }\n  blogs_connection {\n    pageInfo {\n      page\n      pageSize\n      pageCount\n      total\n    }\n  }\n}\n\n ",
-): (typeof documents)["\nquery BlogsQuery($pagination: PaginationArg) {\n  blogs(pagination: $pagination) {\n    documentId\n    title\n    createdAt\n    blogTag\n    previewImage {\n      url\n    }\n    blogDescription\n  }\n  blogs_connection {\n    pageInfo {\n      page\n      pageSize\n      pageCount\n      total\n    }\n  }\n}\n\n "];
+  source: "\nquery BlogsQuery($pagination: PaginationArg) {\n  blogs(pagination: $pagination) {\n    documentId\n    title\n    createdAt\n    updatedAt\n    blogTag\n    previewImage {\n      url\n    }\n    blogDescription\n  }\n  blogs_connection {\n    pageInfo {\n      page\n      pageSize\n      pageCount\n      total\n    }\n  }\n}\n\n ",
+): (typeof documents)["\nquery BlogsQuery($pagination: PaginationArg) {\n  blogs(pagination: $pagination) {\n    documentId\n    title\n    createdAt\n    updatedAt\n    blogTag\n    previewImage {\n      url\n    }\n    blogDescription\n  }\n  blogs_connection {\n    pageInfo {\n      page\n      pageSize\n      pageCount\n      total\n    }\n  }\n}\n\n "];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

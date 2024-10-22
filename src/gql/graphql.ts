@@ -1046,6 +1046,7 @@ export type BlogsQueryQuery = {
     documentId: string;
     title: string;
     createdAt?: any | null;
+    updatedAt?: any | null;
     blogTag?: any | null;
     blogDescription: string;
     previewImage: { __typename?: "UploadFile"; url: string };
@@ -1125,6 +1126,7 @@ export const BlogsQueryDocument = {
                 { kind: "Field", name: { kind: "Name", value: "documentId" } },
                 { kind: "Field", name: { kind: "Name", value: "title" } },
                 { kind: "Field", name: { kind: "Name", value: "createdAt" } },
+                { kind: "Field", name: { kind: "Name", value: "updatedAt" } },
                 { kind: "Field", name: { kind: "Name", value: "blogTag" } },
                 {
                   kind: "Field",

@@ -6,6 +6,7 @@ query BlogsQuery($pagination: PaginationArg) {
     documentId
     title
     createdAt
+    updatedAt
     blogTag
     previewImage {
       url

@@ -14,6 +14,7 @@ import {
 import { SpaceGrotesk } from "@/utils/font";
 import { Link as LinkScroll } from "react-scroll/modules";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import Logo from "../Logo";
 import ThemeButton from "./ThemeButton";
 import { Button } from "../ui/button";
@@ -89,9 +90,22 @@ const Navibar: FC = () => {
               </Button>
             </NavbarItem>
             <NavbarItem>
-              <Button asChild variant="link">
-                <Link href="/blogs">blogs</Link>
-              </Button>
+              <div className="flex">
+                <Button
+                  asChild
+                  variant="link"
+                  data-umami-event="blogs button clicked"
+                >
+                  <Link href="/blogs">blogs</Link>
+                </Button>
+                <Image
+                  className="inline-block"
+                  src="/construction.svg"
+                  width={20}
+                  height={20}
+                  alt="under-construction"
+                />
+              </div>
             </NavbarItem>
           </NavbarContent>
           <NavbarMenu>
