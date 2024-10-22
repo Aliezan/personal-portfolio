@@ -1,6 +1,9 @@
+"use client";
+
 import React, { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 interface LogoProps {
   logoWidth: number;
@@ -14,43 +17,59 @@ const Logo: FC<LogoProps> = ({
   logoHeight,
   fontWidth,
   fontHeight,
-}) => (
-  <>
-    <div className="dark:hidden">
-      <Link href="/" className="flex gap-3">
+}) => {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return (
+    <Link href="/" className="flex items-center gap-3">
+      <div
+        style={{ width: logoWidth, height: logoHeight }}
+        className="relative"
+      >
         <Image
           src="/aliezn-icon-light.webp"
-          width={logoWidth}
-          height={logoHeight}
-          alt="aliezan-logo"
-          className="mt-1"
+          fill
+          alt="aliezan-logo-light"
+          className={`absolute left-0 top-0 transition-opacity duration-300 ${
+            mounted && resolvedTheme === "dark" ? "opacity-0" : "opacity-100"
+          }`}
         />
-        <Image
-          src="/aliezn-light.svg"
-          width={fontWidth}
-          height={fontHeight}
-          alt="aliezan-light"
-        />
-      </Link>
-    </div>
-
-    <div className="hidden dark:block">
-      <Link href="/" className="flex gap-3">
         <Image
           src="/aliezn-icon-dark.webp"
-          width={logoWidth}
-          height={logoHeight}
-          alt="aliezan-logo"
-          className="mt-1"
+          fill
+          alt="aliezan-logo-dark"
+          className={`absolute left-0 top-0 transition-opacity duration-300 ${
+            mounted && resolvedTheme === "dark" ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      </div>
+      <div
+        style={{ width: fontWidth, height: fontHeight }}
+        className="relative"
+      >
+        <Image
+          src="/aliezn-light.svg"
+          fill
+          alt="aliezan-light"
+          className={`absolute left-0 top-0 transition-opacity duration-300 ${
+            mounted && resolvedTheme === "dark" ? "opacity-0" : "opacity-100"
+          }`}
         />
         <Image
           src="/aliezn-dark.svg"
-          width={fontWidth}
-          height={fontHeight}
+          fill
           alt="aliezan-dark"
+          className={`absolute left-0 top-0 transition-opacity duration-300 ${
+            mounted && resolvedTheme === "dark" ? "opacity-100" : "opacity-0"
+          }`}
         />
-      </Link>
-    </div>
-  </>
-);
+      </div>
+    </Link>
+  );
+};
 export default Logo;
