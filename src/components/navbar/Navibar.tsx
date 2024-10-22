@@ -14,7 +14,6 @@ import {
 import { SpaceGrotesk } from "@/utils/font";
 import { Link as LinkScroll } from "react-scroll/modules";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import Logo from "../Logo";
 import ThemeButton from "./ThemeButton";
 import { Button } from "../ui/button";
@@ -90,22 +89,13 @@ const Navibar: FC = () => {
               </Button>
             </NavbarItem>
             <NavbarItem>
-              <div className="flex">
-                <Button
-                  asChild
-                  variant="link"
-                  data-umami-event="blogs button clicked"
-                >
-                  <Link href="/blogs">blogs</Link>
-                </Button>
-                <Image
-                  className="inline-block"
-                  src="/construction.svg"
-                  width={20}
-                  height={20}
-                  alt="under-construction"
-                />
-              </div>
+              <Button
+                asChild
+                variant="link"
+                data-umami-event="blogs button clicked"
+              >
+                <Link href="/blogs">blogs</Link>
+              </Button>
             </NavbarItem>
           </NavbarContent>
           <NavbarMenu>
@@ -142,7 +132,7 @@ const Navibar: FC = () => {
           <NavbarContent className="hidden gap-12 sm:flex" justify="center">
             <NavbarMenuItem>
               <Link
-                href="/"
+                href=".."
                 color="foreground"
                 className={`${SpaceGrotesk.className} text-sm hover:underline`}
               >
@@ -162,7 +152,7 @@ const Navibar: FC = () => {
           <NavbarMenu>
             <NavbarMenuItem>
               <Link
-                href="/"
+                href=".."
                 className={SpaceGrotesk.className}
                 color="foreground"
               >
