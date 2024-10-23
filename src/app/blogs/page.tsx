@@ -5,7 +5,7 @@ import { getClient } from "@/lib/apollo-server";
 import { getBlogPosts } from "@/query/schema";
 import { Metadata } from "next";
 
-export const revalidate = process.env.NODE_ENV === "development" ? 0 : 60;
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Blogs",
@@ -18,7 +18,8 @@ export const metadata: Metadata = {
 const Blogs: FC<{
   searchParams?: { [key: string]: string | undefined };
 }> = async ({ searchParams }) => {
-  const page = searchParams?.page ?? "1";
+  const params = await searchParams;
+  const page = params?.page || "1";
 
   const { data, error } = await getClient().query({
     query: getBlogPosts,

@@ -1,6 +1,6 @@
 import React, { FC, cache } from "react";
 import { getClient } from "@/lib/apollo-server";
-import { getBlogPost } from "@/query/schema";
+import { getBlogPost, getBlogPosts } from "@/query/schema";
 import dateFormatter from "@/utils/dateFormatter";
 import { SpaceGrotesk } from "@/utils/font";
 import { Metadata } from "next";
@@ -9,12 +9,19 @@ import { env } from "@/env/server";
 import BlogSection from "@/components/blogs/BlogSection";
 import BackButton from "@/components/blogs/BackButton";
 
-export const revalidate = process.env.NODE_ENV === "development" ? 0 : 60;
+export const revalidate = 60;
 
-const STRAPI_URL =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:1337"
-    : env.NEXT_PUBLIC_STRAPI_URL;
+export const dynamicParams = true;
+
+export const generateStaticParams = async () => {
+  const { data } = await getClient().query({
+    query: getBlogPosts,
+  });
+
+  return data?.blogs.map((blog) => ({
+    documentId: blog?.documentId,
+  }));
+};
 
 const getBlogPostCached = cache(async (documentId: string) => {
   const { data, error } = await getClient().query({
@@ -30,12 +37,17 @@ const getBlogPostCached = cache(async (documentId: string) => {
   };
 });
 
+const STRAPI_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:1337"
+    : env.NEXT_PUBLIC_STRAPI_URL;
+
+type Params = { params: Promise<{ documentId: string }> };
+
 export const generateMetadata = async ({
   params,
-}: {
-  params: { documentId: string };
-}): Promise<Metadata> => {
-  const { documentId } = params;
+}: Params): Promise<Metadata> => {
+  const { documentId } = await params;
   const blogPost = await getBlogPostCached(documentId);
 
   if (blogPost.error) {
@@ -59,8 +71,8 @@ export const generateMetadata = async ({
   };
 };
 
-const Blog: FC<{ params: { documentId: string } }> = async ({ params }) => {
-  const { documentId } = params;
+const Blog: FC<Params> = async ({ params }) => {
+  const { documentId } = await params;
   const blogPost = await getBlogPostCached(documentId);
 
   return (
