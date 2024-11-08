@@ -1,11 +1,9 @@
-import React, { FC } from "react";
+import React, { FC, cache } from "react";
 import BlogList from "@/components/blogs/BlogList";
 import BlogHero from "@/components/blogs/BlogHero";
 import { getClient } from "@/lib/apollo-server";
 import { getBlogPosts } from "@/query/schema";
 import { Metadata } from "next";
-
-export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Blogs",
@@ -15,12 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-const Blogs: FC<{
-  searchParams?: { [key: string]: string | undefined };
-}> = async ({ searchParams }) => {
-  const params = await searchParams;
-  const page = params?.page || "1";
-
+const getBlogPostsCached = cache(async (page: string) => {
   const { data, error } = await getClient().query({
     query: getBlogPosts,
     variables: {
@@ -30,6 +23,20 @@ const Blogs: FC<{
       },
     },
   });
+
+  return {
+    data,
+    error,
+  };
+});
+
+const Blogs: FC<{
+  searchParams?: { [key: string]: string | undefined };
+}> = async ({ searchParams }) => {
+  const params = await searchParams;
+  const page = params?.page || "1";
+
+  const { data, error } = await getBlogPostsCached(page);
 
   return (
     <main>

@@ -1,6 +1,6 @@
 import React, { FC, cache } from "react";
 import { getClient } from "@/lib/apollo-server";
-import { getBlogPost, getBlogPosts } from "@/query/schema";
+import { getBlogPost } from "@/query/schema";
 import dateFormatter from "@/utils/dateFormatter";
 import { SpaceGrotesk } from "@/utils/font";
 import { Metadata } from "next";
@@ -9,19 +9,10 @@ import { env } from "@/env/server";
 import BlogSection from "@/components/blogs/BlogSection";
 import BackButton from "@/components/blogs/BackButton";
 
-export const revalidate = 60;
-
+export const dynamic = "force-static";
 export const dynamicParams = true;
 
-export const generateStaticParams = async () => {
-  const { data } = await getClient().query({
-    query: getBlogPosts,
-  });
-
-  return data?.blogs.map((blog) => ({
-    documentId: blog?.documentId,
-  }));
-};
+export const generateStaticParams = () => [];
 
 const getBlogPostCached = cache(async (documentId: string) => {
   const { data, error } = await getClient().query({
