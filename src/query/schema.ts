@@ -38,6 +38,8 @@ export const getBlogPost = gql(`
     blogContentSection {
       image {
         url
+        caption
+        alternativeText
       }
       blogTextContent
     }

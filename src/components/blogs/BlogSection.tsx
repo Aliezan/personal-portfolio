@@ -11,12 +11,16 @@ const STRAPI_URL =
     : env.NEXT_PUBLIC_STRAPI_URL;
 
 type BlogSectionProps = {
-  imageUrl?: string;
+  imageUrl: string;
+  imageAlt: string;
+  imageCaption: string;
   BlogTextContent: BlocksContent;
 };
 
 const BlogSection: FC<BlogSectionProps> = async ({
   imageUrl,
+  imageAlt,
+  imageCaption,
   BlogTextContent,
 }) => {
   const blurDataUrl = imageUrl
@@ -26,19 +30,26 @@ const BlogSection: FC<BlogSectionProps> = async ({
   return (
     <section className="my-8">
       {imageUrl && (
-        <div className="relative mb-6 h-0 w-full pb-[56.25%]">
-          <Image
-            src={STRAPI_URL.concat(imageUrl)}
-            alt="Blog section image"
-            fill
-            className="rounded-lg object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            {...(blurDataUrl && {
-              placeholder: "blur",
-              blurDataURL: blurDataUrl,
-            })}
-          />
-        </div>
+        <>
+          <div className="relative mb-6 aspect-[16/9] w-full">
+            <Image
+              src={STRAPI_URL.concat(imageUrl)}
+              alt={imageAlt}
+              fill
+              className="rounded-lg object-contain"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              {...(blurDataUrl && {
+                placeholder: "blur",
+                blurDataURL: blurDataUrl,
+              })}
+            />
+          </div>
+          {imageCaption && (
+            <p className="prose prose-lg mb-4 text-center text-sm italic text-gray-600">
+              {imageCaption}
+            </p>
+          )}
+        </>
       )}
       <div className="prose prose-lg max-w-none">
         <BlocksRendererClient BlogTextContent={BlogTextContent} />

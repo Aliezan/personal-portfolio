@@ -93,7 +93,9 @@ const Blog: FC<Params> = async ({ params }) => {
           {blogPost.blog?.blogContentSection.map((section, index) => (
             <BlogSection
               key={index}
-              imageUrl={section?.image?.url}
+              imageUrl={section?.image?.url!}
+              imageAlt={section?.image?.alternativeText!}
+              imageCaption={section?.image?.caption!}
               BlogTextContent={section?.blogTextContent}
             />
           ))}

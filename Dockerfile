@@ -3,9 +3,9 @@ FROM node:20-alpine AS base
 # --- Dependencies ---
 FROM base AS deps
 RUN apk add --no-cache libc6-compat git
-RUN echo Building nextjs image with corepack
 
 # Setup pnpm environment
+RUN echo Building nextjs image with corepack
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable

@@ -19,7 +19,7 @@ const BackButton: FC = () => {
       className="mb-2 flex items-center gap-2"
     >
       <ArrowLeft className="h-4 w-4" />
-      Go Back
+      Back to Blogs
     </Button>
   );
 };

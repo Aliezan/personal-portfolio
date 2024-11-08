@@ -1,15 +1,15 @@
-import type { Struct, Schema } from "@strapi/strapi";
+import type { Schema, Struct } from "@strapi/strapi";
 
 export interface ContentsContentSection extends Struct.ComponentSchema {
   collectionName: "components_contents_content_sections";
   info: {
+    description: "";
     displayName: "content-section";
     icon: "bulletList";
-    description: "";
   };
   attributes: {
-    image: Schema.Attribute.Media<"images" | "files">;
     blogTextContent: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<"images" | "files">;
   };
 }
 

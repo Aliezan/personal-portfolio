@@ -5,6 +5,7 @@ import {
   BlocksRenderer,
   type BlocksContent,
 } from "@strapi/blocks-react-renderer";
+import { SpaceGrotesk } from "@/utils/font";
 import Link from "next/link";
 
 type BlocksRendererClientProps = {
@@ -21,9 +22,17 @@ const BlocksRendererClient: FC<BlocksRendererClientProps> = ({
       heading: ({ children, level }) => {
         switch (level) {
           case 1:
-            return <h1>{children}</h1>;
+            return (
+              <h1 className={`${SpaceGrotesk.className} text-3xl font-bold`}>
+                {children}
+              </h1>
+            );
           case 2:
-            return <h2>{children}</h2>;
+            return (
+              <h2 className={`${SpaceGrotesk.className} text-xl`}>
+                {children}
+              </h2>
+            );
           case 3:
             return <h3>{children}</h3>;
           case 4:
@@ -35,6 +44,12 @@ const BlocksRendererClient: FC<BlocksRendererClientProps> = ({
           default:
             return <h1>{children}</h1>;
         }
+      },
+      list: ({ children, format }) => {
+        if (format === "ordered") {
+          return <ol className="list-decimal">{children}</ol>;
+        }
+        return <ul className="list-disc">{children}</ul>;
       },
       link: ({ children, url }) => <Link href={url}>{children}</Link>,
     }}

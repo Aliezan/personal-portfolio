@@ -1,7 +1,8 @@
 module.exports = () => ({
-  upload: {
+  graphql: {
+    enabled: true,
     config: {
-      provider: "local",
+      defaultLimit: 100,
     },
   },
 });

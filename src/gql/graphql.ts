@@ -641,6 +641,7 @@ export type ReviewWorkflowsWorkflow = {
   documentId: Scalars["ID"]["output"];
   name: Scalars["String"]["output"];
   publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  stageRequiredToPublish?: Maybe<ReviewWorkflowsWorkflowStage>;
   stages: Array<Maybe<ReviewWorkflowsWorkflowStage>>;
   stages_connection?: Maybe<ReviewWorkflowsWorkflowStageRelationResponseCollection>;
   updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
@@ -675,6 +676,7 @@ export type ReviewWorkflowsWorkflowFiltersInput = {
   not?: InputMaybe<ReviewWorkflowsWorkflowFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ReviewWorkflowsWorkflowFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  stageRequiredToPublish?: InputMaybe<ReviewWorkflowsWorkflowStageFiltersInput>;
   stages?: InputMaybe<ReviewWorkflowsWorkflowStageFiltersInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
@@ -684,6 +686,7 @@ export type ReviewWorkflowsWorkflowInput = {
   locale?: InputMaybe<Scalars["String"]["input"]>;
   name?: InputMaybe<Scalars["String"]["input"]>;
   publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  stageRequiredToPublish?: InputMaybe<Scalars["ID"]["input"]>;
   stages?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
 };
 
@@ -1079,7 +1082,12 @@ export type BlogPostQuery = {
     blogContentSection: Array<{
       __typename?: "ComponentContentsContentSection";
       blogTextContent: any;
-      image?: { __typename?: "UploadFile"; url: string } | null;
+      image?: {
+        __typename?: "UploadFile";
+        url: string;
+        caption?: string | null;
+        alternativeText?: string | null;
+      } | null;
     } | null>;
   } | null;
 };
@@ -1249,6 +1257,14 @@ export const BlogPostDocument = {
                             {
                               kind: "Field",
                               name: { kind: "Name", value: "url" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "caption" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "alternativeText" },
                             },
                           ],
                         },

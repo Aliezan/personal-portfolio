@@ -15,7 +15,7 @@ import { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/
 const documents = {
   "\nquery BlogsQuery($pagination: PaginationArg) {\n  blogs(pagination: $pagination) {\n    documentId\n    title\n    createdAt\n    updatedAt\n    blogTag\n    previewImage {\n      url\n    }\n    blogDescription\n  }\n  blogs_connection {\n    pageInfo {\n      page\n      pageSize\n      pageCount\n      total\n    }\n  }\n}\n\n ":
     types.BlogsQueryDocument,
-  "\n  query BlogPost($documentId: ID!) {\n  blog(documentId: $documentId) {\n    title\n    previewImage {\n      url\n    }\n    blogDescription\n    createdAt\n    blogTag\n    blogContentSection {\n      image {\n        url\n      }\n      blogTextContent\n    }\n  }\n}\n  ":
+  "\n  query BlogPost($documentId: ID!) {\n  blog(documentId: $documentId) {\n    title\n    previewImage {\n      url\n    }\n    blogDescription\n    createdAt\n    blogTag\n    blogContentSection {\n      image {\n        url\n        caption\n        alternativeText\n      }\n      blogTextContent\n    }\n  }\n}\n  ":
     types.BlogPostDocument,
 };
 
@@ -43,8 +43,8 @@ export function gql(
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(
-  source: "\n  query BlogPost($documentId: ID!) {\n  blog(documentId: $documentId) {\n    title\n    previewImage {\n      url\n    }\n    blogDescription\n    createdAt\n    blogTag\n    blogContentSection {\n      image {\n        url\n      }\n      blogTextContent\n    }\n  }\n}\n  ",
-): (typeof documents)["\n  query BlogPost($documentId: ID!) {\n  blog(documentId: $documentId) {\n    title\n    previewImage {\n      url\n    }\n    blogDescription\n    createdAt\n    blogTag\n    blogContentSection {\n      image {\n        url\n      }\n      blogTextContent\n    }\n  }\n}\n  "];
+  source: "\n  query BlogPost($documentId: ID!) {\n  blog(documentId: $documentId) {\n    title\n    previewImage {\n      url\n    }\n    blogDescription\n    createdAt\n    blogTag\n    blogContentSection {\n      image {\n        url\n        caption\n        alternativeText\n      }\n      blogTextContent\n    }\n  }\n}\n  ",
+): (typeof documents)["\n  query BlogPost($documentId: ID!) {\n  blog(documentId: $documentId) {\n    title\n    previewImage {\n      url\n    }\n    blogDescription\n    createdAt\n    blogTag\n    blogContentSection {\n      image {\n        url\n        caption\n        alternativeText\n      }\n      blogTextContent\n    }\n  }\n}\n  "];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};
