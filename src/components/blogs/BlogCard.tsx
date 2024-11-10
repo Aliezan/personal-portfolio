@@ -27,8 +27,8 @@ const BlogCard: FC<BlogCardProps> = ({
 }) => (
   <div className="h-full">
     <div className="flex flex-col gap-2 md:flex-row md:justify-between md:gap-16">
-      <div className="mt-4 max-w-[500px] space-y-2 md:space-y-4">
-        <div className="flex flex-col space-y-4 md:flex-row md:gap-4 md:space-y-0">
+      <div className="mt-4 w-full space-y-2 md:space-y-4">
+        <div className="flex gap-4 md:space-y-0">
           <p className="text-md text-[#232E52] dark:text-white">{date}</p>
           {blogTag &&
             blogTag.map((tag) => (
@@ -38,13 +38,16 @@ const BlogCard: FC<BlogCardProps> = ({
             ))}
         </div>
         <div className="flex items-center">
-          <Link href={`/blogs/${documentID}`}>
-            <h1 className="line-clamp-2 text-2xl font-bold text-[#232E52] hover:underline-offset-8 dark:text-white">
+          <Link
+            href={`/blogs/${documentID}`}
+            className="hover:underline hover:underline-offset-8"
+          >
+            <h1 className="line-clamp-2 text-2xl font-bold text-[#232E52] dark:text-white">
               {title}
             </h1>
           </Link>
         </div>
-        <p className="line-clamp-3 w-full whitespace-pre-line text-xs sm:w-[500px]">
+        <p className="line-clamp-3 w-full whitespace-pre-line text-xs sm:w-full">
           {blogDescription}
         </p>
       </div>
@@ -57,6 +60,7 @@ const BlogCard: FC<BlogCardProps> = ({
           blurDataURL={blurDataUrl}
           placeholder="blur"
           className="order-first h-[180px] w-full object-cover md:order-last"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       ) : (
         <ImgPlaceholder />

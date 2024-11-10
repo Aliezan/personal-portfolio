@@ -28,7 +28,7 @@ const BlogSection: FC<BlogSectionProps> = async ({
     : null;
 
   return (
-    <section className="my-8">
+    <section className="my-5">
       {imageUrl && (
         <>
           <div className="relative mb-6 aspect-[16/9] w-full">

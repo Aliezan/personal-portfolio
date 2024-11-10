@@ -5,9 +5,6 @@ export const POST = async (req: Request) => {
     const res = await req.json();
     const { documentId } = res.entry;
 
-    console.log("[Next.js] Revalidating");
-    revalidatePath("/");
-
     if (documentId) {
       console.log(`[Next.js] Revalidating /blogs/${documentId}`);
       revalidatePath(`/blogs/${documentId}`);

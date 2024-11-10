@@ -1,9 +1,10 @@
-import React, { FC, cache } from "react";
+import React, { FC, Suspense, cache } from "react";
 import BlogList from "@/components/blogs/BlogList";
 import BlogHero from "@/components/blogs/BlogHero";
 import { getClient } from "@/lib/apollo-server";
 import { getBlogPosts } from "@/query/schema";
 import { Metadata } from "next";
+import BlogListSkeleton from "@/components/blogs/BlogListSkeleton";
 
 export const metadata: Metadata = {
   title: "Blogs",
@@ -41,7 +42,9 @@ const Blogs: FC<{
   return (
     <main>
       <BlogHero />
-      <BlogList page={page} data={data} error={error} />
+      <Suspense fallback={<BlogListSkeleton />}>
+        <BlogList page={page} data={data} error={error} />
+      </Suspense>
     </main>
   );
 };

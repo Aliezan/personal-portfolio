@@ -47,9 +47,9 @@ const BlocksRendererClient: FC<BlocksRendererClientProps> = ({
       },
       list: ({ children, format }) => {
         if (format === "ordered") {
-          return <ol className="list-decimal">{children}</ol>;
+          return <ol className="mx-5 list-decimal">{children}</ol>;
         }
-        return <ul className="list-disc">{children}</ul>;
+        return <ul className="mx-5 list-disc">{children}</ul>;
       },
       link: ({ children, url }) => <Link href={url}>{children}</Link>,
     }}
