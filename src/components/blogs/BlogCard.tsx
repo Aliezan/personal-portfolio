@@ -26,16 +26,31 @@ const BlogCard: FC<BlogCardProps> = ({
   blurDataUrl,
 }) => (
   <div className="h-full">
-    <div className="flex flex-col gap-2 md:flex-row md:justify-between md:gap-16">
-      <div className="mt-4 w-full space-y-2 md:space-y-4">
-        <div className="flex gap-4 md:space-y-0">
+    <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-8">
+      <div className="order-first md:order-last md:flex-shrink-0">
+        {imgUrl && alt ? (
+          <Image
+            src={imgUrl}
+            alt={alt}
+            width={320}
+            height={180}
+            blurDataURL={blurDataUrl}
+            placeholder="blur"
+            className="h-auto w-full rounded-lg object-cover md:w-[320px]"
+            sizes="(max-width: 768px) 100vw, 320px"
+          />
+        ) : (
+          <ImgPlaceholder />
+        )}
+      </div>
+      <div className="mt-4 w-full space-y-2 md:mt-0 md:flex-grow md:space-y-4">
+        <div className="flex flex-wrap gap-2">
           <p className="text-md text-[#232E52] dark:text-white">{date}</p>
-          {blogTag &&
-            blogTag.map((tag) => (
-              <Chip color="secondary" key={tag.name} size="sm">
-                {tag.name}
-              </Chip>
-            ))}
+          {blogTag?.map((tag) => (
+            <Chip color="secondary" key={tag.name} size="sm">
+              {tag.name}
+            </Chip>
+          ))}
         </div>
         <div className="flex items-center">
           <Link
@@ -47,26 +62,11 @@ const BlogCard: FC<BlogCardProps> = ({
             </h1>
           </Link>
         </div>
-        <p className="line-clamp-3 w-full whitespace-pre-line text-xs sm:w-full">
+        <p className="line-clamp-3 w-full whitespace-pre-line text-xs">
           {blogDescription}
         </p>
       </div>
-      {imgUrl && alt ? (
-        <Image
-          src={imgUrl}
-          alt={alt}
-          width={320}
-          height={180}
-          blurDataURL={blurDataUrl}
-          placeholder="blur"
-          className="order-first h-[180px] w-full object-cover md:order-last"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      ) : (
-        <ImgPlaceholder />
-      )}
     </div>
   </div>
 );
-
 export default BlogCard;

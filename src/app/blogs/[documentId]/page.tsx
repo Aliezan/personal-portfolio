@@ -91,6 +91,7 @@ const Blog: FC<Params> = async ({ params }) => {
             />
           ))}
         </div>
+        <BackButton />
       </article>
     </main>
   );
