@@ -382,10 +382,9 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   };
   attributes: {
     blogContentSection: Schema.Attribute.Component<
-      "contents.content-section",
+      "contents.content-section-markdown",
       true
-    > &
-      Schema.Attribute.Required;
+    >;
     blogDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     blogTag: Schema.Attribute.JSON &
       Schema.Attribute.CustomField<"plugin::tagsinput.tags">;

@@ -35,7 +35,9 @@ export type Scalars = {
 
 export type Blog = {
   __typename?: "Blog";
-  blogContentSection: Array<Maybe<ComponentContentsContentSection>>;
+  blogContentSection?: Maybe<
+    Array<Maybe<ComponentContentsContentSectionMarkdown>>
+  >;
   blogDescription: Scalars["String"]["output"];
   blogTag?: Maybe<Scalars["JSON"]["output"]>;
   createdAt?: Maybe<Scalars["DateTime"]["output"]>;
@@ -47,7 +49,7 @@ export type Blog = {
 };
 
 export type BlogBlogContentSectionArgs = {
-  filters?: InputMaybe<ComponentContentsContentSectionFiltersInput>;
+  filters?: InputMaybe<ComponentContentsContentSectionMarkdownFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
 };
@@ -60,7 +62,7 @@ export type BlogEntityResponseCollection = {
 
 export type BlogFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<BlogFiltersInput>>>;
-  blogContentSection?: InputMaybe<ComponentContentsContentSectionFiltersInput>;
+  blogContentSection?: InputMaybe<ComponentContentsContentSectionMarkdownFiltersInput>;
   blogDescription?: InputMaybe<StringFilterInput>;
   blogTag?: InputMaybe<JsonFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
@@ -76,7 +78,62 @@ export type BlogFiltersInput = {
 
 export type BlogInput = {
   blogContentSection?: InputMaybe<
-    Array<InputMaybe<ComponentContentsContentSectionInput>>
+    Array<InputMaybe<ComponentContentsContentSectionMarkdownInput>>
+  >;
+  blogDescription?: InputMaybe<Scalars["String"]["input"]>;
+  blogTag?: InputMaybe<Scalars["JSON"]["input"]>;
+  locale?: InputMaybe<Scalars["String"]["input"]>;
+  previewImage?: InputMaybe<Scalars["ID"]["input"]>;
+  publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type BlogsMd = {
+  __typename?: "BlogsMd";
+  blogContentSection?: Maybe<
+    Array<Maybe<ComponentContentsContentSectionMarkdown>>
+  >;
+  blogDescription: Scalars["String"]["output"];
+  blogTag?: Maybe<Scalars["JSON"]["output"]>;
+  createdAt?: Maybe<Scalars["DateTime"]["output"]>;
+  documentId: Scalars["ID"]["output"];
+  previewImage: UploadFile;
+  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  title: Scalars["String"]["output"];
+  updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
+};
+
+export type BlogsMdBlogContentSectionArgs = {
+  filters?: InputMaybe<ComponentContentsContentSectionMarkdownFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+};
+
+export type BlogsMdEntityResponseCollection = {
+  __typename?: "BlogsMdEntityResponseCollection";
+  nodes: Array<BlogsMd>;
+  pageInfo: Pagination;
+};
+
+export type BlogsMdFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<BlogsMdFiltersInput>>>;
+  blogContentSection?: InputMaybe<ComponentContentsContentSectionMarkdownFiltersInput>;
+  blogDescription?: InputMaybe<StringFilterInput>;
+  blogTag?: InputMaybe<JsonFilterInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  documentId?: InputMaybe<IdFilterInput>;
+  locale?: InputMaybe<StringFilterInput>;
+  localizations?: InputMaybe<BlogsMdFiltersInput>;
+  not?: InputMaybe<BlogsMdFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<BlogsMdFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  title?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type BlogsMdInput = {
+  blogContentSection?: InputMaybe<
+    Array<InputMaybe<ComponentContentsContentSectionMarkdownInput>>
   >;
   blogDescription?: InputMaybe<Scalars["String"]["input"]>;
   blogTag?: InputMaybe<Scalars["JSON"]["input"]>;
@@ -118,19 +175,26 @@ export type ComponentContentsContentSection = {
   image?: Maybe<UploadFile>;
 };
 
-export type ComponentContentsContentSectionFiltersInput = {
+export type ComponentContentsContentSectionMarkdown = {
+  __typename?: "ComponentContentsContentSectionMarkdown";
+  blogTextContent?: Maybe<Scalars["String"]["output"]>;
+  id: Scalars["ID"]["output"];
+  image?: Maybe<UploadFile>;
+};
+
+export type ComponentContentsContentSectionMarkdownFiltersInput = {
   and?: InputMaybe<
-    Array<InputMaybe<ComponentContentsContentSectionFiltersInput>>
+    Array<InputMaybe<ComponentContentsContentSectionMarkdownFiltersInput>>
   >;
-  blogTextContent?: InputMaybe<JsonFilterInput>;
-  not?: InputMaybe<ComponentContentsContentSectionFiltersInput>;
+  blogTextContent?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentContentsContentSectionMarkdownFiltersInput>;
   or?: InputMaybe<
-    Array<InputMaybe<ComponentContentsContentSectionFiltersInput>>
+    Array<InputMaybe<ComponentContentsContentSectionMarkdownFiltersInput>>
   >;
 };
 
-export type ComponentContentsContentSectionInput = {
-  blogTextContent?: InputMaybe<Scalars["JSON"]["input"]>;
+export type ComponentContentsContentSectionMarkdownInput = {
+  blogTextContent?: InputMaybe<Scalars["String"]["input"]>;
   id?: InputMaybe<Scalars["ID"]["input"]>;
   image?: InputMaybe<Scalars["ID"]["input"]>;
 };
@@ -198,7 +262,9 @@ export type FloatFilterInput = {
 
 export type GenericMorph =
   | Blog
+  | BlogsMd
   | ComponentContentsContentSection
+  | ComponentContentsContentSectionMarkdown
   | I18NLocale
   | ReviewWorkflowsWorkflow
   | ReviewWorkflowsWorkflowStage
@@ -317,6 +383,7 @@ export type Mutation = {
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
   createBlog?: Maybe<Blog>;
+  createBlogsMd?: Maybe<BlogsMd>;
   createReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
   createReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>;
   /** Create a new role */
@@ -324,6 +391,7 @@ export type Mutation = {
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteBlog?: Maybe<DeleteMutationResponse>;
+  deleteBlogsMd?: Maybe<DeleteMutationResponse>;
   deleteReviewWorkflowsWorkflow?: Maybe<DeleteMutationResponse>;
   deleteReviewWorkflowsWorkflowStage?: Maybe<DeleteMutationResponse>;
   deleteUploadFile?: Maybe<UploadFile>;
@@ -341,6 +409,7 @@ export type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateBlog?: Maybe<Blog>;
+  updateBlogsMd?: Maybe<BlogsMd>;
   updateReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
   updateReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>;
   updateUploadFile: UploadFile;
@@ -358,6 +427,11 @@ export type MutationChangePasswordArgs = {
 
 export type MutationCreateBlogArgs = {
   data: BlogInput;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type MutationCreateBlogsMdArgs = {
+  data: BlogsMdInput;
   status?: InputMaybe<PublicationStatus>;
 };
 
@@ -380,6 +454,10 @@ export type MutationCreateUsersPermissionsUserArgs = {
 };
 
 export type MutationDeleteBlogArgs = {
+  documentId: Scalars["ID"]["input"];
+};
+
+export type MutationDeleteBlogsMdArgs = {
   documentId: Scalars["ID"]["input"];
 };
 
@@ -427,6 +505,12 @@ export type MutationResetPasswordArgs = {
 
 export type MutationUpdateBlogArgs = {
   data: BlogInput;
+  documentId: Scalars["ID"]["input"];
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type MutationUpdateBlogsMdArgs = {
+  data: BlogsMdInput;
   documentId: Scalars["ID"]["input"];
   status?: InputMaybe<PublicationStatus>;
 };
@@ -479,6 +563,9 @@ export type Query = {
   __typename?: "Query";
   blog?: Maybe<Blog>;
   blogs: Array<Maybe<Blog>>;
+  blogsMd?: Maybe<BlogsMd>;
+  blogsMds: Array<Maybe<BlogsMd>>;
+  blogsMds_connection?: Maybe<BlogsMdEntityResponseCollection>;
   blogs_connection?: Maybe<BlogEntityResponseCollection>;
   i18NLocale?: Maybe<I18NLocale>;
   i18NLocales: Array<Maybe<I18NLocale>>;
@@ -508,6 +595,25 @@ export type QueryBlogArgs = {
 
 export type QueryBlogsArgs = {
   filters?: InputMaybe<BlogFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type QueryBlogsMdArgs = {
+  documentId: Scalars["ID"]["input"];
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type QueryBlogsMdsArgs = {
+  filters?: InputMaybe<BlogsMdFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type QueryBlogsMds_ConnectionArgs = {
+  filters?: InputMaybe<BlogsMdFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   status?: InputMaybe<PublicationStatus>;
@@ -842,6 +948,7 @@ export type UsersPermissionsMe = {
   __typename?: "UsersPermissionsMe";
   blocked?: Maybe<Scalars["Boolean"]["output"]>;
   confirmed?: Maybe<Scalars["Boolean"]["output"]>;
+  documentId: Scalars["ID"]["output"];
   email?: Maybe<Scalars["String"]["output"]>;
   id: Scalars["ID"]["output"];
   role?: Maybe<UsersPermissionsMeRole>;
@@ -1038,11 +1145,11 @@ export type UsersPermissionsUserRelationResponseCollection = {
   nodes: Array<UsersPermissionsUser>;
 };
 
-export type BlogsQueryQueryVariables = Exact<{
+export type GetAllBlogPostsQueryVariables = Exact<{
   pagination?: InputMaybe<PaginationArg>;
 }>;
 
-export type BlogsQueryQuery = {
+export type GetAllBlogPostsQuery = {
   __typename?: "Query";
   blogs: Array<{
     __typename?: "Blog";
@@ -1066,11 +1173,11 @@ export type BlogsQueryQuery = {
   } | null;
 };
 
-export type BlogPostQueryVariables = Exact<{
+export type GetBlogPostQueryVariables = Exact<{
   documentId: Scalars["ID"]["input"];
 }>;
 
-export type BlogPostQuery = {
+export type GetBlogPostQuery = {
   __typename?: "Query";
   blog?: {
     __typename?: "Blog";
@@ -1079,26 +1186,26 @@ export type BlogPostQuery = {
     createdAt?: any | null;
     blogTag?: any | null;
     previewImage: { __typename?: "UploadFile"; url: string };
-    blogContentSection: Array<{
-      __typename?: "ComponentContentsContentSection";
-      blogTextContent: any;
+    blogContentSection?: Array<{
+      __typename?: "ComponentContentsContentSectionMarkdown";
+      blogTextContent?: string | null;
       image?: {
         __typename?: "UploadFile";
         url: string;
         caption?: string | null;
         alternativeText?: string | null;
       } | null;
-    } | null>;
+    } | null> | null;
   } | null;
 };
 
-export const BlogsQueryDocument = {
+export const GetAllBlogPostsDocument = {
   kind: "Document",
   definitions: [
     {
       kind: "OperationDefinition",
       operation: "query",
-      name: { kind: "Name", value: "BlogsQuery" },
+      name: { kind: "Name", value: "getAllBlogPosts" },
       variableDefinitions: [
         {
           kind: "VariableDefinition",
@@ -1185,14 +1292,17 @@ export const BlogsQueryDocument = {
       },
     },
   ],
-} as unknown as DocumentNode<BlogsQueryQuery, BlogsQueryQueryVariables>;
-export const BlogPostDocument = {
+} as unknown as DocumentNode<
+  GetAllBlogPostsQuery,
+  GetAllBlogPostsQueryVariables
+>;
+export const GetBlogPostDocument = {
   kind: "Document",
   definitions: [
     {
       kind: "OperationDefinition",
       operation: "query",
-      name: { kind: "Name", value: "BlogPost" },
+      name: { kind: "Name", value: "getBlogPost" },
       variableDefinitions: [
         {
           kind: "VariableDefinition",
@@ -1283,4 +1393,4 @@ export const BlogPostDocument = {
       },
     },
   ],
-} as unknown as DocumentNode<BlogPostQuery, BlogPostQueryVariables>;
+} as unknown as DocumentNode<GetBlogPostQuery, GetBlogPostQueryVariables>;

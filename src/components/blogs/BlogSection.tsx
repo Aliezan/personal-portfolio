@@ -1,9 +1,8 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import { env } from "@/env/server";
-import { type BlocksContent } from "@strapi/blocks-react-renderer";
 import { getBase64 } from "@/lib/getBase64";
-import BlocksRendererClient from "./BlocksRendererClient";
+import MDXRenderer from "./MDXRenderer";
 
 const STRAPI_URL =
   process.env.NODE_ENV === "development"
@@ -14,7 +13,7 @@ type BlogSectionProps = {
   imageUrl: string;
   imageAlt: string;
   imageCaption: string;
-  BlogTextContent: BlocksContent;
+  BlogTextContent: string;
 };
 
 const BlogSection: FC<BlogSectionProps> = async ({
@@ -52,7 +51,7 @@ const BlogSection: FC<BlogSectionProps> = async ({
         </>
       )}
       <div className="prose prose-lg max-w-none">
-        <BlocksRendererClient BlogTextContent={BlogTextContent} />
+        <MDXRenderer source={BlogTextContent} />
       </div>
     </section>
   );

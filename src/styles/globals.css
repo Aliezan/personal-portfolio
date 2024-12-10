@@ -1,7 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "./prism-theme.css";
+@import "tailwindcss/utilities";
 
+@layer base {
+  br {
+    margin-bottom: 12px;
+  }
+}
 .gradient-text {
   background: linear-gradient(
     to right top,

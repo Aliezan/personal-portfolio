@@ -25,13 +25,6 @@
         "files"
       ]
     },
-    "blogContentSection": {
-      "displayName": "content-section",
-      "type": "component",
-      "repeatable": true,
-      "component": "contents.content-section",
-      "required": true
-    },
     "blogDescription": {
       "type": "text",
       "required": true
@@ -39,6 +32,11 @@
     "blogTag": {
       "type": "customField",
       "customField": "plugin::tagsinput.tags"
+    },
+    "blogContentSection": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contents.content-section-markdown"
     }
   }
 }

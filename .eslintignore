@@ -11,8 +11,5 @@ postcss.config.js
 # webpack
 webpack.config.example.js
 
-src/strapi/.strapi/*
-src/strapi/.tmp/*
-src/strapi/dist/*
-src/strapi/src/admin/*.js
-
+# strapi (uncontrolled code)
+strapi-blog

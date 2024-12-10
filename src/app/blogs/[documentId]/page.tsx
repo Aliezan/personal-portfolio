@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { env } from "@/env/server";
 import BlogSection from "@/components/blogs/BlogSection";
 import BackButton from "@/components/blogs/BackButton";
+import { TriangleAlert } from "lucide-react";
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
@@ -51,13 +52,13 @@ export const generateMetadata = async ({
     openGraph: {
       title: blogPost.blog?.title,
       description: blogPost.blog?.blogDescription,
-      images: STRAPI_URL.concat(blogPost.blog?.previewImage.url!),
+      images: STRAPI_URL.concat(blogPost.blog?.previewImage.url ?? ""),
     },
     twitter: {
       card: "summary_large_image",
       title: blogPost.blog?.title,
       description: blogPost.blog?.blogDescription,
-      images: STRAPI_URL.concat(blogPost.blog?.previewImage.url!),
+      images: STRAPI_URL.concat(blogPost.blog?.previewImage.url ?? ""),
     },
   };
 };
@@ -65,6 +66,24 @@ export const generateMetadata = async ({
 const Blog: FC<Params> = async ({ params }) => {
   const { documentId } = await params;
   const blogPost = await getBlogPostCached(documentId);
+
+  if (blogPost.error) {
+    return (
+      <main className="mt-5 grid h-screen items-center">
+        <div className="grid grid-rows-2 gap-3">
+          <div className="flex justify-center gap-4">
+            <TriangleAlert size={50} />
+            <h1 className={`${SpaceGrotesk.className} text-center text-5xl`}>
+              Uh oh. Something went wrong!
+            </h1>
+          </div>
+          <p className={`${SpaceGrotesk.className} text-center`}>
+            Please try again.
+          </p>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
@@ -81,13 +100,13 @@ const Blog: FC<Params> = async ({ params }) => {
           </p>
         </header>
         <div className="prose prose-lg max-w-none">
-          {blogPost.blog?.blogContentSection.map((section, index) => (
+          {blogPost.blog?.blogContentSection?.map((section, index) => (
             <BlogSection
               key={index}
-              imageUrl={section?.image?.url!}
-              imageAlt={section?.image?.alternativeText!}
-              imageCaption={section?.image?.caption!}
-              BlogTextContent={section?.blogTextContent}
+              imageUrl={section?.image?.url ?? ""}
+              imageAlt={section?.image?.alternativeText ?? ""}
+              imageCaption={section?.image?.caption ?? ""}
+              BlogTextContent={section?.blogTextContent ?? ""}
             />
           ))}
         </div>

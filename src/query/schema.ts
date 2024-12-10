@@ -1,7 +1,7 @@
 import { gql } from "@/gql";
 
-export const getBlogPosts = gql(`
-query BlogsQuery($pagination: PaginationArg) {
+export const getAllBlogPosts = gql(`
+query getAllBlogPosts($pagination: PaginationArg) {
   blogs(pagination: $pagination) {
     documentId
     title
@@ -26,7 +26,7 @@ query BlogsQuery($pagination: PaginationArg) {
  `);
 
 export const getBlogPost = gql(`
-  query BlogPost($documentId: ID!) {
+  query getBlogPost($documentId: ID!) {
   blog(documentId: $documentId) {
     title
     previewImage {

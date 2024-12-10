@@ -32,6 +32,7 @@ const config = {
       fullUrl: true,
     },
   },
+  transpilePackages: ['next-mdx-remote'],
   output: 'standalone'
 };
 

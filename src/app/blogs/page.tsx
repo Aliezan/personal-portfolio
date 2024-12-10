@@ -2,7 +2,7 @@ import React, { FC, Suspense, cache } from "react";
 import BlogList from "@/components/blogs/BlogList";
 import BlogHero from "@/components/blogs/BlogHero";
 import { getClient } from "@/lib/apollo-server";
-import { getBlogPosts } from "@/query/schema";
+import { getAllBlogPosts } from "@/query/schema";
 import { Metadata } from "next";
 import BlogListSkeleton from "@/components/blogs/BlogListSkeleton";
 
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 const getBlogPostsCached = cache(async (page: string) => {
   const { data, error } = await getClient().query({
-    query: getBlogPosts,
+    query: getAllBlogPosts,
     variables: {
       pagination: {
         page: +page,
