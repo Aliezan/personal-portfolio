@@ -1,12 +1,21 @@
 import { MetadataRoute } from "next";
 import { env } from "@/env/server";
 import { getClient } from "@/lib/apollo-server";
-import { getBlogPosts } from "@/query/schema";
+import { getAllBlogPosts } from "@/query/schema";
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const { data, error } = await getClient().query({
-    query: getBlogPosts,
+    query: getAllBlogPosts,
   });
+
+  if (!data || error) {
+    return [
+      {
+        url: `${env.NEXT_PUBLIC_BASE_URL}/`,
+        lastModified: new Date(),
+      },
+    ];
+  }
 
   const BlogPosts = data.blogs.map((blog) => ({
     url: `${env.NEXT_PUBLIC_BASE_URL}/blogs/${blog?.documentId}`,
