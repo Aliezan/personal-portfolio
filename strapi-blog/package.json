@@ -11,11 +11,11 @@
     "strapi": "ENV_PATH=../.env strapi"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.5.0",
+    "@strapi/plugin-cloud": "5.5.1",
     "@strapi/plugin-graphql": "^5.0.2",
-    "@strapi/plugin-users-permissions": "5.5.0",
+    "@strapi/plugin-users-permissions": "5.5.1",
     "@strapi/provider-upload-local": "^5.0.6",
-    "@strapi/strapi": "5.5.0",
+    "@strapi/strapi": "5.5.1",
     "better-sqlite3": "^11.5.0",
     "pg": "8.8.0",
     "react": "^18.0.0",
