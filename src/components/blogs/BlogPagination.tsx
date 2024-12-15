@@ -21,7 +21,6 @@ const BlogPagination: FC<{ totalPages: number; page: number }> = ({
 
   const startPage = Math.floor((page - 1) / 5) * 5 + 1;
   const endPage = Math.min(startPage + 4, modifiedTotalPages);
-  console.log(page);
 
   return (
     <Pagination className="mt-7">

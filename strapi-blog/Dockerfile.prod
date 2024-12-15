@@ -19,9 +19,14 @@ RUN apk add --no-cache vips-dev
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /opt/
+RUN mkdir -p /opt/app/public/uploads && \
+    chmod 755 /opt/app/public/uploads
+
 COPY --from=build /opt/node_modules ./node_modules
 WORKDIR /opt/app
 COPY --from=build /opt/app ./
+RUN chown -R node:node /opt/app/public/uploads
+
 ENV PATH=/opt/node_modules/.bin:$PATH
 
 RUN chown -R node:node /opt/app
