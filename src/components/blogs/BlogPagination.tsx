@@ -13,26 +13,24 @@ const BlogPagination: FC<{ totalPages: number; page: number }> = ({
   page,
 }) => {
   const roundTotalPages = (num: number) => {
-    const result = num / 5;
-    if (num % 5 === 0) {
-      return result;
-    }
-    return result + 1;
+    const result = Math.ceil(num / 5);
+    return Math.max(1, result);
   };
 
   const modifiedTotalPages = roundTotalPages(totalPages);
 
   const startPage = Math.floor((page - 1) / 5) * 5 + 1;
-  let endPage = startPage + 4;
-
-  endPage = endPage > modifiedTotalPages ? modifiedTotalPages : endPage;
+  const endPage = Math.min(startPage + 4, modifiedTotalPages);
+  console.log(page);
 
   return (
     <Pagination className="mt-7">
       <PaginationContent>
-        {startPage > 1 && (
+        {page > 6 && (
           <PaginationItem>
-            <PaginationPrevious href={`?page=${startPage - 1}`} />
+            <PaginationPrevious
+              href={page === 2 ? "/blogs" : `/blogs/${page - 1}`}
+            />
           </PaginationItem>
         )}
         {Array.from(
@@ -41,16 +39,16 @@ const BlogPagination: FC<{ totalPages: number; page: number }> = ({
         ).map((pageNum) => (
           <PaginationItem key={pageNum}>
             <PaginationLink
-              href={`?page=${pageNum}`}
-              isActive={pageNum === +page}
+              href={pageNum === 1 ? "/blogs" : `/blogs/${pageNum}`}
+              isActive={pageNum === page}
             >
               {pageNum}
             </PaginationLink>
           </PaginationItem>
         ))}
-        {endPage < modifiedTotalPages && (
+        {page < modifiedTotalPages && modifiedTotalPages > 5 && (
           <PaginationItem>
-            <PaginationNext href={`?page=${endPage + 1}`} />
+            <PaginationNext href={`/blogs/${page + 1}`} />
           </PaginationItem>
         )}
       </PaginationContent>

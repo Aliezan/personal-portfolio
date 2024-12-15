@@ -14,27 +14,34 @@ export const metadata: Metadata = {
   },
 };
 
+export const dynamic = "force-static";
+export const dynamicParams = true;
+
 const POSTS_PER_PAGE = 5;
 
-const Blogs: FC = async () => {
+export const generateStaticParams = () => [];
+
+const Blogs: FC<{ params: Promise<{ page: string }> }> = async ({ params }) => {
+  const { page } = await params;
+  const pageInt = parseInt(page, 10);
   const { data, error } = await getClient().query({
     query: getAllBlogPosts,
     variables: {
       pagination: {
-        page: 1,
+        page: pageInt,
         pageSize: POSTS_PER_PAGE,
       },
     },
   });
 
-  if (!data || error) {
+  if (!data.blogs || error) {
     notFound();
   }
 
   return (
     <main>
       <BlogHero />
-      <BlogList page={"1"} data={data} error={error} />
+      <BlogList page={page.toString()} data={data} error={error} />
     </main>
   );
 };

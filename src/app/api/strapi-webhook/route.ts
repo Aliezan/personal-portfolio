@@ -6,8 +6,8 @@ export const POST = async (req: Request) => {
     const { documentId } = res.entry;
 
     if (documentId) {
-      console.log(`[Next.js] Revalidating /blogs/${documentId}`);
-      revalidatePath(`/blogs/${documentId}`);
+      console.log(`[Next.js] Revalidating /posts/${documentId}`);
+      revalidatePath(`/posts/${documentId}`);
     }
   } catch (error: unknown) {
     if (error instanceof Error) {

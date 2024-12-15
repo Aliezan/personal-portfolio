@@ -18,7 +18,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   }
 
   const BlogPosts = data.blogs.map((blog) => ({
-    url: `${env.NEXT_PUBLIC_BASE_URL}/blogs/${blog?.documentId}`,
+    url: `${env.NEXT_PUBLIC_BASE_URL}/posts/${blog?.documentId}`,
     lastModified: new Date(blog?.updatedAt),
   }));
 
@@ -28,7 +28,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
       lastModified: new Date(),
     },
     {
-      url: `${env.NEXT_PUBLIC_BASE_URL}/blogs`,
+      url: `${env.NEXT_PUBLIC_BASE_URL}/posts`,
       lastModified: new Date(),
     },
     ...BlogPosts,

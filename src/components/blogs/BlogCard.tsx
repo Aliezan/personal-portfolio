@@ -54,7 +54,7 @@ const BlogCard: FC<BlogCardProps> = ({
         </div>
         <div className="flex items-center">
           <Link
-            href={`/blogs/${documentID}`}
+            href={`/posts/${documentID}`}
             className="hover:underline hover:underline-offset-8"
           >
             <h1 className="line-clamp-2 text-2xl font-bold text-[#232E52] hover:underline hover:underline-offset-8 dark:text-white">
