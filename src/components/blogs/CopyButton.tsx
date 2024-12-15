@@ -10,7 +10,7 @@ type CopyButtonProps = {
 };
 
 const buttonClasses =
-  "flex items-center text-xs font-medium text-white rounded";
+  "flex items-center text-xs font-medium text-white rounded bg-gray-800/40 rounded-md px-2 py-1";
 
 const CopyButton: FC<CopyButtonProps> = ({ text, className }) => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
