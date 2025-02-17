@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "husky",
     "dev": "NODE_ENV=development next dev",
     "dev:inspect": "NODE_ENV=development NODE_OPTIONS=--inspect next dev",
     "build": "next build",
