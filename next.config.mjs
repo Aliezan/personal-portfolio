@@ -32,6 +32,9 @@ const config = {
       fullUrl: true,
     },
   },
+  experimental: {
+    webpackMemoryOptimizations: true,
+  },
   transpilePackages: ['next-mdx-remote'],
   output: 'standalone'
 };
