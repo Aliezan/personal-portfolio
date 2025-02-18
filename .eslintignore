@@ -5,8 +5,9 @@ commitlint.config.cjs
 next.config.js
 next.config.mjs
 
-# postcss
+# postcss / tailwind
 postcss.config.js
+tailwind.config.ts
 
 # webpack
 webpack.config.example.js
