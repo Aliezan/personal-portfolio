@@ -11,7 +11,7 @@ import {
   NavbarMenuItem,
   Link,
 } from "@nextui-org/react";
-import { SpaceGrotesk } from "@/utils/font";
+import { SpaceGrotesk } from "@/lib/font";
 import { Link as LinkScroll } from "react-scroll/modules";
 import { usePathname } from "next/navigation";
 import Logo from "../Logo";
@@ -94,7 +94,7 @@ const Navibar: FC = () => {
                 variant="link"
                 data-umami-event="blogs button clicked"
               >
-                <Link href="/blogs">blogs</Link>
+                <Link href="/blog">blog</Link>
               </Button>
             </NavbarItem>
           </NavbarContent>

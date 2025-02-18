@@ -9,10 +9,10 @@ type BlogCardProps = {
   imgUrl: string;
   alt: string;
   title: string;
-  documentID: string | undefined;
-  blogDescription: string | undefined;
-  blogTag: { name: string }[];
+  blogDescription: string;
+  blogTag: string[];
   blurDataUrl: string;
+  slug: string;
 };
 
 const BlogCard: FC<BlogCardProps> = ({
@@ -20,10 +20,10 @@ const BlogCard: FC<BlogCardProps> = ({
   imgUrl,
   alt,
   title,
-  documentID,
   blogDescription,
   blogTag,
   blurDataUrl,
+  slug,
 }) => (
   <div className="h-full">
     <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-8">
@@ -47,14 +47,14 @@ const BlogCard: FC<BlogCardProps> = ({
         <div className="flex flex-wrap gap-2">
           <p className="text-md text-[#232E52] dark:text-white">{date}</p>
           {blogTag?.map((tag) => (
-            <Chip color="secondary" key={tag.name} size="sm">
-              {tag.name}
+            <Chip color="secondary" key={tag} size="sm">
+              {tag}
             </Chip>
           ))}
         </div>
         <div className="flex items-center">
           <Link
-            href={`blogs/posts/${documentID}`}
+            href={`blog/${slug}`}
             className="hover:underline hover:underline-offset-8"
           >
             <h1 className="line-clamp-2 text-2xl font-bold text-[#232E52] hover:underline hover:underline-offset-8 dark:text-white">
@@ -69,4 +69,5 @@ const BlogCard: FC<BlogCardProps> = ({
     </div>
   </div>
 );
+
 export default BlogCard;

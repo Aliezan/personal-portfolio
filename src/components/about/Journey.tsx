@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { SpaceGrotesk } from "@/utils/font";
+import { SpaceGrotesk } from "@/lib/font";
 import { Card, CardBody, CardHeader, CardFooter } from "@nextui-org/react";
 import Image from "next/image";
 import { Newspaper, BookOpen, ExternalLink, TrendingUp } from "lucide-react";

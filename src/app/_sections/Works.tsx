@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Chip } from "@nextui-org/react";
-import { SpaceGrotesk } from "@/utils/font";
+import { SpaceGrotesk } from "@/lib/font";
 import WorksCard from "@/components/works/WorksCard";
 
 const Works: FC = () => (

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import { Button, Link } from "@nextui-org/react";
-import { SpaceGrotesk } from "@/utils/font";
+import { SpaceGrotesk } from "@/lib/font";
 
 const ContactMe: FC = () => (
   <section className="relative flex h-fit items-center justify-center bg-white p-7 bg-grid-black/[0.2] dark:bg-black dark:bg-grid-white/[0.2]">

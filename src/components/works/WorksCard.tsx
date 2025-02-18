@@ -6,7 +6,7 @@ import {
   Chip,
   CardFooter,
 } from "@nextui-org/react";
-import { SpaceGrotesk } from "@/utils/font";
+import { SpaceGrotesk } from "@/lib/font";
 import { ExternalLink, StickyNote } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";

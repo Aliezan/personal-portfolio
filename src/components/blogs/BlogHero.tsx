@@ -1,4 +1,4 @@
-import { SpaceGrotesk } from "@/utils/font";
+import { SpaceGrotesk } from "@/lib/font";
 import React, { FC } from "react";
 
 const BlogHero: FC = () => (

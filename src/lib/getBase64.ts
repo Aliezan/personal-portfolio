@@ -1,4 +1,5 @@
 import { getPlaiceholder } from "plaiceholder";
+import fs from "node:fs/promises";
 
 type ImageData = {
   imageUrl: string;
@@ -7,19 +8,11 @@ type ImageData = {
 
 export const getBase64 = async (imageUrl: string) => {
   try {
-    const res = await fetch(imageUrl);
-
-    if (!res.ok) {
-      throw new Error(`Failed to fetch image: ${res.status} ${res.statusText}`);
-    }
-
-    const buffer = await res.arrayBuffer();
-
-    const { base64 } = await getPlaiceholder(Buffer.from(buffer));
-
+    const file = await fs.readFile(`./public/${imageUrl}`);
+    const { base64 } = await getPlaiceholder(file);
     return base64;
   } catch (e) {
-    console.error(e);
+    console.error("Error generating blur data:", e);
     return undefined;
   }
 };

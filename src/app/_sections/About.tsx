@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Chip } from "@nextui-org/react";
-import { SpaceGrotesk } from "@/utils/font";
+import { SpaceGrotesk } from "@/lib/font";
 import MainStacks from "@/components/about/MainStacks";
 import LibraryCard from "@/components/about/LibraryCard";
 import StoryCard from "@/components/about/StoryCard";

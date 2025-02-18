@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrism from "rehype-prism-plus";
-import { SpaceGrotesk } from "@/utils/font";
+import { SpaceGrotesk } from "@/lib/font";
 import rehypeCodeTitles from "rehype-code-titles";
 import { preProcess, postProcess } from "@/lib/rehype-pre-raw";
 import Pre from "./Pre";
@@ -57,7 +57,6 @@ const components = {
 };
 
 const MDXRenderer: FC<MDXRendererProps> = ({ source }) => (
-  // @ts-expect-error
   <MDXRemote source={source} options={options} components={components} />
 );
 

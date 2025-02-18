@@ -28,7 +28,7 @@ const BlogPagination: FC<{ totalPages: number; page: number }> = ({
         {page > 6 && (
           <PaginationItem>
             <PaginationPrevious
-              href={page === 2 ? "/blogs" : `/blogs/${page - 1}`}
+              href={page === 2 ? "/blog" : `/blog/page/${page - 1}`}
             />
           </PaginationItem>
         )}
@@ -38,7 +38,7 @@ const BlogPagination: FC<{ totalPages: number; page: number }> = ({
         ).map((pageNum) => (
           <PaginationItem key={pageNum}>
             <PaginationLink
-              href={pageNum === 1 ? "/blogs" : `/blogs/${pageNum}`}
+              href={pageNum === 1 ? "/blog" : `/blog/page/${pageNum}`}
               isActive={pageNum === page}
             >
               {pageNum}
@@ -47,7 +47,7 @@ const BlogPagination: FC<{ totalPages: number; page: number }> = ({
         ))}
         {page < modifiedTotalPages && modifiedTotalPages > 5 && (
           <PaginationItem>
-            <PaginationNext href={`/blogs/${page + 1}`} />
+            <PaginationNext href={`/blog/page/${page + 1}`} />
           </PaginationItem>
         )}
       </PaginationContent>
