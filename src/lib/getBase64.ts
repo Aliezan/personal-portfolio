@@ -8,7 +8,7 @@ type ImageData = {
 
 export const getBase64 = async (imageUrl: string) => {
   try {
-    const file = await fs.readFile(`./public/${imageUrl}`);
+    const file = await fs.readFile(`./public${imageUrl}`);
     const { base64 } = await getPlaiceholder(file);
     return base64;
   } catch (e) {

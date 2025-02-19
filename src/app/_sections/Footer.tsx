@@ -35,7 +35,7 @@ const SocialIcon: FC<SocialIconProps> = ({
 
 const Footer: FC = () => (
   <footer className="relative flex h-[250px] w-full items-center justify-center sm:h-[120px] sm:p-[80px]">
-    <div className="flex w-full flex-col items-center justify-between gap-4 sm:flex-row sm:items-start sm:gap-[90px]">
+    <div className="flex w-full flex-col items-center justify-between gap-4 sm:flex-row sm:items-center sm:gap-[90px]">
       <div className="flex flex-col items-center sm:items-start">
         <Logo logoWidth={20} logoHeight={20} fontHeight={70} fontWidth={70} />
         <p className="mt-1 text-tiny">Let&apos;s collaborate</p>
@@ -66,9 +66,9 @@ const Footer: FC = () => (
           />
         </div>
       </div>
-      <div className="flex items-center space-y-3">
+      <div className="flex items-center">
         <p className="text-tiny text-black/60 dark:text-white/60">
-          &copy; 2024
+          &copy; {new Date().getFullYear()}
         </p>
       </div>
     </div>

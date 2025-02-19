@@ -6,8 +6,8 @@ const blogData = [
     lastModified: "Saturday, December 14, 2024",
     description: "",
     slug: "easy-vps-setup-coolify",
-    thumbnailURL: "",
-    alt: "",
+    thumbnailURL: "/blogpost1_thumbnail.webp",
+    alt: "VPS Setup and Deployments",
     tags: ["CI/CD", "DevOps", "VPS"],
   },
 ];

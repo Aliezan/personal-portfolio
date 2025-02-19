@@ -1,39 +1,48 @@
-[first component]: #
+import BlogImage from "@/components/blogs/BlogImage";
 
-If you ever seek an alternative to cloud-based hosting for your web app like Vercel, Coolify could be an option. Ever since I got a VPS from DigitalOcean (psst... I got it free from the GitHub Student benefits), I don't want to waste the opportunity to learn self-hosting on a dedicated server running Linux.
+<BlogImage src="/blogpost1_page.webp" alt="BlogPost" />
+<br />
 
-At first, I tried a manual setup by provisioning the server with Node Version Manager, PM2 (a popular daemon process manager for Node.js apps), Nginx for reverse proxy, and Let's Encrypt for SSL. I also set up the server with GitHub Action Workers to create a simple CI/CD pipeline so that whenever I push new changes, the project will rebuild itself.
+If you ever seek an alternative to cloud-based hosting for your web app like Vercel, Coolify could be an option. Ever since I got a VPS from DigitalOcean (psst... I got it free from the GitHub Student benefits), I don't want to waste the opportunity to learn self-hosting on a dedicated server running Linux.<br/>
 
-But after setting up the server completely, there were some caveats:
+At first, I tried a manual setup by provisioning the server with Node Version Manager, PM2 (a popular daemon process manager for Node.js apps), Nginx for reverse proxy, and Let's Encrypt for SSL. I also set up the server with GitHub Action Workers to create a simple CI/CD pipeline so that whenever I push new changes, the project will rebuild itself.<br/>
+
+But after setting up the server completely, there were some caveats:<br/>
 
 1. **Downtime**, when rebuilding the project
-2. **Lack of maintainability,** since that was my first time setting up a server manually for deployment, and there's no easy way to scale or even host another project inside the same server.
+2. **Lack of maintainability,** since that was my first time setting up a server manually for deployment, and there's no easy way to scale or even host another project inside the same server.<br/>
 
-With all those caveats, I resorted to Coolify for an easy, maintainable, and scalable solution if you want to extend or combine multiple VPS(s).
+With all those caveats, I resorted to Coolify for an easy, maintainable, and scalable solution if you want to extend or combine multiple VPS(s).<br/>
 
-In this post, I’ll demonstrate how easy it is to set up your VPS with Coolify and quickly deploy your apps, regardless of your tech stack. By the way, the site you’re visiting is running on my own VPS with Coolify!
+In this post, I’ll demonstrate how easy it is to set up your VPS with Coolify and quickly deploy your apps, regardless of your tech stack. By the way, the site you’re visiting is running on my own VPS with Coolify!<br/>
 
-# Step 1: Setup Coolify
+# Step 1: Setup Coolify<br/>
 
-[second component]: #
+<BlogImage
+  src="/coolifyonboarding.webp"
+  alt="Coolify Onboarding Page"
+  caption="Coolify Onboarding Page"
+/>
 
-I'm not going to go into the initial setup in Coolify in depth, as the setup is pretty interactive. You just have to go into your server terminal, run some scripts as instructed from Coolify's documentation, and your Coolify instance will be up and running. In fact, after this, you don't have to access your server terminal to configure your server!
+I'm not going to go into the initial setup in Coolify in depth, as the setup is pretty interactive. You just have to go into your server terminal, run some scripts as instructed from Coolify's documentation, and your Coolify instance will be up and running. In fact, after this, you don't have to access your server terminal to configure your server!<br/>
 
-After completing the installation process, you’ll be greeted by the Coolify dashboard. From here on, you can manage and set up your server, accessible through the Coolify page hosted on your server's IP at a specific port.
+After completing the installation process, you’ll be greeted by the Coolify dashboard. From here on, you can manage and set up your server, accessible through the Coolify page hosted on your server's IP at a specific port.<br/>
 
-The beauty of this initial setup is that your server is now fully provisioned and ready to serve as your next production server. Coolify offers numerous options for deploying your project and creating a CI/CD pipeline. However, I opted to deploy via a Docker image, using GitHub Actions as the build server to compile my project and GitHub Container Registry to host the Docker image. I found this option ideal since your server only functions as a hosting server, saving a lot of time during the deployment process. Building Docker images can be resource-intensive, especially if your server has limited resources.
+The beauty of this initial setup is that your server is now fully provisioned and ready to serve as your next production server. Coolify offers numerous options for deploying your project and creating a CI/CD pipeline. However, I opted to deploy via a Docker image, using GitHub Actions as the build server to compile my project and GitHub Container Registry to host the Docker image. I found this option ideal since your server only functions as a hosting server, saving a lot of time during the deployment process. Building Docker images can be resource-intensive, especially if your server has limited resources.<br/>
 
-Additionally, I believe that containerizing our app is a best practice for ensuring consistent performance across different systems and can act as a testing environment to observe how the app behaves in a production setting.
+Additionally, I believe that containerizing our app is a best practice for ensuring consistent performance across different systems and can act as a testing environment to observe how the app behaves in a production setting.<br/>
 
-[third component]: #
+# Step 2: Create a Dockerfile and Github Workflow file<br/>
 
-# Step 2: Create a Dockerfile and Github Workflow file
+Before we dive into Coolify, we’ve got to set up a Docker image for the app with a Dockerfile. Think of the Dockerfile as a recipe with steps for building and running our image—in this case, our app. I’m no Docker expert, but the goal here is to keep the image size optimized by using a lightweight base image. That way, our final build isn’t massive. (Imagine having a 2GB image for a simple landing page—LOL!)<br/>
 
-Before we dive into Coolify, we’ve got to set up a Docker image for the app with a Dockerfile. Think of the Dockerfile as a recipe with steps for building and running our image—in this case, our app. I’m no Docker expert, but the goal here is to keep the image size optimized by using a lightweight base image. That way, our final build isn’t massive. (Imagine having a 2GB image for a simple landing page—LOL!)
+**Here is my Nextjs Dockerfile that only has a ~300MB of image size:**<br/>
 
-**Here is my Nextjs Dockerfile that only has a ~300MB of image size:**
-
-[third component]: #
+<BlogImage
+  src="/dockerimage.webp"
+  alt="'docker image ls' command showing image size"
+  caption="'docker image ls' command showing image size"
+/>
 
 ```dockerfile:Dockerfile
 FROM node:20-alpine AS base
@@ -84,39 +93,61 @@ ENV HOSTNAME "0.0.0.0"
 CMD ["node", "server.js"]
 ```
 
-One of my tricks for image size optimization is setting the Next.js output to `standalone`.
-This way, Next.js trims down dependencies, only keeping the ones actually needed
-in production (they really should make this the default option _smh_). A smaller
-final image means faster load times and quicker deployment!
+<br />
+One of my tricks for image size optimization is setting the Next.js output to
+`standalone`. This way, Next.js trims down dependencies, only keeping the ones
+actually needed in production (they really should make this the default option
+_smh_). A smaller final image means faster load times and quicker deployment!
+<br />
 
-[fourth component]: #
+After setting up the Dockerfile, our focus shifts to creating a GitHub workflow file. A workflow file is a YAML file that defines a series of automated steps GitHub Actions will run when certain events occur—in our case, when we push new changes to our repo.<br/>
 
-Go to **Account Settings > Developer Settings > Personal Access Tokens > Tokens (Classic).**
+The workflow file is typically located at the root of the project in a folder named .github/workflows. In this example, we’ll set up GitHub Actions to build and push our Docker image to GitHub Container Registry every time we push new changes, using the Dockerfile we configured earlier.<br/>
+Before we can create the workflow file to make this happen, we’ll need to configure some credentials on our GitHub account. Here’s how:<br/>
 
-From there, you can generate a token by clicking the dropdown in the top right labeled **Generate New Token > Generate Token (Classic).**
+- **Generate a Personal Access Token—** this token is essential for authentication and will allow us to push the Docker image to GitHub Container Registry.<br/>
 
-- **Next, set the necessary scopes** for the token to allow pushing the Docker image.
+<BlogImage
+  src="/Screenshot from 2024-11-08 20-55-02.webp"
+  alt="Developer Settings in Github"
+  caption="Developer Settings in Github"
+/>
 
-[fifth component]: #
+Go to **Account Settings > Developer Settings > Personal Access Tokens > Tokens (Classic).**<br/>
 
-Check the **write:packages** checkbox. This will allow us to push new Docker images and also let Coolify pull the newly built image.
+From there, you can generate a token by clicking the dropdown in the top right labeled **Generate New Token > Generate Token (Classic).**<br/>
 
-Next, **set the note and expiration date—**you can choose any duration you want. GitHub will notify you when it’s time to renew if the token expires.
+- **Next, set the necessary scopes** for the token to allow pushing the Docker image.<br/>
 
-Click **Generate Token**. Be sure to **copy the token and save it somewhere safe**, as you won’t be able to view it again after leaving the page. (We’ll need this token in later steps).
+<BlogImage
+  src="/patscopers.webp"
+  alt="Token Scopes Checkboxes"
+  caption="Token Scopes Checkboxes"
+/>
 
-- **Save the newly generated token to your repository secrets**—this way, the workflow file can access the token directly from your repository.
+Check the **write:packages** checkbox. This will allow us to push new Docker
+images and also let Coolify pull the newly built image.<br/>
 
-[sixth component]: #
+Next, **set the note and expiration date—** you can choose any duration you want. GitHub will notify you when it’s time to renew if the token expires.<br/>
 
-You can do this by going to Repository Settings > Secrets and Variables > Actions > New repository secret.
+Click **Generate Token**. Be sure to **copy the token and save it somewhere safe**, as you won’t be able to view it again after leaving the page. (We’ll need this token in later steps).<br/>
+
+- **Save the newly generated token to your repository secrets** —this way, the workflow file can access the token directly from your repository.<br/>
+
+<BlogImage
+  src="/reposecret.webp"
+  alt="Repository Settings Page"
+  caption="Repository Settings Page"
+/>
+
+You can do this by going to Repository Settings > Secrets and Variables > Actions > New repository secret.<br/>
 
 Here, you can set the name of the token (you can name it whatever you like). Then, paste your newly generated token into the Secrets field.
-Once these steps are complete, we can move on to the next step: creating a workflow file.
+Once these steps are complete, we can move on to the next step: creating a workflow file.<br/>
 
-- **Create a .yml workflow file inside** `.github/workflows`— you can named it anything you want! (i suggest clearer name like `build.yaml` or `deploy.yaml`)
+- **Create a .yml workflow file inside** `.github/workflows`— you can named it anything you want! (i suggest clearer name like `build.yaml` or `deploy.yaml`)<br/>
 
-Here's my `build.yml` for this portfolio web with Nextjs accompanied by Strapi CMS:
+Here's my `build.yml` for this portfolio web with Nextjs accompanied by Strapi CMS:<br/>
 
 ```yaml:build.yaml
 name: CI/CD
@@ -168,117 +199,156 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_2 }}:latest
 ```
 
-**Important note**: you can edit your image name. If you’re deploying multiple images to the container registry, feel free to adjust the names as needed. But the convention suggests the image name format is "author_name/repository". Just keep in mind not to change the registry name, as ghcr.io is the default domain for GitHub Container Registry.
+<br />
 
-Pay attention to the `branch` field. This field determines which branch will trigger the GitHub Actions. For example, mine is set to "master," which makes sense since I only want to trigger actions in a production environment.
-Also, update the password field in the "Login to ghcr.io" step. Adjust it to match the name of your repository secret that contains your token. For example, mine is `GH_PAT`, so I access it as `secrets.GH_PAT`.
+**Important note**: you can edit your image name. If you’re deploying multiple images to the container registry, feel free to adjust the names as needed. But the convention suggests the image name format is "author_name/repository". Just keep in mind not to change the registry name, as ghcr.io is the default domain for GitHub Container Registry.<br/>
 
-Another thing to pay attention to is the location of your project and Dockerfile. For example, if your Next.js app and Dockerfile are in the root folder, the `context` field should be "." and the` file` field should be "Dockerfile". This is because both are in the root folder, and the Dockerfile is named "Dockerfile."
+Pay attention to the `branch` field. This field determines which branch will trigger the GitHub Actions. For example, mine is set to "master," which makes sense since I only want to trigger actions in a production environment.<br/>
+Also, update the password field in the "Login to ghcr.io" step. Adjust it to match the name of your repository secret that contains your token. For example, mine is `GH_PAT`, so I access it as `secrets.GH_PAT`.<br/>
 
-[seventh component]: #
+Another thing to pay attention to is the location of your project and Dockerfile. For example, if your Next.js app and Dockerfile are in the root folder, the `context` field should be "." and the` file` field should be "Dockerfile". This is because both are in the root folder, and the Dockerfile is named "Dockerfile."<br/>
 
-# Step 3: Push new changes to the repo
+# Step 3: Push new changes to the repo<br/>
 
-After everything is properly configured and tested, it’s time to push all of our work to the repo. GitHub Actions will automatically evaluate your workflow file and run the configured steps when you push to the specified branch. If you're curious, here's what actually happens in this workflow:
+After everything is properly configured and tested, it’s time to push all of our work to the repo. GitHub Actions will automatically evaluate your workflow file and run the configured steps when you push to the specified branch. If you're curious, here's what actually happens in this workflow:<br/>
 
 - **Environment Setup**: Sets variables for the GitHub Container Registry and image names.
 - **Permissions**: Grants the workflow read access to the repository and write access to GitHub packages.
 - **Checkout Code**: Pulls the repository code so the workflow has access to our files.
 - **Login to GitHub Container Registry**: Authenticates using a personal access token (`GH_PAT`) so it can push Docker images.
-- **Build and Push Docker Images**: Builds the Docker Image. The images are then tagged and pushed to GitHub Container Registry.
+- **Build and Push Docker Images**: Builds the Docker Image. The images are then tagged and pushed to GitHub Container Registry.<br/>
 
-With this setup, any new push to master will build and deploy the latest version of both images, keeping your environment updated and deployment-ready. Before moving on to the next step, make sure the workflow completes successfully. If any errors occur, GitHub Actions will display them like this:
+With this setup, any new push to master will build and deploy the latest version of both images, keeping your environment updated and deployment-ready. Before moving on to the next step, make sure the workflow completes successfully. If any errors occur, GitHub Actions will display them like this:<br/>
 
-[eighth component]: #
+<BlogImage
+  src="/ga-error.webp"
+  alt="Failure workflow on Github Actions"
+  caption="Failure workflow on Github Actions"
+/>
 
-If this happens, resolve the error first. If you’re unsure, GitHub Actions logs the error in the build log, so you can trace and fix it before moving on.
-Once completed successfully, this workflow will create a **package** (Docker image) hosted in the GitHub Container Registry. You can view it in the Packages tab under **Profile** > **Packages**.
+If this happens, resolve the error first. If you’re unsure, GitHub Actions logs the error in the build log, so you can trace and fix it before moving on.<br/>
 
-[nineth component]: #
+Once completed successfully, this workflow will create a **package** (Docker image) hosted in the GitHub Container Registry. You can view it in the Packages tab under **Profile** > **Packages**.<br/>
 
-The package name will match what you set earlier in the workflow file. By default, the package visibility is **private**. Once you’ve reached this step, we can move on to the deployment process in the Coolify dashboard.
+<BlogImage
+  src="/packages.webp"
+  alt="Github Packages Tab"
+  caption="Github Packages Tab"
+/>
 
-[tenth component]: #
+The package name will match what you set earlier in the workflow file. By default, the package visibility is **private**. Once you’ve reached this step, we can move on to the deployment process in the Coolify dashboard.<br/>
 
-# Step 4: Configure the deployment in Coolify Dashboard
+# Step 4: Configure the deployment in Coolify Dashboard<br/>
 
-Access your Coolify dashboard, then go to Projects tab
+Access your Coolify dashboard, then go to Projects tab<br/>
 
-[eleventh component]: #
+<BlogImage
+  src="/coolify-projects.webp"
+  alt="Coolify projects tab"
+  caption="Coolify projects tab"
+/>
 
 - **Add a New Project:** Click the + Add button to create a new project.
 - **Enter Project Details:** When prompted, enter the project name and description.
 - **Configure Environment Settings:** By default, the environment will be set to "production." Click on "production" to access and configure additional project settings.
-- **Add a New Resource:** After configuring your project, click + Add New Resource to continue setting up resources. Continue through these steps until you reach this page as shown below:
+- **Add a New Resource:** After configuring your project, click + Add New Resource to continue setting up resources. Continue through these steps until you reach this page as shown below:<br/>
 
-[twelveth component]: #
+<BlogImage
+  src="/new-resource.webp"
+  alt="New resource configuration page"
+  caption="New resource configuration page"
+/>
+- **Select Docker Image**: In the Docker Based section, choose the Docker Image
+option to proceed to the next step.
 
-- **Select Docker Image**: In the Docker Based section, choose the Docker Image option to proceed to the next step.
-- **Choose Hosting Server**: You’ll be prompted to select the server where you want to host your app. Choose localhost (your VPS where Coolify is installed).
+- **Choose Hosting Server**: You’ll be
+  prompted to select the server where you want to host your app. Choose localhost
+  (your VPS where Coolify is installed).<br/>
 
-[thirteenth component]: #
+<BlogImage
+  src="/select-server.webp"
+  alt="Server selection page"
+  caption="Server selection page"
+/>
 
 - **Enter Image Name**: After selecting the server, enter the name of your Docker image.
-- **Find Image Name on GitHub (if needed)**: If you’re unsure of the image name, you can find it under the Packages tab in your GitHub profile.
+- **Find Image Name on GitHub (if needed)**: If you’re unsure of the image name, you can find it under the Packages tab in your GitHub profile.<br/>
 
-[fourteenth component]: #
+<BlogImage
+  src="/dockerimagefield.webp"
+  alt="Docker Image field in Coolify"
+  caption="Docker Image field in Coolify"
+/>
 
-To pull the image from the GitHub Container Registry, format it as `ghcr.io/image_name:tag`. You can refer to the workflow file you created previously for the exact image name and tag.
+To pull the image from the GitHub Container Registry, format it as `ghcr.io/image_name:tag`. You can refer to the workflow file you created previously for the exact image name and tag.<br/>
 
-Since my image name is **aliezan/personal-portfolio,** the full registry path will be:
+Since my image name is **aliezan/personal-portfolio,** the full registry path will be:<br/>
 
-`ghcr.io/aliezan-personal-portfolio:latest`
+`ghcr.io/aliezan-personal-portfolio:latest`<br/>
 
-Before proceeding with deployment in Coolify, you’ll need to pass the **Personal Access Token (PAT)** you created earlier to your VPS. This token is necessary for authenticating Coolify with GitHub Container Registry (GHCR) so that it has the authorization to pull the image.
+Before proceeding with deployment in Coolify, you’ll need to pass the **Personal Access Token (PAT)** you created earlier to your VPS. This token is necessary for authenticating Coolify with GitHub Container Registry (GHCR) so that it has the authorization to pull the image.<br/>
 
 **Why is this important?**
-The Docker image you built and pushed to GHCR is private, which helps prevent unauthorized access to your work—especially if it's in a private repository. Keeping the image private ensures only authorized users (in this case, Coolify). To set this up, simply access your server terminal and run the following command (without the angle brackets):
+The Docker image you built and pushed to GHCR is private, which helps prevent unauthorized access to your work—especially if it's in a private repository. Keeping the image private ensures only authorized users (in this case, Coolify). To set this up, simply access your server terminal and run the following command (without the angle brackets):<br/>
 
 ```bash:bash
-docker login --username <GITHUB_USERNAME> --password <PERSONAL_ACCESS_TOKEN> ghcr.io
+docker login --username <GITHUB_USERNAME>
+--password <PERSONAL_ACCESS_TOKEN> ghcr.io
 ```
 
-If successful, your terminal will display "Login Succeeded", indicating that Coolify is now authorized to pull images from GHCR.
+<br />
 
-Next, configure the pre-deployment settings on the project configuration page. This includes specifying your app’s domain and the port it exposes in Docker. Since Coolify uses Traefik as a reverse proxy, there’s no need for manual configuration—just enter the domain and port in their respective fields. (For example, if your Next.js app’s default port is 3000, set the port to 3000.) Keep in mind to save your changes!
+If successful, your terminal will display "Login Succeeded", indicating that Coolify is now authorized to pull images from GHCR.<br/>
+
+Next, configure the pre-deployment settings on the project configuration page. This includes specifying your app’s domain and the port it exposes in Docker. Since Coolify uses Traefik as a reverse proxy, there’s no need for manual configuration—just enter the domain and port in their respective fields. (For example, if your Next.js app’s default port is 3000, set the port to 3000.) Keep in mind to save your changes!<br/>
 
 For other settings like environment variables, you can add these as needed based
-on your app’s requirements.
+on your app’s requirements.<br/>
 
-[fiveteenth component]: #
+<BlogImage
+  src="/coolify-project-config.webp"
+  alt="Coolify project configuration page"
+  caption="Coolify project configuration page"
+/>
 
-Once you’ve finished configuring the pre-deployment settings, click Deploy to start the deployment process.
-**Important things to note:**
+Once you’ve finished configuring the pre-deployment settings, click Deploy to start the deployment process. **Important things to note:**<br/>
 
 - **Monitor the Logs:** Sometimes, if there’s a misconfiguration, an error may occur. Checking the logs can help you identify the issue.
-- **Verify the Deployment Link/Domain:** Traefik will automatically return a 404 error if something is misconfigured. Besides checking the logs, you can also use your terminal to inspect your Docker containers, as Coolify automatically spins up a container after pulling the image from GHCR.
+- **Verify the Deployment Link/Domain:** Traefik will automatically return a 404 error if something is misconfigured. Besides checking the logs, you can also use your terminal to inspect your Docker containers, as Coolify automatically spins up a container after pulling the image from GHCR.<br/>
 
-If everything is configured correctly, your app should now be running on your domain!
+If everything is configured correctly, your app should now be running on your domain!<br/>
 
 **Final Step:**
 
-Next, we’ll set up CI/CD automation in Coolify to streamline future deployments.
+Next, we’ll set up CI/CD automation in Coolify to streamline future deployments.<br/>
 
-[sixteenth component]: #
+# Last Step: Configuring CI/CD<br/>
 
-# Last Step: Configuring CI/CD
+Reopening the Coolify Dashboard every time you make changes in your repository can be a hassle. Fortunately, Coolify offers **webhooks**, which can work seamlessly with the GitHub Actions workflow you set up earlier. Setting them up is straightforward and will automate the deployment process for you.<br/>
 
-Reopening the Coolify Dashboard every time you make changes in your repository can be a hassle. Fortunately, Coolify offers **webhooks**, which can work seamlessly with the GitHub Actions workflow you set up earlier. Setting them up is straightforward and will automate the deployment process for you.
 Here are the steps:
 
 - **Generate an API Token:** Go to Keys & Tokens > API Tokens and create a new token. Since the webhook requires bearer authentication, you’ll need this token.
 - **Set Permissions:** Ensure root access is selected for permissions.
 - **Save the Token:** Be sure to copy and save the token immediately after generating it, as you won’t be able to view it again later.
 
-[seventeenth component]: #
+<BlogImage
+  src="/generate-token.webp"
+  alt="Keys & Token page"
+  caption="Keys & Token page"
+/>
 
 After generating the token, return to your project’s configuration page and go to the **Webhooks** tab. Here, you can copy the webhook URL.
 
-[eighteenth component]: #
+<BlogImage
+  src="/coolify-webhook-blurred.webp"
+  alt="Webhooks page - Coolify"
+  caption="Webhooks page - Coolify"
+/>
 
-With the API Token and Webhook URL in hand, add them to your repository’s secrets. It’s best to give them clear names (e.g., `COOLIFY_TOKEN` and `COOLIFY_WEBHOOK`) so they can be easily referenced in your workflow file later.
+With the API Token and Webhook URL in hand, add them to your repository’s secrets. It’s best to give them clear names (e.g., `COOLIFY_TOKEN` and `COOLIFY_WEBHOOK`) so they can be easily referenced in your workflow file later.<br/>
 
-After adding the secrets to your repository, it’s time to update the workflow file to include a deployment step. This will instruct the GitHub Action worker to send a GET request to trigger redeployment on Coolify. Here’s the code to add:
+After adding the secrets to your repository, it’s time to update the workflow file to include a deployment step. This will instruct the GitHub Action worker to send a GET request to trigger redeployment on Coolify. Here’s the code to add:<br/>
 
 ```yaml:build.yaml
 - name: Deploy to Coolify (nextjs-fe)
@@ -287,16 +357,22 @@ After adding the secrets to your repository, it’s time to update the workflow 
                --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
 ```
 
-By setting up this workflow step, each time the workflow runs, GitHub Actions will automatically notify Coolify to redeploy your app, keeping it up to date with your latest changes.
+<br />
+By setting up this workflow step, each time the workflow runs, GitHub Actions
+will automatically notify Coolify to redeploy your app, keeping it up to date
+with your latest changes.
+<br />
 
 To check the CI/CD process that you added to your workflow file, you can push new changes to the repo, then you can monitor the logs in the Actions tab in your repo.
 
-[nineteenth component]: #
+<BlogImage
+  src="/coolify-deploy-logs-action.webp"
+  alt="Github Actions workflow log"
+  caption="Github Actions workflow log"
+/>
 
-The 200 response from Coolify confirms that the deployment process was successful. At this stage, Coolify will pull the newly built image from GHCR and deploy it.
+The 200 response from Coolify confirms that the deployment process was successful. At this stage, Coolify will pull the newly built image from GHCR and deploy it.<br/>
 
-To verify the deployment, you can check the Deployments tab on your Coolify project page to confirm that your app has been redeployed.
+To verify the deployment, you can check the Deployments tab on your Coolify project page to confirm that your app has been redeployed.<br/>
 
-[twentieth component]: #
-
-At this point, you’ve completed the deployment and CI/CD automation setup on your VPS with Coolify! Simple, right? There’s actually so much more to explore within Coolify—features that can further streamline your deployment process. It’s up to you to dive in, try it out, and see how it can enhance your setup.
+At this point, you’ve completed the deployment and CI/CD automation setup on your VPS with Coolify! Simple, right? There’s actually so much more to explore within Coolify—features that can further streamline your deployment process. It’s up to you to dive in, try it out, and see how it can enhance your setup.<br/>
