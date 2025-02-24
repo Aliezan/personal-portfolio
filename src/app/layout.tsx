@@ -6,6 +6,7 @@ import "@/styles/globals.css";
 import Navibar from "@/components/navbar/Navibar";
 import Footer from "@/app/_sections/Footer";
 import { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en" suppressHydrationWarning>
     <body className={GeistSans.className}>
+      <Analytics />
       <UIProvider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navibar />
