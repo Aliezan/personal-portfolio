@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import BackButton from "@/components/blogs/BackButton";
 import blogData from "@/data/blogList";
 
-export const dynamicParams = false;
+// export const dynamicParams = false;
 
 export const generateStaticParams = () => [{ slug: "easy-vps-setup-coolify" }];
 

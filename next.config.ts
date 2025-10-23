@@ -4,6 +4,7 @@ import { preProcess, postProcess } from "./src/lib/rehype-pre-raw";
 import rehypePrism from "rehype-prism-plus";
 import rehypeCodeTitles from "rehype-code-titles";
 import { NextConfig } from "next";
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
 const withMDX = createMDX({
   options: {
@@ -32,5 +33,4 @@ const nextConfig: NextConfig = {
 
 export default withMDX(withPlaiceholder(nextConfig));
 
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 initOpenNextCloudflareForDev();
